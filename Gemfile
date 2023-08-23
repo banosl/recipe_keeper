@@ -56,10 +56,10 @@ group :development, :test do
   gem 'hirb'
   gem 'figaro'
   gem 'faraday'
+  gem 'capybara'
 end
 
 group :test do
-  gem 'capybara'
   gem 'simplecov'
   gem 'orderly'
   gem 'shoulda-matchers', '~> 5.0'
