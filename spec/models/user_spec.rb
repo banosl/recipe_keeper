@@ -9,6 +9,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'relationships' do
-    it {should have_many :cookbooks}
+    it {should have_one :library}
   end
 end

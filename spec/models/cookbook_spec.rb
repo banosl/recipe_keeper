@@ -9,7 +9,7 @@ RSpec.describe Cookbook, type: :model do
   end
 
   describe 'relationships' do
-    it {should belong_to :user}
+    it {should belong_to :library}
     it {should have_many :recipes}
   end
 end
