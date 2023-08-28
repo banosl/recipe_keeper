@@ -8,10 +8,9 @@ RSpec.describe 'library index' do
 
   describe 'visiting a users library' do
     it 'shows a users library page with names library at the top' do
-      # binding.pry
       visit user_libraries_path(@user.id)
-
-      expect(page).to have_content("Leo's Library")
+   
+      expect(page).to have_content("#{@user.first_name}'s Library")
     end
   end
 end
