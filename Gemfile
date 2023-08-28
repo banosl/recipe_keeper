@@ -57,6 +57,7 @@ group :development, :test do
   gem 'figaro'
   gem 'faraday'
   gem 'capybara'
+  gem 'omniauth-google-oauth2'
 end
 
 group :test do
