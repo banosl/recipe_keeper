@@ -35,3 +35,4 @@ coverage
 /config/application.yml
 
 /config/ssl
+.DS_Store
