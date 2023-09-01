@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def create
-    binding.pry
-    current_user = User.find_or_create_user(user_params)
+    user = User.find_or_create_user(user_params)
+    session[:user_id] = user.id
+
+    redirect_to user_libraries_path(session[:user_id])
   end
   
   private
@@ -23,7 +25,7 @@ class SessionsController < ApplicationController
       email: auth_hash[:info][:email],
       google_id: auth_hash[:uid],
       google_token: auth_hash[:credentials][:token],
-      google_picture: auth_hash[:info][:image],
+      profile_picture: auth_hash[:info][:image],
       oauth_provider: :google
     }
   end
