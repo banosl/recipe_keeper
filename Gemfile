@@ -77,3 +77,7 @@ group :development do
   # gem "spring"
 end
 
+group :development, :test, :production do
+  gem 'omniauth-google-oauth2'
+  gem "omniauth-rails_csrf_protection"
+end

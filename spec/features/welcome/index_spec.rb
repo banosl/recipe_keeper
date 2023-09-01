@@ -8,13 +8,6 @@ RSpec.describe WelcomeController, type: :feature do
       expect(page).to have_content("Recipe Keeper")
     end
 
-    it 'shows a link to sign up in the top right corner of page' do
-      visit '/'
-
-      expect(page).to have_content("Sign Up")
-      expect(page).to have_link("Sign Up", :href=>"/sign_up")
-    end
-
     it 'shows a link to sign in in the top right corner of page' do
       visit '/'
       

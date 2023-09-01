@@ -33,3 +33,6 @@ coverage
 
 # Ignore application configuration
 /config/application.yml
+
+/config/ssl
+.DS_Store

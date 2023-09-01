@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_23_214948) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_01_190618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,9 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_214948) do
     t.string "publisher"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.string "country_cuisine"
-    t.index ["user_id"], name: "index_cookbooks_on_user_id"
+    t.bigint "library_id", null: false
+    t.index ["library_id"], name: "index_cookbooks_on_library_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -32,6 +32,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_214948) do
     t.string "measurement_metric"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "libraries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_libraries_on_user_id", unique: true
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
@@ -64,9 +71,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_214948) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "google_id"
+    t.string "google_token"
+    t.string "profile_picture"
+    t.integer "oauth_provider"
   end
 
-  add_foreign_key "cookbooks", "users"
+  add_foreign_key "cookbooks", "libraries"
+  add_foreign_key "libraries", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
   add_foreign_key "recipes", "cookbooks"
