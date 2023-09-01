@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_180629) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_01_183843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,7 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_180629) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "google_id"
+    t.bigint "google_id"
     t.string "google_token"
     t.string "profile_picture"
     t.integer "oauth_provider"
