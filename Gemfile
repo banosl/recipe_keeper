@@ -57,8 +57,6 @@ group :development, :test do
   gem 'figaro'
   gem 'faraday'
   gem 'capybara'
-  gem 'omniauth-google-oauth2'
-  gem "omniauth-rails_csrf_protection"
 end
 
 group :test do
@@ -79,3 +77,7 @@ group :development do
   # gem "spring"
 end
 
+group :development, :test, :production do
+  gem 'omniauth-google-oauth2'
+  gem "omniauth-rails_csrf_protection"
+end
