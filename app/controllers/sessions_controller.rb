@@ -23,7 +23,8 @@ class SessionsController < ApplicationController
       email: auth_hash[:info][:email],
       google_id: auth_hash[:uid],
       google_token: auth_hash[:credentials][:token],
-      google_picture: auth_hash[:info][:image]
+      google_picture: auth_hash[:info][:image],
+      oauth_provider: :google
     }
   end
 end

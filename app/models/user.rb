@@ -3,4 +3,6 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   has_one :library, dependent: :destroy
+  
+  enum oauth_provider: [:google]
 end
