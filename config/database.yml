@@ -82,6 +82,5 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: recipe_keeper_production
-  username: recipe_keeper
-  password: <%= ENV["RECIPE_KEEPER_DATABASE_PASSWORD"] %>
+  database: postgresql-recipe-keeper
+  username: postgresl_recipe_keeper_user
