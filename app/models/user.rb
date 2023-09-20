@@ -18,7 +18,7 @@ class User < ApplicationRecord
         user.create_library
       end
     end
-   
-    return user
+
+    user
   end
 end
