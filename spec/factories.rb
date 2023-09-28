@@ -25,13 +25,61 @@ FactoryBot.define do
     association :library
   end
 
-  # factory :recipes do
-  #   name {Faker::Food.dish}
-  #   enum meal_time: {breakfast: 0, brunch: 1, lunch: 2, dinner: 3}
-  #   enum meal_type: {appetizer: 0, salad: 1, entree: 2, dessert: 3, drink: 4}
-  #   enum food_group: {grain: 0, protein: 1, fruit_vegetables: 2, dairy: 3}
-  #   country_of_origin {Faker::Nation.nationality}
-  #   page {Faker::Number.between(from: 10, to: 500)}
-  #   association :cookbook
-  # end
+  factory :recipes do
+    name {Faker::Food.dish}
+    country_of_origin {Faker::Nation.nationality}
+    page {Faker::Number.between(from: 10, to: 500)}
+
+    trait :breakfast do
+      meal_time {:breakfast}
+    end
+
+    trait :brunch do
+      meal_time {:brunch}
+    end
+
+    trait :lunch do
+      meal_time {:lunch}
+    end
+
+    trait :dinner do
+      meal_time {:dinner}
+    end
+
+    trait :appetizer do
+      meal_type {:appetizer}
+    end
+
+    trait :salad do
+      meal_type {:salad}
+    end
+    
+    trait :entree do
+      meal_type {:entree}
+    end
+
+    trait :dessert do
+      meal_type {:dessert}
+    end
+
+    trait :drink do
+      meal_type {:drink}
+    end
+
+    trait :grain do
+      food_group {:grain}
+    end
+
+    trait :protein do
+      food_group {:protein}
+    end
+    trait :fruit_vegetables do
+      food_group {:fruit_vegetables}
+    end
+    trait :dairy do
+      food_group {:dairy}
+    end
+
+    association :cookbook
+  end
 end
