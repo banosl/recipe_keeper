@@ -12,5 +12,12 @@ RSpec.describe 'library index' do
    
       expect(page).to have_content("#{@user.first_name}'s Library")
     end
+
+    it 'shows a button to add a cookbook' do
+      visit user_libraries_path(@user.id)
+      save_and_open_page
+
+      expect(page).to have_link("Add a cookbook to my library", href: new_user_library_cookbook_path(@user.id, @library.id))
+    end
   end
 end

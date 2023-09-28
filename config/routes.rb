@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :sign_in, only: [:index]
   resources :users, only: [:index, :create] do
-    resources :libraries, only: [:index]
+    resources :libraries, only: [:index] do
+      resources :cookbooks, only: [:new, :create] #is this too long of a route?
+    end
   end
 end
