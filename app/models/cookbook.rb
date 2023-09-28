@@ -1,5 +1,5 @@
 class Cookbook < ApplicationRecord
-  validates_presence_of :name, :isbn, :author, :publisher
+  validates_presence_of :title, :isbn, :author, :publisher
   
   belongs_to :library
   has_many :recipes, dependent: :destroy
