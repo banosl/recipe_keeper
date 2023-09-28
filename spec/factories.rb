@@ -4,7 +4,7 @@ FactoryBot.define do
     last_name {Faker::Name.last_name}
     email {"#{first_name}.#{last_name}@example.com".downcase}
     google_id {Faker::Number.number(digits: 12)}
-    googke_token {Faker::Alphanumeric.alpha(number:15)}
+    google_token {Faker::Alphanumeric.alpha(number:15)}
     profile_picture {"picture.picture.com"}
     
     trait :google do
