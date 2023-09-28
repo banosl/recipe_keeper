@@ -6,7 +6,10 @@ FactoryBot.define do
     google_id {Faker::Number.number(digits: 12)}
     googke_token {Faker::Alphanumeric.alpha(number:15)}
     profile_picture {"picture.picture.com"}
-    enum oauth_provider: {google: 0} 
+    
+    trait :google do
+      oauth_provider {:google}
+    end
   end
 
   factory :library do
@@ -22,13 +25,13 @@ FactoryBot.define do
     association :library
   end
 
-  factory :recipes do
-    name {Faker::Food.dish}
-    enum meal_time: {breakfast: 0, brunch: 1, lunch: 2, dinner: 3}
-    enum meal_type: {appetizer: 0, salad: 1, entree: 2, dessert: 3, drink: 4}
-    enum food_group: {grain: 0, protein: 1, fruit_vegetables: 2, dairy: 3}
-    country_of_origin {Faker::Nation.nationality}
-    page {Faker::Number.between(from: 10, to: 500)}
-    association :cookbook
-  end
+  # factory :recipes do
+  #   name {Faker::Food.dish}
+  #   enum meal_time: {breakfast: 0, brunch: 1, lunch: 2, dinner: 3}
+  #   enum meal_type: {appetizer: 0, salad: 1, entree: 2, dessert: 3, drink: 4}
+  #   enum food_group: {grain: 0, protein: 1, fruit_vegetables: 2, dairy: 3}
+  #   country_of_origin {Faker::Nation.nationality}
+  #   page {Faker::Number.between(from: 10, to: 500)}
+  #   association :cookbook
+  # end
 end
