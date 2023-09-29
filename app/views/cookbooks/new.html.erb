@@ -1,0 +1,17 @@
+<center><h1> Add a New Cookbook </h1></center>
+
+<section id="cookbook_form">
+  <%= form_with url: user_library_cookbooks_path(@user.id, @user.library.id), method: :post do |form| %>
+    <%= form.label :title, "Title:" %>
+    <p><%= form.text_field :title %></p>
+    <%= form.label :author, "Author:" %>
+    <p><%= form.text_field :author%></p>
+    <%= form.label :publisher, "Publisher:" %>
+    <p><%= form.text_field :publisher%></p>
+    <%= form.label :isbn, "ISBN:" %>
+    <p><%= form.text_field :isbn%></p>
+    <%= form.label :country_cuisine, "Nation of Origin:" %>
+    <p><%= form.text_field :country_cuisine%></p>
+    <%= form.submit "Submit" %>
+  <% end %>
+</section>
