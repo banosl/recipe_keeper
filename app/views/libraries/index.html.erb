@@ -1,3 +1,7 @@
 <center><h1> <%= @user.first_name %>'s Library </h1></center>
 
 <h3><%= link_to 'Add a cookbook to my library', new_user_library_cookbook_path(@user.id, @user.library.id) %></h3>
+
+<% @cookbooks.each do |cookbook| %>
+  <p><%= cookbook.title %> by <%= cookbook.author %></p>
+<% end %>
