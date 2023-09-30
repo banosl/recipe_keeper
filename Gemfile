@@ -57,6 +57,9 @@ group :development, :test do
   gem 'figaro'
   gem 'faraday'
   gem 'capybara'
+  gem 'launchy'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :test do
