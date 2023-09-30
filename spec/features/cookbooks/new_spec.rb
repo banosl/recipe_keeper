@@ -18,7 +18,8 @@ RSpec.describe "New Cookbook form page" do
     end
   end
 
-  it 'can fill out and submit the form and page is redirected to matches/confirmation page' do
+  it 'can fill out and submit the form then page is redirected to the same page but with matches/confirmation options
+      after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed' do
     title = Faker::Book.title
     author = Faker::Book.author
     publisher = Faker::Book.publisher
@@ -34,10 +35,10 @@ RSpec.describe "New Cookbook form page" do
       fill_in :isbn, with: isbn
       click_button 'Submit'
     end
-    save_and_open_page
-    expect(path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
     
-    within ("#entries") do
+    expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
+    
+    within ("#user_entries") do
       expect(page).to have_content("Title: #{title}")
       expect(page).to have_content("Author: #{author}")
       expect(page).to have_content("Publisher: #{publisher}")
@@ -45,10 +46,15 @@ RSpec.describe "New Cookbook form page" do
       expect(page).to have_content("Nation of Origin: #{country_cuisine}")
     end
 
-      expect(page).to not_have_field(:title)
-      expect(page).to not_have_field(:author)
-      expect(page).to not_have_field(:publisher)
-      expect(page).to not_have_field(:country_cuisine)
+      expect(page).to_not have_field(:title)
+      expect(page).to_not have_field(:author)
+      expect(page).to_not have_field(:publisher)
+      expect(page).to_not have_field(:country_cuisine)
+
+    click_button "Save"
+    expect(current_path).to eq(user_libraries_path(@user.id))
+
+    expect(page).to have_content("#{title} by #{author}")
   end
 
   # it 'will show an error if a form is submitted without a title'

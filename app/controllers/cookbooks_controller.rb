@@ -1,18 +1,21 @@
 class CookbooksController <ApplicationController
   def new
     @user = User.find(params[:user_id])
-    binding.pry
+    if params["commit"]
+      @cookbook = Cookbook.new(cookbook_params)
+    end
   end
-
-  #between new and create there is a confirmation of info and a call to book api to find matches
 
   def create
     user = User.find(params[:user_id])
     cookbook = Cookbook.new(cookbook_params)
-    # binding.pry
     if cookbook.save
       redirect_to user_libraries_path
     end
+  end
+
+  def confirm
+
   end
 
   private
