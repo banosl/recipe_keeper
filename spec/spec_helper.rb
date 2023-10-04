@@ -19,6 +19,7 @@ SimpleCov.start do
 end
 require 'webmock/rspec'
 require 'capybara/rspec'
+require "capybara_table/rspec"
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
