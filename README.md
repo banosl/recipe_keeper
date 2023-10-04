@@ -18,6 +18,7 @@ While in the development thet website can be viewed live on [Render](https://rec
 * Rails 7.0.7
 
 ## Database Design
+<img width="1158" alt="Screenshot 2023-10-04 at 9 55 45 AM" src="https://github.com/banosl/recipe_keeper/assets/111591731/d01756fa-a097-4325-966b-e303ad162952">
 
 ## Creator
 
