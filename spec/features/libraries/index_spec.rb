@@ -7,7 +7,7 @@ RSpec.describe 'library index' do
   end
 
   describe 'visiting a users library' do
-    it 'shows a users library page with names library at the top' do
+    it 'shows a users library page with [names] library at the top' do
       visit user_libraries_path(@user.id)
    
       expect(page).to have_content("#{@user.first_name}'s Library")
@@ -19,7 +19,7 @@ RSpec.describe 'library index' do
       expect(page).to have_link("Add a cookbook to my library", href: new_user_library_cookbook_path(@user.id, @library.id))
     end
 
-    it 'shows books in my library' do
+    it 'shows books in my library and books are listed as a table' do
       book1 = create(:cookbook, library: @library)
       book2 = create(:cookbook, library: @library)
       book3 = create(:cookbook, library: @library)
@@ -27,14 +27,15 @@ RSpec.describe 'library index' do
       book5 = create(:cookbook, library: @library)
 
       visit user_libraries_path(@user.id)
-
-      expect(page).to have_content("#{book1.title} by #{book1.author}")
-      expect(page).to have_content("#{book2.title} by #{book2.author}")
-      expect(page).to have_content("#{book3.title} by #{book3.author}")
-      expect(page).to have_content("#{book4.title} by #{book4.author}")
-      expect(page).to have_content("#{book5.title} by #{book5.author}")
+      
+      within "#library" do
+        expect(page).to have_table_row("Title" => book1.title, "Author" => book1.author)
+        expect(page).to have_table_row("Title" => book2.title, "Author" => book2.author)
+        expect(page).to have_table_row("Title" => book3.title, "Author" => book3.author)
+        expect(page).to have_table_row("Title" => book4.title, "Author" => book4.author)
+        expect(page).to have_table_row("Title" => book5.title, "Author" => book5.author)
+        expect(page).to_not have_table_row("Title" => "be the dream", "Author" => "bob")
+      end
     end
-
-    it 'books are listed in a table'
   end
 end
