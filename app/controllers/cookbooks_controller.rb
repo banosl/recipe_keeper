@@ -14,10 +14,6 @@ class CookbooksController <ApplicationController
     end
   end
 
-  def confirm
-
-  end
-
   private
 
   def cookbook_params

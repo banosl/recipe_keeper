@@ -34,5 +34,7 @@ RSpec.describe 'library index' do
       expect(page).to have_content("#{book4.title} by #{book4.author}")
       expect(page).to have_content("#{book5.title} by #{book5.author}")
     end
+
+    it 'books are listed in a table'
   end
 end
