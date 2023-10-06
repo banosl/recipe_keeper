@@ -1,42 +1,17 @@
-
-<% if @cookbook_check %>
-  <center><h1> Is this your cookbook? </h1></center> 
-  <section id="user_entries">
-    <p>Title: <%= @cookbook_check.title %></p>
-    <p>Author: <%= @cookbook_check.author %></p>
-    <p>Publisher: <%= @cookbook_check.publisher %></p>
-    <p>ISBN: <%= @cookbook_check.isbn %></p>
-    <p>Nation of Origin: <%= @cookbook_check.country_cuisine %></p>
-  </section>
-
-  <section id="cookbook_match">
-    <%= form_with model: @cookbook, url: user_library_cookbooks_path(@user.id, @user.library.id), method: :post do |form| %>
-      <%= form.radio_button :user_entry, true %>
-      <%= form.label :user_entry_true, "None of the books above match, record by cookbook as entered." %>
-      <%= form.hidden_field :title, value: @cookbook_check.title %>
-      <%= form.hidden_field :author, value: @cookbook_check.author %>
-      <%= form.hidden_field :publisher, value: @cookbook_check.publisher%>
-      <%= form.hidden_field :country_cuisine, value: @cookbook_check.country_cuisine %>
-      <%= form.hidden_field :library_id, value: @user.library.id %>
-      <%= form.submit "Save" %>
-    <% end %>
-  </section>
-<% else %>
-  <center><h1> Add a New Cookbook </h1></center>
-
+<center><h1> Add a New Cookbook </h1></center>
   <section id="cookbook_form">
-    <%= form_with model: @cookbook, url: new_user_library_cookbook_path(@user.id, @user.library.id), method: :get do |form| %>
+    <%= form_with model: @cookbook, url: match_new_user_library_cookbook_path(@user.id, @user.library.id), method: :get do |form| %>
       <%= form.label :title, "Title:" %>
       <p><%= form.text_field :title %></p>
       <%= form.label :author, "Author:" %>
-      <p><%= form.text_field :author%></p>
+      <p><%= form.text_field :author, value: @cookbook.author %></p>
       <%= form.label :publisher, "Publisher:" %>
       <p><%= form.text_field :publisher%></p>
       <%= form.label :isbn, "ISBN:" %>
       <p><%= form.text_field :isbn%></p>
       <%= form.label :country_cuisine, "Nation of Origin:" %>
       <p><%= form.text_field :country_cuisine%></p>
+      <p><%= form.hidden_field :library_id, value: @user.library.id %></p>
       <%= form.submit "Submit" %>
     <% end %>
   </section>
-<% end %>

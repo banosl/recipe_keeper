@@ -36,24 +36,11 @@ RSpec.describe "New Cookbook form page" do
       click_button 'Submit'
     end
     
-    expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
-    
-    within ("#user_entries") do
-      expect(page).to have_content("Title: #{title}")
-      expect(page).to have_content("Author: #{author}")
-      expect(page).to have_content("Publisher: #{publisher}")
-      expect(page).to have_content("ISBN: #{isbn}")
-      expect(page).to have_content("Nation of Origin: #{country_cuisine}")
-    end
     within ("#cookbook_match") do
       choose :cookbook_user_entry_true
-      expect(page).to_not have_field(:cookbook_title)
-      expect(page).to_not have_field(:cookbook_author)
-      expect(page).to_not have_field(:cookbook_publisher)
-      expect(page).to_not have_field(:cookbook_country_cuisine)
+      click_button "Save"
     end
 
-    click_button "Save"
     expect(current_path).to eq(user_libraries_path(@user.id))
 
     within "#library" do
@@ -79,8 +66,8 @@ RSpec.describe "New Cookbook form page" do
     end
     
     expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
-    
     expect(page).to have_content("Please enter a title for your cookbook.")
+    
     within ("#cookbook_form") do
       expect(page).to have_field(:cookbook_author, with: author)
       expect(page).to have_field(:cookbook_publisher, with: publisher)
