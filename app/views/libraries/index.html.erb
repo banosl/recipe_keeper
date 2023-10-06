@@ -9,7 +9,7 @@
   </tr>
   <% @cookbooks.each do |cookbook| %>
     <tr>
-    <td><%= cookbook.title %></td> 
+    <td><%= link_to cookbook.title, user_library_cookbook_path(@user.id, @user.library.id, cookbook.id) %></td> 
     <td><%= cookbook.author %></td>
     </tr>
   <% end %>
