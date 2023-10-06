@@ -73,6 +73,7 @@ RSpec.describe "New Cookbook form page" do
       expect(page).to have_field(:cookbook_publisher, with: publisher)
       expect(page).to have_field(:cookbook_country_cuisine, with: country_cuisine)
       expect(page).to have_field(:cookbook_isbn, with: isbn)
+      expect(page).to have_field(:cookbook_title, with: "")
     end
   end
 end

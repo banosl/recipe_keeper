@@ -1,14 +1,17 @@
 class CookbooksController <ApplicationController
   def new
     @user = User.find(params[:user_id])
-    @cookbook = Cookbook.new
+    if params[:cookbook]
+      @cookbook = Cookbook.new(cookbook_params)
+    else
+      @cookbook = Cookbook.new
+    end
   end
 
   def match
     @user = User.find(params[:user_id])
     if params[:cookbook] && params[:cookbook][:title].blank?
-      binding.pry
-      redirect_to new_user_library_cookbook_path(@user.id, @user.library.id)
+      redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
       flash.alert = "Please enter a title for your cookbook."
     end
     @cookbook = Cookbook.new(cookbook_params)
