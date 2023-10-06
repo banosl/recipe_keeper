@@ -63,7 +63,6 @@ RSpec.describe "New Cookbook form page" do
 
   it 'will show an error if a form is submitted without a title, 
       and anything that was populated before will be prefilled' do
-    title = Faker::Book.title
     author = Faker::Book.author
     publisher = Faker::Book.publisher
     country_cuisine = Faker::Nation.nationality
@@ -80,8 +79,8 @@ RSpec.describe "New Cookbook form page" do
     end
     
     expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
+    
     expect(page).to have_content("Please enter a title for your cookbook.")
-    save_and_open_page
     within ("#cookbook_form") do
       expect(page).to have_field(:cookbook_author, with: author)
       expect(page).to have_field(:cookbook_publisher, with: publisher)
