@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get '/', to: 'welcome#index'
+  root 'welcome#index'
   get '/auth/google_oauth2/callback', to: 'sessions#create'
 
   resources :sign_in, only: [:index]
