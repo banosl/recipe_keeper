@@ -76,4 +76,19 @@ RSpec.describe "New Cookbook form page" do
       expect(page).to have_field(:cookbook_title, with: "")
     end
   end
+
+  xit 'will redirect to :new and show a message when the app fails to save a cookbook' do
+    title = Faker::Book.title
+    author = Faker::Book.author
+    publisher = Faker::Book.publisher
+    country_cuisine = Faker::Nation.nationality
+    isbn = Faker::Barcode.isbn
+    library_id = nil
+    params = {title: title, author: author, publisher: publisher, country_cuisine: country_cuisine, isbn: isbn, library_id: library_id}
+
+    visit user_library_cookbooks_path(@user.id, @library.id, cookbook: params, method: :post)
+
+    expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
+    expect(page).to have_content("Something went wrong. Please re-enter your cookbook's details.")
+  end
 end

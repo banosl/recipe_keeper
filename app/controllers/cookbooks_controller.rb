@@ -22,6 +22,9 @@ class CookbooksController <ApplicationController
     cookbook = Cookbook.new(cookbook_params)
     if cookbook.save
       redirect_to user_libraries_path
+    else
+      flash.alert = "Something went wrong. Please re-enter your cookbook's details."
+      render :new
     end
   end
 
