@@ -1,8 +1,12 @@
 class CookbooksController <ApplicationController
   def new
     @user = User.find(params[:user_id])
-    if params["commit"]
-      @cookbook = Cookbook.new(cookbook_params)
+    @cookbook = Cookbook.new
+    if params[:title] == ""
+      redirect_to(new_user_library_cookbook_path(@user.id, @user.library.id))
+      flash.alert = "Please enter a title for your cookbook."
+    elsif params["commit"]
+      @cookbook_check = Cookbook.new(cookbook_params)
     end
   end
 
@@ -17,7 +21,7 @@ class CookbooksController <ApplicationController
   private
 
   def cookbook_params
-    params.permit(:title,
+    params.require(:cookbook).permit(:title,
                   :author,
                   :publisher,
                   :country_cuisine,
