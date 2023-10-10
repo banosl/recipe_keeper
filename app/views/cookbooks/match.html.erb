@@ -16,6 +16,6 @@
       <%= form.hidden_field :publisher, value: @cookbook.publisher%>
       <%= form.hidden_field :country_cuisine, value: @cookbook.country_cuisine %>
       <%= form.hidden_field :library_id, value: @user.library.id %>
-      <%= form.submit "Save" %>
+      <%= form.submit "Save", id: "save_button" %>
     <% end %>
   </section>
