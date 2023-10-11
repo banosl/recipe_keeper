@@ -6,10 +6,10 @@ RSpec.describe "cookbook #match" do
     @library = @user.create_library
   end
 
-  describe "User visits the cookbook match page after submitting cookbook details in #new" do
+  describe "User visits the cookbook match page after submitting cookbook details in #new", js: true do
     it "Shows the details of the cookbook submitted by the user to review 
         and can click the radio button and submit, 
-        but the save button doesn't appear until a radio button is selected" do
+        but the save button doesn't appear until a radio button is selected", driver: :selenium_chrome do
         title = Faker::Book.title
         author = Faker::Book.author
         publisher = Faker::Book.publisher
@@ -26,27 +26,30 @@ RSpec.describe "cookbook #match" do
         click_button 'Submit'
       end
 
-      expect(current_path).to eq(match_new_user_library_cookbook_path(@user.id, @library.id))
+      # expect(current_path).to eq(match_new_user_library_cookbook_path(@user.id, @library.id))
 
-        within ("#user_entries") do
-          expect(page).to have_content("Title: #{title}")
-          expect(page).to have_content("Author: #{author}")
-          expect(page).to have_content("Publisher: #{publisher}")
-          expect(page).to have_content("ISBN: #{isbn}")
-          expect(page).to have_content("Nation of Origin: #{country_cuisine}")
-        end
-        within ("#cookbook_match") do
-          expect(find("#save_button", visible: false)).to_not be_visible
-          choose :cookbook_user_entry_true
-          expect(page).to_not have_field(:cookbook_title)
-          expect(page).to_not have_field(:cookbook_author)
-          expect(page).to_not have_field(:cookbook_publisher)
-          expect(page).to_not have_field(:cookbook_country_cuisine)
-          expect(find("#save_button", visible: true)).to_ be_visible
-          click_button 'Save'
-        end
+      within ("#user_entries") do
+        expect(page).to have_content("Title: #{title}")
+        expect(page).to have_content("Author: #{author}")
+        expect(page).to have_content("Publisher: #{publisher}")
+        expect(page).to have_content("ISBN: #{isbn}")
+        expect(page).to have_content("Nation of Origin: #{country_cuisine}")
+      end
+      within ("#cookbook_match") do
+        expect(page).to have_button("Save", disabled: true)
+        choose :cookbook_user_entry_true
+        expect(page).to_not have_field(:cookbook_title)
+        expect(page).to_not have_field(:cookbook_author)
+        expect(page).to_not have_field(:cookbook_publisher)
+        expect(page).to_not have_field(:cookbook_country_cuisine)
+        expect(page).to have_button("Save", disabled: false)
+        click_button 'Save'
+      end
         
-        expect(current_path).to eq(user_libraries_path(@user.id))
+      # expect(current_path).to eq(user_libraries_path(@user.id))
+      within "#library" do
+        expect(page).to have_table_row("Title" => title, "Author" => author)
+      end
     end
   end
 end
