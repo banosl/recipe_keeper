@@ -17,9 +17,10 @@ SimpleCov.start do
   add_filter "/spec/spec_helper.rb"
   add_filter "/spec/rails_helper.rb"
 end
-require 'webmock/rspec'
+# require 'webmock/rspec'
 require 'capybara/rspec'
 require "capybara_table/rspec"
+require 'selenium/webdriver'
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

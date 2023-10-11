@@ -61,6 +61,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'capybara_table'
+  gem 'selenium-webdriver'
 end
 
 group :test do
