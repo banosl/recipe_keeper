@@ -32,7 +32,7 @@ RSpec.describe "New Cookbook form page" do
 
   it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
       after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed',
-      driver: :selenium_chrome, js: true do
+      js: true do
 
     title = Faker::Book.title
     author = Faker::Book.author

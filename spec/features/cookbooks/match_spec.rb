@@ -24,8 +24,7 @@ RSpec.describe "cookbook #match" do
 
   describe "User visits the cookbook match page after submitting cookbook details in #new" do
     it "Shows the details of the cookbook submitted by the user to review 
-    and can click the radio button and submit, but the save button doesn't appear until a radio button is selected",
-    driver: :selenium_chrome, js: true do
+    and can click the radio button and submit, but the save button doesn't appear until a radio button is selected", js: true, drive: :selenium_chrome do
 
       within ("#user_entries") do
         expect(page).to have_content("Title: #{@title}")
@@ -34,15 +33,16 @@ RSpec.describe "cookbook #match" do
         expect(page).to have_content("ISBN: #{@isbn}")
         expect(page).to have_content("Nation of Origin: #{@country_cuisine}")
       end
+      
       within ("#cookbook_match") do
         expect(page).to have_button("Save", disabled: true)
-        choose :cookbook_user_entry_true
         expect(page).to_not have_field(:cookbook_title)
         expect(page).to_not have_field(:cookbook_author)
         expect(page).to_not have_field(:cookbook_publisher)
         expect(page).to_not have_field(:cookbook_country_cuisine)
+        choose :cookbook_user_entry_true
         expect(page).to have_button("Save", disabled: false)
-        click_button 'Save'
+        click_button("Save")
       end
         
       expect(page).to have_current_path(user_libraries_path(@user.id))
