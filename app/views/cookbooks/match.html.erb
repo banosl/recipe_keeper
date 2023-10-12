@@ -25,6 +25,7 @@
         <%= form.hidden_field :library_id, value: @user.library.id %>
         <%= form.submit "Save", disabled: true, id: "save_button" %>
       <% end %>
+      <%= button_to "Cancel", user_libraries_path(@user.id), method: :get %>
     </section>
     <%= javascript_include_tag 'save_button' %>
 </body>
