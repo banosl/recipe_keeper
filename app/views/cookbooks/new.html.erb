@@ -1,4 +1,9 @@
-<center><h1> Add a New Cookbook </h1></center>
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <center><h1> Add a New Cookbook </h1></center>
   <section id="cookbook_form">
     <%= form_with model: @cookbook, url: match_new_user_library_cookbook_path(@user.id, @user.library.id), method: :get do |form| %>
       <%= form.label :title, "Title:" %>
@@ -16,3 +21,4 @@
     <% end %>
     <%= button_to "Cancel", user_libraries_path(@user.id), method: :get %>
   </section>
+</body>
