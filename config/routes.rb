@@ -3,13 +3,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get '/', to: 'welcome#index'
+  root 'welcome#index'
   get '/auth/google_oauth2/callback', to: 'sessions#create'
 
   resources :sign_in, only: [:index]
   resources :users, only: [:index, :create] do
     resources :libraries, only: [:index] do
-      resources :cookbooks, only: [:new, :create] #is this too long of a route?
+      resources :cookbooks, only: [:new, :create, :show] do #is this too long of a route?
+        get 'match', on: :new
+      end
     end
   end
 end
