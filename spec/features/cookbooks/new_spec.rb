@@ -18,8 +18,22 @@ RSpec.describe "New Cookbook form page" do
     end
   end
 
+  it "User can click cancel and be redirected to the library page" do
+    visit new_user_library_cookbook_path(@user.id, @library.id)
+
+    expect(page).to have_button("Cancel")
+
+    within "#cookbook_form" do
+      click_button "Cancel"
+    end
+
+    expect(page).to have_current_path(user_libraries_path(@user.id))
+  end
+
   it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
-      after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed', driver: :selenium_chrome, js: true do
+      after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed',
+      driver: :selenium_chrome, js: true do
+
     title = Faker::Book.title
     author = Faker::Book.author
     publisher = Faker::Book.publisher

@@ -14,4 +14,5 @@
       <p><%= form.hidden_field :library_id, value: @user.library.id %></p>
       <%= form.submit "Submit" %>
     <% end %>
+    <%= button_to "Cancel", user_libraries_path(@user.id), method: :get %>
   </section>
