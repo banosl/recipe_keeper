@@ -26,8 +26,6 @@ RSpec.describe "cookbook #match" do
         click_button 'Submit'
       end
 
-      # expect(current_path).to eq(match_new_user_library_cookbook_path(@user.id, @library.id))
-
       within ("#user_entries") do
         expect(page).to have_content("Title: #{title}")
         expect(page).to have_content("Author: #{author}")
@@ -46,7 +44,7 @@ RSpec.describe "cookbook #match" do
         click_button 'Save'
       end
         
-      # expect(current_path).to eq(user_libraries_path(@user.id))
+      expect(page).to have_current_path(user_libraries_path(@user.id))
       within "#library" do
         expect(page).to have_table_row("Title" => title, "Author" => author)
       end

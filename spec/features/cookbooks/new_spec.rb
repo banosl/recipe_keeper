@@ -19,7 +19,7 @@ RSpec.describe "New Cookbook form page" do
   end
 
   it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
-      after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed', js: true, driver: :selenium_chrome do
+      after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed', driver: :selenium_chrome, js: true do
     title = Faker::Book.title
     author = Faker::Book.author
     publisher = Faker::Book.publisher
@@ -41,7 +41,7 @@ RSpec.describe "New Cookbook form page" do
       click_button "Save"
     end
 
-    # expect(current_path).to eq(user_libraries_path(@user.id))
+    expect(page).to have_current_path(user_libraries_path(@user.id))
 
     within "#library" do
       expect(page).to have_table_row("Title" => title, "Author" => author)
