@@ -11,8 +11,8 @@ While in the development thet website can be viewed live on [Render](https://rec
 </br>[![Rails]][Rails-url]
 </br>[![Postgres]][Postgres-url]
 </br>[![Visual Studio Code]][VSCode-url]
-</br>[DB Designer](DB-Designer-url)
-</br>[Balsamiq](Balsamiq-url)
+</br>[DB Designer](https://erd.dbdesigner.net)
+</br>[Balsamiq](https://balsamiq.com/)
   
 ### Prerequisites
 
@@ -84,5 +84,3 @@ While in the development thet website can be viewed live on [Render](https://rec
 [GithubLeo-url]: https://github.com/banosl
 [LinkedIn]: https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white
 [LinkedInLeo-url]: https://www.linkedin.com/in/leo-banos-garcia/
-[DB-Designer-url]: https://erd.dbdesigner.net
-[Balsamiq-url]: https://balsamiq.com/
