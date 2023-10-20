@@ -11,6 +11,8 @@ While in the development thet website can be viewed live on [Render](https://rec
 </br>[![Rails]][Rails-url]
 </br>[![Postgres]][Postgres-url]
 </br>[![Visual Studio Code]][VSCode-url]
+</br>[DB Designer](DB-Designer-url)
+</br>[Balsamiq](Balsamiq-url)
   
 ### Prerequisites
 
@@ -18,7 +20,18 @@ While in the development thet website can be viewed live on [Render](https://rec
 * Rails 7.0.7
 
 ## Database Design
-<img width="1158" alt="Screenshot 2023-10-04 at 9 55 45 AM" src="https://github.com/banosl/recipe_keeper/assets/111591731/d01756fa-a097-4325-966b-e303ad162952">
+<img src="./documents/db_design.png">
+
+## Site Structure and Wireframes
+### Structure
+<img src="./documents/site_structure.png">
+
+### Wireframes
+- [User Library](./documents/1_user_library.png)
+- [Add/Edit Cookbook](./documents/2_add_edit_cookbook.png)
+- [Show Cookbook](./documents/3_show_cookbook.png)
+- [Add/Edit Recipe](./documents/4_add_edit_recipe.png)
+
 
 ## Creator
 
@@ -71,3 +84,5 @@ While in the development thet website can be viewed live on [Render](https://rec
 [GithubLeo-url]: https://github.com/banosl
 [LinkedIn]: https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white
 [LinkedInLeo-url]: https://www.linkedin.com/in/leo-banos-garcia/
+[DB-Designer-url]: https://erd.dbdesigner.net
+[Balsamiq-url]: https://balsamiq.com/
