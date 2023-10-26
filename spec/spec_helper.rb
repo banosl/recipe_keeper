@@ -17,7 +17,11 @@ SimpleCov.start do
   add_filter "/spec/spec_helper.rb"
   add_filter "/spec/rails_helper.rb"
 end
-# require 'webmock/rspec'
+
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+
+
 require 'capybara/rspec'
 require "capybara_table/rspec"
 require 'selenium/webdriver'
