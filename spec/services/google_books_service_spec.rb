@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe GoogleBooksService do
-  describe "#get_book_matches" do
+  describe "#get_book_matches", :vcr do
     it "returns a response with no more than 5 book matches" do
       search_info = "inauthor:eng+tie+ang+intitle:delightful+thai+cooking+isbn:0962781045"
       response = GoogleBooksService.get_book_matches(search_info)
