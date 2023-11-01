@@ -40,15 +40,15 @@ RSpec.describe CookbookMatchSerializer do
 
       serialized = CookbookMatchSerializer.match_data(cookbook_match, library.id)
 
-      expect(serialized).to eq({cookbook: {
+      expect(serialized).to eq(
+        {
         title: "Delightful Thai Cooking",
         author: ["Eng Tie Ang"],
         publisher: "",
         isbn: "",
         library_id: library.id
-      }
-
-      })
+        }
+      )
     end
   end
 end
