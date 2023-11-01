@@ -52,4 +52,32 @@ RSpec.describe CookbooksFacade do
       end
     end
   end
+
+  describe "#write_search_info" do
+    it "returns a single string formatted for google books query param from all the fields entered in the new cookbooks form in lower case" do
+      cookbook_params = { title: "Delightful Thai Cooking",
+                          author: "Eng Tie Ang",
+                          publisher: "Ambrosia Publications",
+                          country_cuisine: "",
+                          isbn: "0962781045",
+                          library_id: "1567"
+      }
+
+      search_info = CookbooksFacade.write_search_info(cookbook_params)
+      expect(search_info).to eq("intitle:delightful+thai+cooking+inauthor:eng+tie+ang+inpublisher:ambrosia+publications+isbn:0962781045")
+    end
+
+    it "returns a single string if only title is not blank" do
+      cookbook_params = { title: "Delightful Thai Cooking",
+                          author: "",
+                          publisher: "",
+                          country_cuisine: "",
+                          isbn: "",
+                          library_id: "1567"
+      }
+
+      search_info = CookbooksFacade.write_search_info(cookbook_params)
+      expect(search_info).to eq("intitle:delightful+thai+cooking")
+    end
+  end
 end

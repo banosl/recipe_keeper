@@ -6,4 +6,25 @@ class CookbooksFacade
       CookbookMatch.new(cookbook_info)
     end
   end
+
+  def self.write_search_info(cookbook_params)
+    search_info = ""
+
+    if cookbook_params[:title] != ""
+      search_info += "intitle:#{cookbook_params[:title].downcase.gsub(" ", "+")}"
+    end
+
+    if cookbook_params[:author] != ""
+      search_info += "+inauthor:#{cookbook_params[:author].downcase.gsub(" ", "+")}"
+    end
+
+    if cookbook_params[:publisher] != ""
+      search_info += "+inpublisher:#{cookbook_params[:publisher].downcase.gsub(" ", "+")}"
+    end
+
+    if cookbook_params[:isbn] != ""
+      search_info += "+isbn:#{cookbook_params[:isbn]}"
+    end
+    search_info
+  end
 end
