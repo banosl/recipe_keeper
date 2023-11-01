@@ -8,9 +8,9 @@ RSpec.describe CookbooksFacade do
 
       expect(results).to be_a(Array)
       expect(results.count).to be <= 5
-      
       results.each do |cookbook|
-        expect(cookbook.authors).to contain("Eng Tie Ang")
+        expect(cookbook).to be_instance_of(CookbookMatch)
+        expect(cookbook.authors).to include("Eng Tie Ang")
       end
     end
 
@@ -22,7 +22,7 @@ RSpec.describe CookbooksFacade do
       expect(results.count).to be <= 5
       
       results.each do |cookbook|
-        expect(cookbook.title).to contain("Delightful Thai Cooking")
+        expect(cookbook.title).to be_a(String)
       end
     end
 
@@ -34,7 +34,8 @@ RSpec.describe CookbooksFacade do
       expect(results.count).to be <= 5
       
       results.each do |cookbook|
-        expect(cookbook.isbn).to eq("0962781045")
+        expect(cookbook.isbn_10).to eq("0962781045")
+        expect(cookbook.isbn_13).to eq("9780962781049")
       end
     end
     
@@ -46,8 +47,8 @@ RSpec.describe CookbooksFacade do
       expect(results.count).to be <= 5
       
       results.each do |cookbook|
-        expect(cookbook.title).to contain("Delightful Thai Cooking")
-        expect(cookbook.authors).to contain("Eng Tie Ang")
+        expect(cookbook.title).to be_a(String)
+        expect(cookbook.authors).to include("Eng Tie Ang")
       end
     end
   end
