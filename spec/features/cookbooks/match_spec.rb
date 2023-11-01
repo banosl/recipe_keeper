@@ -1,35 +1,36 @@
 require 'rails_helper'
 
 RSpec.describe "cookbook #match" do
-  before :each do
-    @user = create(:user, :google)
-    @library = @user.create_library
+  vcr_options = { :record => :new_episodes}
+  describe "User visits the cookbook match page after submitting cookbook details in #new", :vcr => vcr_options do
+    before :each do
+      @user = create(:user, :google)
+      @library = @user.create_library
 
-    @title = Faker::Book.title
-    @author = Faker::Book.author
-    @publisher = Faker::Book.publisher
-    @country_cuisine = Faker::Nation.nationality
-    @isbn = Faker::Barcode.isbn
+      @title = Faker::Book.title
+      @author = Faker::Book.author
+      @publisher = Faker::Book.publisher
+      @country_cuisine = Faker::Nation.nationality
+      @isbn = Faker::Barcode.isbn
 
-    visit new_user_library_cookbook_path(@user.id, @library.id)
-    within ("#cookbook_form") do
-      fill_in :cookbook_title, with: @title
-      fill_in :cookbook_author, with: @author
-      fill_in :cookbook_publisher, with: @publisher
-      fill_in :cookbook_country_cuisine, with: @country_cuisine
-      fill_in :cookbook_isbn, with: @isbn
-      click_button 'Submit'
+      visit new_user_library_cookbook_path(@user.id, @library.id)
+      within ("#cookbook_form") do
+        fill_in :cookbook_title, with: @title
+        fill_in :cookbook_author, with: @author
+        fill_in :cookbook_publisher, with: @publisher
+        fill_in :cookbook_country_cuisine, with: @country_cuisine
+        fill_in :cookbook_isbn, with: @isbn
+        click_button 'Submit'
+      end
     end
-  end
 
-  describe "User visits the cookbook match page after submitting cookbook details in #new", js: true do
-    it "says 'is this your cookbook?' at the top of the page" do
+    it "says 'is this your cookbook?' at the top of the page", js: true  do
       expect(page).to have_content("Is this your cookbook?")
       choose :cookbook_user_entry_true
     end
 
     it "Shows the details of the cookbook submitted by the user to review 
-      and can click the radio button and submit, but the save button doesn't appear until a radio button is selected", js: true do
+      and chooses to save the book as is, but the save button doesn't appear until a radio button is selected", js: true do
       within ("#user_entries") do
         expect(page).to have_content("Title: #{@title}")
         expect(page).to have_content("Author: #{@author}")
@@ -45,7 +46,7 @@ RSpec.describe "cookbook #match" do
         expect(page).to_not have_field(:cookbook_publisher)
         expect(page).to_not have_field(:cookbook_country_cuisine)
         choose :cookbook_user_entry_true
-        expect(page).to have_button("Save", disabled: false) #this fails sometimes and I don't know why
+        expect(page).to have_button("Save", disabled: false)
         click_button("Save")
       end
         
@@ -63,6 +64,32 @@ RSpec.describe "cookbook #match" do
       end
   
       expect(page).to have_current_path(user_libraries_path(@user.id))
+    end
+  end
+  
+  describe "match page with options from google books", :vcr do
+    before :each do
+      @user = create(:user, :google)
+      @library = @user.create_library
+
+      visit new_user_library_cookbook_path(@user.id, @library.id)
+      within ("#cookbook_form") do
+        fill_in :cookbook_title, with: "The Super Chicken Cookbook"
+        click_button 'Submit'
+      end
+    end
+
+    it "says 'is this your cookbook?' at the top of the page", js: true  do
+      expect(page).to have_content("Is this your cookbook?")
+      choose :cookbook_match_2_true
+    end
+
+    it "user can view up to 5 options of cookbooks from the google api after entering their book info", js: true do
+      
+      within ("#cookbook_match") do
+        choose :cookbook_match_1_true
+        click_button("Save")
+      end
     end
   end
 end

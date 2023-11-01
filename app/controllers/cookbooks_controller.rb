@@ -15,6 +15,8 @@ class CookbooksController <ApplicationController
       flash.alert = "Please enter a title for your cookbook."
     end
     @cookbook = Cookbook.new(cookbook_params)
+    @google_books_matches = CookbooksFacade.cookbook_matches(cookbook_params)
+    @count = 1
   end
 
   def create
