@@ -1,5 +1,6 @@
 class CookbooksFacade
-  def self.cookbook_matches(search_info)
+  def self.cookbook_matches(cookbook_params)
+    search_info = write_search_info(cookbook_params)
     response = GoogleBooksService.get_book_matches(search_info)
     
     response[:items].map do |cookbook_info|
@@ -9,7 +10,6 @@ class CookbooksFacade
 
   def self.write_search_info(cookbook_params)
     search_info = ""
-
     if cookbook_params[:title] != ""
       search_info += "intitle:#{cookbook_params[:title].downcase.gsub(" ", "+")}"
     end
