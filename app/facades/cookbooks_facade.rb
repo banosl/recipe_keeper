@@ -2,9 +2,13 @@ class CookbooksFacade
   def self.cookbook_matches(cookbook_params)
     search_info = write_search_info(cookbook_params)
     response = GoogleBooksService.get_book_matches(search_info)
-    response[:items].map do |cookbook_info|
-      CookbookMatch.new(cookbook_info)
+    matches = []
+    if response[:totalItems] != 0
+      response[:items].map do |cookbook_info|
+        matches << CookbookMatch.new(cookbook_info)
+      end
     end
+    matches
   end
 
   def self.write_search_info(cookbook_params)

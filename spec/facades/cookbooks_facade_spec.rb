@@ -25,6 +25,19 @@ RSpec.describe CookbooksFacade do
         expect(cookbook.isbn_13).to eq("9780962781049")
       end
     end
+
+    it "returns an empty array when response items count is 0" do
+      cookbook_params = { title: "Apple Pie Like Mom's",
+                          author: "",
+                          publisher: "",
+                          country_cuisine: "",
+                          isbn: "1",
+                          library_id: "1567"
+      }
+      results = CookbooksFacade.cookbook_matches(cookbook_params)
+
+      expect(results).to eq([])
+    end
   end
 
   describe "#write_search_info" do
