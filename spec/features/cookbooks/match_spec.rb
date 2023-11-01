@@ -1,17 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe "cookbook #match" do
-  vcr_options = { :record => :new_episodes}
-  describe "User visits the cookbook match page after submitting cookbook details in #new", :vcr => vcr_options do
+  describe "User visits the cookbook match page after submitting cookbook details in #new", :vcr do
     before :each do
       @user = create(:user, :google)
       @library = @user.create_library
 
-      @title = Faker::Book.title
-      @author = Faker::Book.author
-      @publisher = Faker::Book.publisher
-      @country_cuisine = Faker::Nation.nationality
-      @isbn = Faker::Barcode.isbn
+      @title = "Delightful Chinese Cooking"
+      @author = "Eng Tie Ang"
+      @publisher = "Ambrosia Publications"
+      @country_cuisine = "Thai"
+      @isbn = "0962781061"
 
       visit new_user_library_cookbook_path(@user.id, @library.id)
       within ("#cookbook_form") do

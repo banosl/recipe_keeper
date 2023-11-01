@@ -100,4 +100,228 @@ http_interactions:
           "totalItems": 0
         }
   recorded_at: Wed, 01 Nov 2023 17:52:12 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:in%2Bdubious%2Bbattle%2Binauthor:marquis%2Bweber%2Binpublisher:manor%2Bhouse%2Bpublishing%2Bisbn:9791061974348
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Wed, 01 Nov 2023 17:57:05 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "books#volumes",
+          "totalItems": 0
+        }
+  recorded_at: Wed, 01 Nov 2023 17:57:05 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:i%2Bwill%2Bfear%2Bno%2Bevil%2Binauthor:sharika%2Btowne%2Bsr.%2Binpublisher:paulist%2Bpress%2Bisbn:9784024787611
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Wed, 01 Nov 2023 18:09:17 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "books#volumes",
+          "totalItems": 0
+        }
+  recorded_at: Wed, 01 Nov 2023 18:09:17 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:delightful%2Bchinese%2Bcooking%2Binauthor:eng%2Btie%2Bang%2Binpublisher:ambrosia%2Bpublications%2Bisbn:0962781061
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Wed, 01 Nov 2023 18:11:11 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "books#volumes",
+          "totalItems": 1,
+          "items": [
+            {
+              "kind": "books#volume",
+              "id": "2zEFAAAACAAJ",
+              "etag": "cFONxrSi8lk",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/2zEFAAAACAAJ",
+              "volumeInfo": {
+                "title": "Delightful Chinese Cooking",
+                "authors": [
+                  "Eng Tie Ang"
+                ],
+                "publishedDate": "1999",
+                "description": "Chinese Cuisine, the finest and most extensive in the world, has dishes as varied as China itself - from delicate Cantonese delights to hot Szechwan spices, from cold Shanghai noodles to zesty Beijing meats. All different, yet all one - Chinese cooking - what a joy! Book jacket.",
+                "industryIdentifiers": [
+                  {
+                    "type": "ISBN_10",
+                    "identifier": "0962781061"
+                  },
+                  {
+                    "type": "ISBN_13",
+                    "identifier": "9780962781063"
+                  }
+                ],
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 0,
+                "printType": "BOOK",
+                "categories": [
+                  "Cooking, Chinese"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                  "containsEpubBubbles": false,
+                  "containsImageBubbles": false
+                },
+                "imageLinks": {
+                  "smallThumbnail": "http://books.google.com/books/content?id=2zEFAAAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                  "thumbnail": "http://books.google.com/books/content?id=2zEFAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=2zEFAAAACAAJ&dq=intitle:delightful%2Bchinese%2Bcooking%2Binauthor:eng%2Btie%2Bang%2Binpublisher:ambrosia%2Bpublications%2Bisbn:0962781061&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=2zEFAAAACAAJ&dq=intitle:delightful%2Bchinese%2Bcooking%2Binauthor:eng%2Btie%2Bang%2Binpublisher:ambrosia%2Bpublications%2Bisbn:0962781061&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Delightful_Chinese_Cooking.html?hl=&id=2zEFAAAACAAJ"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=2zEFAAAACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              },
+              "searchInfo": {
+                "textSnippet": "Chinese Cuisine, the finest and most extensive in the world, has dishes as varied as China itself - from delicate Cantonese delights to hot Szechwan spices, from cold Shanghai noodles to zesty Beijing meats."
+              }
+            }
+          ]
+        }
+  recorded_at: Wed, 01 Nov 2023 18:11:12 GMT
 recorded_with: VCR 6.1.0
