@@ -37,15 +37,33 @@ RSpec.describe CookbookMatch do
   end
 
   it "has attributes and exists" do
-      expect(@cookbook_match).to be_instance_of(CookbookMatch)
-      expect(@cookbook_match.title).to eq("Delightful Thai Cooking")
-      expect(@cookbook_match.authors).to eq(["Eng Tie Ang"])
-      expect(@cookbook_match.published_date).to eq("1990")
-      expect(@cookbook_match.description).to eq("Thai food is becoming increasingly popular, and this great new cookbook tellshow to prepare more than 100 delicious Thai dishes, most of which can be madein less than an hour. Includes detailed instructions, line drawings and colorphotographs.",)
-      expect(@cookbook_match.image_link).to eq("http://books.google.com/books/content?id=qsEOAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
-      expect(@cookbook_match.language).to eq("en")
-      expect(@cookbook_match.google_id).to eq("qsEOAAAACAAJ")
-    end
+    expect(@cookbook_match).to be_instance_of(CookbookMatch)
+    expect(@cookbook_match.title).to eq("Delightful Thai Cooking")
+    expect(@cookbook_match.authors).to eq(["Eng Tie Ang"])
+    expect(@cookbook_match.published_date).to eq("1990")
+    expect(@cookbook_match.description).to eq("Thai food is becoming increasingly popular, and this great new cookbook tellshow to prepare more than 100 delicious Thai dishes, most of which can be madein less than an hour. Includes detailed instructions, line drawings and colorphotographs.",)
+    expect(@cookbook_match.image_link).to eq("http://books.google.com/books/content?id=qsEOAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
+    expect(@cookbook_match.language).to eq("en")
+    expect(@cookbook_match.google_id).to eq("qsEOAAAACAAJ")
+  end
+
+  it "attributes are nil if there the result doesn't have them" do
+    cookbook_search_result = {
+      kind: "books#volume",
+      id: "qsEOAAAACAAJ",
+      volumeInfo: {
+          title: "Delightful Thai Cooking"
+        }
+      }
+    cookbook_match = CookbookMatch.new(cookbook_search_result)
+
+    expect(cookbook_match.title).to eq("Delightful Thai Cooking")
+    expect(cookbook_match.authors).to eq(nil)
+    expect(cookbook_match.published_date).to eq(nil)
+    expect(cookbook_match.description).to eq(nil)
+    expect(cookbook_match.image_link).to eq(nil)
+    expect(cookbook_match.language).to eq(nil)
+  end
     
   describe "isbn methods" do
     it "#isbn_10 can return the isbn number for that type" do

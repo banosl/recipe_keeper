@@ -15,7 +15,6 @@ class CookbookMatch
     @description = cookbook_search_result[:volumeInfo][:description]
     @isbn = cookbook_search_result[:volumeInfo][:industryIdentifiers]
     cookbook_search_result[:volumeInfo][:imageLinks].nil? ? @image_link = nil :  @image_link = cookbook_search_result[:volumeInfo][:imageLinks][:thumbnail]
-    
     @language = cookbook_search_result[:volumeInfo][:language]
   end
 
