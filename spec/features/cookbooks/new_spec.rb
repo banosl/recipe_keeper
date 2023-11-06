@@ -30,69 +30,72 @@ RSpec.describe "New Cookbook form page" do
     expect(page).to have_current_path(user_libraries_path(@user.id))
   end
 
-  it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
-      after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed',
-      js: true do
+  describe "submitting a form", :vcr do
 
-    title = Faker::Book.title
-    author = Faker::Book.author
-    publisher = Faker::Book.publisher
-    country_cuisine = Faker::Nation.nationality
-    isbn = Faker::Barcode.isbn
-
-    visit new_user_library_cookbook_path(@user.id, @library.id)
-    within ("#cookbook_form") do
-      fill_in :cookbook_title, with: title
-      fill_in :cookbook_author, with: author
-      fill_in :cookbook_publisher, with: publisher
-      fill_in :cookbook_country_cuisine, with: country_cuisine
-      fill_in :cookbook_isbn, with: isbn
-      click_button 'Submit'
-    end
+    it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
+    after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed',
+    js: true do
+      
+      title = Faker::Book.title
+      author = Faker::Book.author
+      publisher = Faker::Book.publisher
+      country_cuisine = Faker::Nation.nationality
+      isbn = Faker::Barcode.isbn
+      
+      visit new_user_library_cookbook_path(@user.id, @library.id)
+      within ("#cookbook_form") do
+        fill_in :cookbook_title, with: title
+        fill_in :cookbook_author, with: author
+        fill_in :cookbook_publisher, with: publisher
+        fill_in :cookbook_country_cuisine, with: country_cuisine
+        fill_in :cookbook_isbn, with: isbn
+        click_button 'Submit'
+      end
     
-    within ("#cookbook_match") do
-      choose :cookbook_user_entry_true
-      click_button "Save"
+      within ("#cookbook_match") do
+        choose :cookbook_user_entry_true
+        click_button "Save"
+      end
+  
+      expect(page).to have_current_path(user_libraries_path(@user.id))
+      
+      within "#library" do
+        expect(page).to have_table_row("Title" => title, "Author" => author)
+      end
     end
 
-    expect(page).to have_current_path(user_libraries_path(@user.id))
+    it 'will show an error if a form is submitted without a title, 
+    and anything that was populated before will be prefilled' do
+      author = Faker::Book.author
+      publisher = Faker::Book.publisher
+      country_cuisine = Faker::Nation.nationality
+      isbn = Faker::Barcode.isbn
+      
+      visit new_user_library_cookbook_path(@user.id, @library.id)
+      
+      within ("#cookbook_form") do
+        fill_in :cookbook_author, with: author
+        fill_in :cookbook_publisher, with: publisher
+        fill_in :cookbook_country_cuisine, with: country_cuisine
+        fill_in :cookbook_isbn, with: isbn
+        click_button 'Submit'
+      end
 
-    within "#library" do
-      expect(page).to have_table_row("Title" => title, "Author" => author)
-    end
-  end
+      expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
+      expect(page).to have_content("Please enter a title for your cookbook.")
 
-  it 'will show an error if a form is submitted without a title, 
-      and anything that was populated before will be prefilled' do
-    author = Faker::Book.author
-    publisher = Faker::Book.publisher
-    country_cuisine = Faker::Nation.nationality
-    isbn = Faker::Barcode.isbn
-
-    visit new_user_library_cookbook_path(@user.id, @library.id)
-    
-    within ("#cookbook_form") do
-      fill_in :cookbook_author, with: author
-      fill_in :cookbook_publisher, with: publisher
-      fill_in :cookbook_country_cuisine, with: country_cuisine
-      fill_in :cookbook_isbn, with: isbn
-      click_button 'Submit'
-    end
-    
-    expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
-    expect(page).to have_content("Please enter a title for your cookbook.")
-    
-    within ("#cookbook_form") do
-      expect(page).to have_field(:cookbook_author, with: author)
-      expect(page).to have_field(:cookbook_publisher, with: publisher)
-      expect(page).to have_field(:cookbook_country_cuisine, with: country_cuisine)
-      expect(page).to have_field(:cookbook_isbn, with: isbn)
-      expect(page).to have_field(:cookbook_title, with: "")
+      within ("#cookbook_form") do
+        expect(page).to have_field(:cookbook_author, with: author)
+        expect(page).to have_field(:cookbook_publisher, with: publisher)
+        expect(page).to have_field(:cookbook_country_cuisine, with: country_cuisine)
+        expect(page).to have_field(:cookbook_isbn, with: isbn)
+        expect(page).to have_field(:cookbook_title, with: "")
+      end
     end
   end
 
   xit 'will redirect to :new and show a message when the app fails to save a cookbook' do
-    title = Faker::Book.title
+  title = Faker::Book.title
     author = Faker::Book.author
     publisher = Faker::Book.publisher
     country_cuisine = Faker::Nation.nationality

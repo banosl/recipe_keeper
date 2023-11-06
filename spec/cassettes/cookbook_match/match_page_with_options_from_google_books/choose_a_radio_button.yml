@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 01 Nov 2023 17:42:29 GMT
+      - Fri, 03 Nov 2023 00:52:47 GMT
       Server:
       - ESF
       Cache-Control:
@@ -47,12 +47,12 @@ http_interactions:
       string: |
         {
           "kind": "books#volumes",
-          "totalItems": 549,
+          "totalItems": 483,
           "items": [
             {
               "kind": "books#volume",
               "id": "_r0tnQEACAAJ",
-              "etag": "0OpLEYRnF/M",
+              "etag": "55y6g2+4rCY",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/_r0tnQEACAAJ",
               "volumeInfo": {
                 "title": "The Super Chicken Cookbook",
@@ -108,7 +108,7 @@ http_interactions:
             {
               "kind": "books#volume",
               "id": "hsxHGwAACAAJ",
-              "etag": "rij4Vwk6qpo",
+              "etag": "s7uuxcFP7BY",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/hsxHGwAACAAJ",
               "volumeInfo": {
                 "title": "The Super Chicken Cookbook",
@@ -164,7 +164,7 @@ http_interactions:
             {
               "kind": "books#volume",
               "id": "NQUcIq2Y3lkC",
-              "etag": "U7SF0oLQ/jw",
+              "etag": "4sey12DAnKU",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/NQUcIq2Y3lkC",
               "volumeInfo": {
                 "title": "The Super Chicken Cookbook",
@@ -216,7 +216,7 @@ http_interactions:
             {
               "kind": "books#volume",
               "id": "noRvzgEACAAJ",
-              "etag": "0NyaolOZ2Vg",
+              "etag": "RKnQbNG9RaU",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/noRvzgEACAAJ",
               "volumeInfo": {
                 "title": "Super Chicken",
@@ -277,49 +277,43 @@ http_interactions:
             },
             {
               "kind": "books#volume",
-              "id": "BEHEsgEACAAJ",
-              "etag": "9knKANrqb3U",
-              "selfLink": "https://www.googleapis.com/books/v1/volumes/BEHEsgEACAAJ",
+              "id": "XeHQoAEACAAJ",
+              "etag": "8UOoyjg3Wfs",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/XeHQoAEACAAJ",
               "volumeInfo": {
-                "title": "Dump Chicken Recipes",
-                "subtitle": "Best and Super Delicious Dump Chicken Meals for the Busy Home Cook (Dump Dinners Cookbook)",
+                "title": "Super Chicken",
+                "subtitle": "The Best Chicken Recipes",
                 "authors": [
-                  "Jeanne K. Johnson"
+                  "Parragon Book Service Limited"
                 ],
-                "publisher": "Createspace Independent Publishing Platform",
-                "publishedDate": "2015-05-22",
-                "description": "Best & Super Delicious Dump Chicken Meals For The Busy Home Cook to enjoy! Want to Make Delicious, Healthy, Easy Dump Chicken Recipes ? You've Come To The Right Place! You'll Learn To Make Delicious Dump Chicken Recipes Including... Amazing Aloha Dump Chicken. Baked Dump Chicken With Jam. Dump Chicken Fajita Filling. Sauteed Dump Chicken With Beans. Honeyed Dump Chicken. Dump Mixed Mustard and Chicken. Orange and Peach Dump Chicken. Dump Chicken with Apricot Much, much more! For a full list of what you can see inside, scroll up and click on the look inside feature and check out the Table of Contents! Take Action Right Now to Download your copy today!\"",
+                "publishedDate": "2014",
+                "description": "Mealtimes need never be dull again with Super Chicken! This cookbook will offer all you need to create delicious home-made meals with this most versatile of ingredients.",
                 "industryIdentifiers": [
                   {
                     "type": "ISBN_10",
-                    "identifier": "1512277878"
+                    "identifier": "1472329864"
                   },
                   {
                     "type": "ISBN_13",
-                    "identifier": "9781512277876"
+                    "identifier": "9781472329868"
                   }
                 ],
                 "readingModes": {
                   "text": false,
                   "image": false
                 },
-                "pageCount": 80,
+                "pageCount": 128,
                 "printType": "BOOK",
+                "categories": [
+                  "Cooking (Chicken)"
+                ],
                 "maturityRating": "NOT_MATURE",
                 "allowAnonLogging": false,
                 "contentVersion": "preview-1.0.0",
-                "panelizationSummary": {
-                  "containsEpubBubbles": false,
-                  "containsImageBubbles": false
-                },
-                "imageLinks": {
-                  "smallThumbnail": "http://books.google.com/books/content?id=BEHEsgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-                  "thumbnail": "http://books.google.com/books/content?id=BEHEsgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-                },
                 "language": "en",
-                "previewLink": "http://books.google.com/books?id=BEHEsgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
-                "infoLink": "http://books.google.com/books?id=BEHEsgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
-                "canonicalVolumeLink": "https://books.google.com/books/about/Dump_Chicken_Recipes.html?hl=&id=BEHEsgEACAAJ"
+                "previewLink": "http://books.google.com/books?id=XeHQoAEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=XeHQoAEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Super_Chicken.html?hl=&id=XeHQoAEACAAJ"
               },
               "saleInfo": {
                 "country": "US",
@@ -338,15 +332,15 @@ http_interactions:
                 "pdf": {
                   "isAvailable": false
                 },
-                "webReaderLink": "http://play.google.com/books/reader?id=BEHEsgEACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "webReaderLink": "http://play.google.com/books/reader?id=XeHQoAEACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
                 "accessViewStatus": "NONE",
                 "quoteSharingAllowed": false
               },
               "searchInfo": {
-                "textSnippet": "Best &amp; Super Delicious Dump Chicken Meals For The Busy Home Cook to enjoy! Want to Make Delicious, Healthy, Easy Dump Chicken Recipes ? You&#39;ve Come To The Right Place!You&#39;ll Learn To Make Delicious Dump Chicken Recipes Including."
+                "textSnippet": "This cookbook will offer all you need to create delicious homemade meals with this most versatile of ingredients."
               }
             }
           ]
         }
-  recorded_at: Wed, 01 Nov 2023 17:42:29 GMT
+  recorded_at: Fri, 03 Nov 2023 00:52:47 GMT
 recorded_with: VCR 6.1.0

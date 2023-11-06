@@ -2,206 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:pale%2Bkings%2Band%2Bprinces%2Binauthor:dina%2Bhirthe%2Binpublisher:gay%2Bmen%27s%2Bpress%2Bisbn:9791126819287
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Faraday v2.7.10
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Vary:
-      - Origin
-      - Referer
-      - X-Origin
-      Date:
-      - Wed, 01 Nov 2023 17:37:22 GMT
-      Server:
-      - ESF
-      Cache-Control:
-      - private
-      X-Xss-Protection:
-      - '0'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
-      Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-          "kind": "books#volumes",
-          "totalItems": 0
-        }
-  recorded_at: Wed, 01 Nov 2023 17:37:22 GMT
-- request:
-    method: get
-    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:the%2Bpainted%2Bveil%2Binauthor:eugenio%2Bschinner%2Binpublisher:university%2Bof%2Balaska%2Bpress%2Bisbn:9791059881658
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Faraday v2.7.10
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Vary:
-      - Origin
-      - Referer
-      - X-Origin
-      Date:
-      - Wed, 01 Nov 2023 17:52:11 GMT
-      Server:
-      - ESF
-      Cache-Control:
-      - private
-      X-Xss-Protection:
-      - '0'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
-      Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-          "kind": "books#volumes",
-          "totalItems": 0
-        }
-  recorded_at: Wed, 01 Nov 2023 17:52:11 GMT
-- request:
-    method: get
-    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:the%2Bmillstone%2Binauthor:annette%2Bbrown%2Binpublisher:new%2Bholland%2Bpublishers%2Bisbn:9798911213466
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Faraday v2.7.10
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Vary:
-      - Origin
-      - Referer
-      - X-Origin
-      Date:
-      - Wed, 01 Nov 2023 17:57:04 GMT
-      Server:
-      - ESF
-      Cache-Control:
-      - private
-      X-Xss-Protection:
-      - '0'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
-      Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-          "kind": "books#volumes",
-          "totalItems": 0
-        }
-  recorded_at: Wed, 01 Nov 2023 17:57:04 GMT
-- request:
-    method: get
-    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:vanity%2Bfair%2Binauthor:dania%2Bpacocha%2Binpublisher:ladybird%2Bbooks%2Bisbn:9791163193555
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Faraday v2.7.10
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Vary:
-      - Origin
-      - Referer
-      - X-Origin
-      Date:
-      - Wed, 01 Nov 2023 18:09:16 GMT
-      Server:
-      - ESF
-      Cache-Control:
-      - private
-      X-Xss-Protection:
-      - '0'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
-      Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-          "kind": "books#volumes",
-          "totalItems": 0
-        }
-  recorded_at: Wed, 01 Nov 2023 18:09:16 GMT
-- request:
-    method: get
     uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:delightful%2Bchinese%2Bcooking%2Binauthor:eng%2Btie%2Bang%2Binpublisher:ambrosia%2Bpublications%2Bisbn:0962781061
     body:
       encoding: US-ASCII
@@ -227,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 01 Nov 2023 18:11:10 GMT
+      - Fri, 03 Nov 2023 00:52:43 GMT
       Server:
       - ESF
       Cache-Control:
@@ -252,7 +52,7 @@ http_interactions:
             {
               "kind": "books#volume",
               "id": "2zEFAAAACAAJ",
-              "etag": "5iGMT5BLDqo",
+              "etag": "vMNQkKIyLDI",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/2zEFAAAACAAJ",
               "volumeInfo": {
                 "title": "Delightful Chinese Cooking",
@@ -323,5 +123,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Wed, 01 Nov 2023 18:11:10 GMT
+  recorded_at: Fri, 03 Nov 2023 00:52:43 GMT
 recorded_with: VCR 6.1.0

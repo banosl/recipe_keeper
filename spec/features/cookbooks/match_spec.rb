@@ -78,16 +78,19 @@ RSpec.describe "cookbook #match" do
       end
     end
 
-    it "says 'is this your cookbook?' at the top of the page", js: true  do
+    it "choose a radio button", js: true  do
       expect(page).to have_content("Is this your cookbook?")
-      choose :cookbook_match_2_true
+      choose :cookbook_user_entry_match_2
     end
 
     it "user can view up to 5 options of cookbooks from the google api after entering their book info", js: true do
-      
       within ("#cookbook_match") do
-        choose :cookbook_match_1_true
+      choose :cookbook_user_entry_match_2
         click_button("Save")
+      end
+
+      within "#library" do
+        expect(page).to have_table_row("Title" => "The Super Chicken Cookbook", "Author" => "Claudia Carlin")
       end
     end
   end
