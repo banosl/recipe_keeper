@@ -19,23 +19,25 @@
       <%= form_with model: @cookbook, url: user_library_cookbooks_path(@user.id, @user.library.id), method: :post do |form| %>
 
         <% @google_books_matches .each do |book_match| %>
-          <p><%= form.radio_button :"match_#{@count}", true %></p>
-          <%= form.label :"match_#{@count}_true", "Title: #{book_match.title}\n" %>
-          <%= form.label :"match_#{@count}_true", "Author: #{book_match.authors}\n" %>
-          <%= form.label :"match_#{@count}_true", "Description: #{book_match.description}\n" %>
-          <%= form.label :"match_#{@count}_true", "ISBN: /n" %>
-          <%= form.label :"match_#{@count}_true", "Language: #{book_match.language}\n" %>
+       
+          <p><%= form.radio_button :user_entry, "match_#{@count}" %></p>
+          <%= form.label :"user_entry_match_#{@count}", "Title: #{book_match.title}\n" %>
+          <%= form.label :"user_entry_match_#{@count}", "Author: #{book_match.authors}\n" %>
+          <%= form.label :"user_entry_match_#{@count}", "Description: #{book_match.description}\n" %>
+          <%= form.label :"user_entry_match_#{@count}", "ISBN: \n" %>
+          <%= form.label :"user_entry_match_#{@count}", "Language: #{book_match.language}\n" %>
           <% @count += 1 %>
         <% end %>
 
         <%= form.radio_button :user_entry, true %>
         <%= form.label :user_entry_true, "None of the books above match, record by cookbook as entered." %>
         <%= form.submit "Save", disabled: true, id: "save_button" %>
-        
+
         <%= form.hidden_field :title, value: @cookbook.title %>
         <%= form.hidden_field :author, value: @cookbook.author %>
         <%= form.hidden_field :publisher, value: @cookbook.publisher%>
         <%= form.hidden_field :country_cuisine, value: @cookbook.country_cuisine %>
+        <%= form.hidden_field :isbn, value: @cookbook.isbn %>
         <%= form.hidden_field :library_id, value: @user.library.id %>
       <% end %>
       <%= button_to "Cancel", user_libraries_path(@user.id), method: :get %>

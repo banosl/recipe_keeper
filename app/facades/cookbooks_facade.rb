@@ -3,6 +3,7 @@ class CookbooksFacade
     search_info = write_search_info(cookbook_params)
     response = GoogleBooksService.get_book_matches(search_info)
     matches = []
+    
     if response[:totalItems] != 0
       response[:items].map do |cookbook_info|
         matches << CookbookMatch.new(cookbook_info)
