@@ -22,7 +22,6 @@ class CookbooksController <ApplicationController
   def create
     user = User.find(params[:user_id])
     google_books_matches = CookbooksFacade.cookbook_matches(cookbook_params) #THIS DOES A SECOND API CALL WHICH I DON"T LIKE
-
     if cookbook_match_params[:user_entry] == "true"
       cookbook = Cookbook.new(cookbook_params)
     else

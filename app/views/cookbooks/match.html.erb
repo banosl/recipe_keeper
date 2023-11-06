@@ -21,11 +21,11 @@
         <% @google_books_matches .each do |book_match| %>
        
           <p><%= form.radio_button :user_entry, "match_#{@count}" %></p>
-          <%= form.label :"user_entry_match_#{@count}", "Title: #{book_match.title}\n" %>
-          <%= form.label :"user_entry_match_#{@count}", "Author: #{book_match.authors}\n" %>
-          <%= form.label :"user_entry_match_#{@count}", "Description: #{book_match.description}\n" %>
-          <%= form.label :"user_entry_match_#{@count}", "ISBN: \n" %>
-          <%= form.label :"user_entry_match_#{@count}", "Language: #{book_match.language}\n" %>
+          <p><%= form.label :"user_entry_match_#{@count}", "Title: #{book_match.title}\n" %></p>
+          <p><%= form.label :"user_entry_match_#{@count}", "Author: #{book_match.authors}\n" %></p>
+          <p><%= form.label :"user_entry_match_#{@count}", "Description: #{book_match.description}\n" %></p>
+          <p><%= form.label :"user_entry_match_#{@count}", "ISBN: \n" %></p>
+          <p><%= form.label :"user_entry_match_#{@count}", "Language: #{book_match.language}\n" %></p>
           <% @count += 1 %>
         <% end %>
 
