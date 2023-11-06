@@ -21,13 +21,11 @@ RSpec.describe "New Cookbook form page" do
 
   it "User can click cancel and be redirected to the library page" do
     visit new_user_library_cookbook_path(@user.id, @library.id)
-
     expect(page).to have_button("Cancel")
 
     within "#cookbook_form" do
       click_button "Cancel"
     end
-
     expect(page).to have_current_path(user_libraries_path(@user.id))
   end
 
@@ -66,7 +64,7 @@ RSpec.describe "New Cookbook form page" do
     
     context "Form field errors", :vcr => vcr_options do
       it 'will show an error if a form is submitted without a title, 
-      and anything that was populated before will be prefilled' do
+        and anything that was populated before will be prefilled' do
         author = Faker::Book.author
         publisher = Faker::Book.publisher
         country_cuisine = Faker::Nation.nationality
