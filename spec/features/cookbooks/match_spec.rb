@@ -39,14 +39,14 @@ RSpec.describe "cookbook #match" do
       end
       
       within ("#cookbook_match") do
-        expect(page).to have_button("Save", disabled: true)
+        expect(page).to have_button("Save Cookbook", disabled: true)
         expect(page).to_not have_field(:cookbook_title)
         expect(page).to_not have_field(:cookbook_author)
         expect(page).to_not have_field(:cookbook_publisher)
         expect(page).to_not have_field(:cookbook_country_cuisine)
         choose :cookbook_user_entry_true
-        expect(page).to have_button("Save", disabled: false)
-        click_button("Save")
+        expect(page).to have_button("Save Cookbook", disabled: false)
+        click_button("Save Cookbook")
       end
         
       expect(page).to have_current_path(user_libraries_path(@user.id))
@@ -86,7 +86,7 @@ RSpec.describe "cookbook #match" do
     it "user can view up to 5 options of cookbooks from the google api after entering their book info", js: true do
       within ("#cookbook_match") do
       choose :cookbook_user_entry_match_2
-        click_button("Save")
+        click_button("Save Cookbook")
       end
 
       within "#library" do

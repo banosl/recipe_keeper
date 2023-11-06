@@ -31,7 +31,7 @@
 
         <%= form.radio_button :user_entry, true %>
         <%= form.label :user_entry_true, "None of the books above match, record by cookbook as entered." %>
-        <%= form.submit "Save", disabled: true, id: "save_button" %>
+        <%= form.submit "Save Cookbook", disabled: true, id: "save_button" %>
 
         <%= form.hidden_field :title, value: @cookbook.title %>
         <%= form.hidden_field :author, value: @cookbook.author %>

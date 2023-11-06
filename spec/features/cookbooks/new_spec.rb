@@ -31,7 +31,7 @@ RSpec.describe "New Cookbook form page" do
 
   describe "submitting a form", :vcr => vcr_options do
     it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
-      after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed',
+      after clicking Save Cookbook, the cookbook is created and the user is redirected to the library and they can see their book listed',
       js: true do
       
       title = Faker::Book.title
@@ -52,7 +52,7 @@ RSpec.describe "New Cookbook form page" do
  
       within ("#cookbook_match") do
         choose :cookbook_user_entry_true
-        click_button "Save"
+        click_button "Save Cookbook"
       end
   
       expect(page).to have_current_path(user_libraries_path(@user.id))
@@ -172,7 +172,7 @@ RSpec.describe "New Cookbook form page" do
     end
   end
 
-  xit 'will redirect to :new and show a message when the app fails to save a cookbook' do
+  xit 'will redirect to :new and show a message when the app fails to Save a cookbook' do
   title = Faker::Book.title
     author = Faker::Book.author
     publisher = Faker::Book.publisher
