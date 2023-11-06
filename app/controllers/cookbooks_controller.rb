@@ -10,10 +10,23 @@ class CookbooksController <ApplicationController
 
   def match
     @user = User.find(params[:user_id])
-    if params[:cookbook] && params[:cookbook][:title].blank?
-      redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
-      flash.alert = "Please enter a title for your cookbook."
+    if params[:cookbook]
+      if params[:cookbook][:title].blank?
+        redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
+        flash.alert = "Please enter a title for your cookbook."
+      elsif !params[:cookbook][:isbn].blank?
+        isbn = params[:cookbook][:isbn]
+        length = isbn.length
+        if !isbn.scan(/\D/).empty?
+          redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
+          flash.alert = "Please check the ISBN. It should be all digits."
+        elsif length < 10 || length > 13 || length == 12
+          redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
+          flash.alert = "Please check the ISBN. It should be either 10 or 13 digits in length."
+        end
+      end
     end
+
     @cookbook = Cookbook.new(cookbook_params)
     @google_books_matches = CookbooksFacade.cookbook_matches(cookbook_params)
     @count = 1

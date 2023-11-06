@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "New Cookbook form page" do
+  vcr_options = {:record => :new_episodes}
   before :each do
     @user = create(:user, :google)
     @library = @user.create_library
@@ -30,7 +31,7 @@ RSpec.describe "New Cookbook form page" do
     expect(page).to have_current_path(user_libraries_path(@user.id))
   end
 
-  describe "submitting a form", :vcr do
+  describe "submitting a form", :vcr => vcr_options do
     it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
       after clicking save, the cookbook is created and the user is redirected to the library and they can see their book listed',
       js: true do
@@ -50,7 +51,7 @@ RSpec.describe "New Cookbook form page" do
         fill_in :cookbook_isbn, with: isbn
         click_button 'Submit'
       end
-    
+ 
       within ("#cookbook_match") do
         choose :cookbook_user_entry_true
         click_button "Save"
@@ -63,7 +64,7 @@ RSpec.describe "New Cookbook form page" do
       end
     end
     
-    context "Form field errors", vcr: do
+    context "Form field errors", :vcr => vcr_options do
       it 'will show an error if a form is submitted without a title, 
       and anything that was populated before will be prefilled' do
         author = Faker::Book.author
@@ -100,13 +101,13 @@ RSpec.describe "New Cookbook form page" do
         visit new_user_library_cookbook_path(@user.id, @library.id)
 
         within ("#cookbook_form") do
-          fill_in :cookbook_author, with: author
+          fill_in :cookbook_title, with: title
           fill_in :cookbook_isbn, with: isbn
           click_button 'Submit'
         end
 
         expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
-        expect(page).to have_content("Please check the ISBN. It should be all digits and either 10 or 13 digits in length.")
+        expect(page).to have_content("Please check the ISBN. It should be all digits.")
       end
       
       it "will show an error if the isbn entered is shorter than 10 digits" do
@@ -116,13 +117,13 @@ RSpec.describe "New Cookbook form page" do
         visit new_user_library_cookbook_path(@user.id, @library.id)
 
         within ("#cookbook_form") do
-          fill_in :cookbook_author, with: author
+          fill_in :cookbook_title, with: title
           fill_in :cookbook_isbn, with: isbn
           click_button 'Submit'
         end
 
         expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
-        expect(page).to have_content("Please check the ISBN. It should be all digits and either 10 or 13 digits in length.")
+        expect(page).to have_content("Please check the ISBN. It should be either 10 or 13 digits in length.")
       end
       
       it "will show an error if the isbn entered is longer than 13 digits" do
@@ -132,13 +133,43 @@ RSpec.describe "New Cookbook form page" do
         visit new_user_library_cookbook_path(@user.id, @library.id)
 
         within ("#cookbook_form") do
-          fill_in :cookbook_author, with: author
+          fill_in :cookbook_title, with: title
           fill_in :cookbook_isbn, with: isbn
           click_button 'Submit'
         end
 
         expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
-        expect(page).to have_content("Please check the ISBN. It should be all digits and either 10 or 13 digits in length.")
+        expect(page).to have_content("Please check the ISBN. It should be either 10 or 13 digits in length.")
+      end
+
+      it "will show an error if the isbn entered is 12 digits" do
+        title = Faker::Book.title
+        isbn = "123456789012"
+
+        visit new_user_library_cookbook_path(@user.id, @library.id)
+
+        within ("#cookbook_form") do
+          fill_in :cookbook_title, with: title
+          fill_in :cookbook_isbn, with: isbn
+          click_button 'Submit'
+        end
+
+        expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
+        expect(page).to have_content("Please check the ISBN. It should be either 10 or 13 digits in length.")
+      end
+
+      it "will show the no title error over the isbn error if title is blank and isbn is filled out wrong" do
+        isbn = "123456789012345"
+
+        visit new_user_library_cookbook_path(@user.id, @library.id)
+
+        within ("#cookbook_form") do
+          fill_in :cookbook_isbn, with: isbn
+          click_button 'Submit'
+        end
+
+        expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
+        expect(page).to have_content("Please enter a title for your cookbook.")
       end
     end
   end
