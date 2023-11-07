@@ -6,11 +6,12 @@ RSpec.describe "cookbook #match" do
       @user = create(:user, :google)
       @library = @user.create_library
 
-      @title = "Delightful Chinese Cooking"
-      @author = "Eng Tie Ang"
-      @publisher = "Ambrosia Publications"
-      @country_cuisine = "Thai"
-      @isbn = "0962781061"
+      @title = "Great British Cooking"
+      @subtitle = "A Wellkept Secret"
+      @author = "Jane Garmey"
+      @publisher = "Harper Collins"
+      @country_cuisine = "British"
+      @isbn = "9780062039019"
 
       visit new_user_library_cookbook_path(@user.id, @library.id)
       within ("#cookbook_form") do

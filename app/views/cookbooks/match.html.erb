@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'save_button' %>
   <center><h1> Is this your cookbook? </h1></center> 
     <section id="user_entries">
+      <h2> You Entered: </h2>
       <p>Title: <%= @cookbook.title %></p>
       <p>Author: <%= @cookbook.author %></p>
       <p>Publisher: <%= @cookbook.publisher %></p>
@@ -21,6 +22,12 @@
         <% @google_books_matches .each do |book_match| %>
           <p><%= form.radio_button :user_entry, "match_#{@count}" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "Title: #{book_match.title}\n" %></p>
+          <% if book_match.subtitle %>
+            <p><%= form.label :"user_entry_match_#{@count}", "Subtitle: #{book_match.subtitle}\n" %></p>
+          <% end %>
+          <% if book_match.publisher %>
+            <p><%= form.label :"user_entry_match_#{@count}", "Publisher: #{book_match.publisher}\n" %></p>
+          <% end %>
           <p><%= form.label :"user_entry_match_#{@count}", "Author: #{book_match.authors}\n" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "Description: #{book_match.description}\n" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "#{book_match.display_isbn}" %></p>

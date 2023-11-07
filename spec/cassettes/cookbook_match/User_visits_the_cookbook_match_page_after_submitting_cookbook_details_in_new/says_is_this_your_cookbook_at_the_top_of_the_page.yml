@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:delightful%2Bchinese%2Bcooking%2Binauthor:eng%2Btie%2Bang%2Binpublisher:ambrosia%2Bpublications%2Bisbn:0962781061
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:great%2Bbritish%2Bcooking%2Binauthor:jane%2Bgarmey%2Binpublisher:harper%2Bcollins%2Bisbn:9780062039019
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 03 Nov 2023 00:52:43 GMT
+      - Tue, 07 Nov 2023 20:30:48 GMT
       Server:
       - ESF
       Cache-Control:
@@ -51,77 +51,103 @@ http_interactions:
           "items": [
             {
               "kind": "books#volume",
-              "id": "2zEFAAAACAAJ",
-              "etag": "vMNQkKIyLDI",
-              "selfLink": "https://www.googleapis.com/books/v1/volumes/2zEFAAAACAAJ",
+              "id": "kZM9XchfIfUC",
+              "etag": "hpgOgICOx7I",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/kZM9XchfIfUC",
               "volumeInfo": {
-                "title": "Delightful Chinese Cooking",
+                "title": "Great British Cooking",
+                "subtitle": "A Wellkept Secret",
                 "authors": [
-                  "Eng Tie Ang"
+                  "Jane Garmey"
                 ],
-                "publishedDate": "1999",
-                "description": "Chinese Cuisine, the finest and most extensive in the world, has dishes as varied as China itself - from delicate Cantonese delights to hot Szechwan spices, from cold Shanghai noodles to zesty Beijing meats. All different, yet all one - Chinese cooking - what a joy! Book jacket.",
+                "publisher": "Harper Collins",
+                "publishedDate": "2013-07-02",
+                "description": "This book is a revelation to Americans who have never tasted real Cornish Pasties, Scotch Woodcock (a splendid version of scrambled eggs) or Brown Bread Ice Cream. From the sumptuous breakfasts that made England famous to the steamed puddings, trifles, meringues and syllabubs that are still renowned, no aspect of British cooking is overlooked. Soups, fish, meat and game, vegetables, sauces, high teas, scones, crumpets, hot cross buns, savories, preserves and sweets of all kinds are here in clear, precise recipes with ingredients and utensils translated into American terms.",
                 "industryIdentifiers": [
                   {
-                    "type": "ISBN_10",
-                    "identifier": "0962781061"
+                    "type": "ISBN_13",
+                    "identifier": "9780062039019"
                   },
                   {
-                    "type": "ISBN_13",
-                    "identifier": "9780962781063"
+                    "type": "ISBN_10",
+                    "identifier": "0062039016"
                   }
                 ],
                 "readingModes": {
-                  "text": false,
+                  "text": true,
                   "image": false
                 },
-                "pageCount": 0,
+                "pageCount": 320,
                 "printType": "BOOK",
                 "categories": [
-                  "Cooking, Chinese"
+                  "Cooking"
                 ],
                 "maturityRating": "NOT_MATURE",
-                "allowAnonLogging": false,
-                "contentVersion": "preview-1.0.0",
+                "allowAnonLogging": true,
+                "contentVersion": "0.2.2.0.preview.2",
                 "panelizationSummary": {
                   "containsEpubBubbles": false,
                   "containsImageBubbles": false
                 },
                 "imageLinks": {
-                  "smallThumbnail": "http://books.google.com/books/content?id=2zEFAAAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-                  "thumbnail": "http://books.google.com/books/content?id=2zEFAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                  "smallThumbnail": "http://books.google.com/books/content?id=kZM9XchfIfUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                  "thumbnail": "http://books.google.com/books/content?id=kZM9XchfIfUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
                 },
                 "language": "en",
-                "previewLink": "http://books.google.com/books?id=2zEFAAAACAAJ&dq=intitle:delightful%2Bchinese%2Bcooking%2Binauthor:eng%2Btie%2Bang%2Binpublisher:ambrosia%2Bpublications%2Bisbn:0962781061&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
-                "infoLink": "http://books.google.com/books?id=2zEFAAAACAAJ&dq=intitle:delightful%2Bchinese%2Bcooking%2Binauthor:eng%2Btie%2Bang%2Binpublisher:ambrosia%2Bpublications%2Bisbn:0962781061&hl=&as_pt=BOOKS&source=gbs_api",
-                "canonicalVolumeLink": "https://books.google.com/books/about/Delightful_Chinese_Cooking.html?hl=&id=2zEFAAAACAAJ"
+                "previewLink": "http://books.google.com/books?id=kZM9XchfIfUC&pg=PP1&dq=intitle:great%2Bbritish%2Bcooking%2Binauthor:jane%2Bgarmey%2Binpublisher:harper%2Bcollins%2Bisbn:9780062039019&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=kZM9XchfIfUC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=kZM9XchfIfUC"
               },
               "saleInfo": {
                 "country": "US",
-                "saleability": "NOT_FOR_SALE",
-                "isEbook": false
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                  "amount": 11.99,
+                  "currencyCode": "USD"
+                },
+                "retailPrice": {
+                  "amount": 11.99,
+                  "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=kZM9XchfIfUC&rdid=book-kZM9XchfIfUC&rdot=1&source=gbs_api",
+                "offers": [
+                  {
+                    "finskyOfferType": 1,
+                    "listPrice": {
+                      "amountInMicros": 11990000,
+                      "currencyCode": "USD"
+                    },
+                    "retailPrice": {
+                      "amountInMicros": 11990000,
+                      "currencyCode": "USD"
+                    },
+                    "giftable": true
+                  }
+                ]
               },
               "accessInfo": {
                 "country": "US",
-                "viewability": "NO_PAGES",
-                "embeddable": false,
+                "viewability": "PARTIAL",
+                "embeddable": true,
                 "publicDomain": false,
                 "textToSpeechPermission": "ALLOWED",
                 "epub": {
-                  "isAvailable": false
+                  "isAvailable": true,
+                  "acsTokenLink": "http://books.google.com/books/download/Great_British_Cooking-sample-epub.acsm?id=kZM9XchfIfUC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
                 },
                 "pdf": {
                   "isAvailable": false
                 },
-                "webReaderLink": "http://play.google.com/books/reader?id=2zEFAAAACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
-                "accessViewStatus": "NONE",
+                "webReaderLink": "http://play.google.com/books/reader?id=kZM9XchfIfUC&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
                 "quoteSharingAllowed": false
               },
               "searchInfo": {
-                "textSnippet": "Chinese Cuisine, the finest and most extensive in the world, has dishes as varied as China itself - from delicate Cantonese delights to hot Szechwan spices, from cold Shanghai noodles to zesty Beijing meats."
+                "textSnippet": "A Wellkept Secret Jane \u003cb\u003eGarmey\u003c/b\u003e. Guff \u003cb\u003eBritish\u003c/b\u003e A WELL-KEPT* SECRET More tk 200 Rec lpes- from Meat Pies to Plum Pudding- Adapted f or American \u003cb\u003eCooks\u003c/b\u003e. JANE \u003cb\u003eG ARMEY\u003c/b\u003e AutK or of Great New \u003cb\u003eBritish Cooking\u003c/b\u003e. Front Cover."
               }
             }
           ]
         }
-  recorded_at: Fri, 03 Nov 2023 00:52:43 GMT
+  recorded_at: Tue, 07 Nov 2023 20:30:48 GMT
 recorded_with: VCR 6.1.0
