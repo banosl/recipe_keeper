@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "New Cookbook form page" do
-  vcr_options = {:record => :new_episodes}
   before :each do
     @user = create(:user, :google)
     @library = @user.create_library
@@ -29,16 +28,16 @@ RSpec.describe "New Cookbook form page" do
     expect(page).to have_current_path(user_libraries_path(@user.id))
   end
 
-  describe "submitting a form", :vcr => vcr_options do
+  describe "submitting a form", :vcr do
     it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
       after clicking Save Cookbook, the cookbook is created and the user is redirected to the library and they can see their book listed',
       js: true do
       
-      title = Faker::Book.title
-      author = Faker::Book.author
-      publisher = Faker::Book.publisher
-      country_cuisine = Faker::Nation.nationality
-      isbn = Faker::Barcode.isbn
+      title = "World of Warcraft The official Cookbook"
+      author = "Chelsea Monroe-Cassel"
+      publisher = "Insight Editions"
+      country_cuisine = "Azeroth"
+      isbn = "9781608878048"
       
       visit new_user_library_cookbook_path(@user.id, @library.id)
       within ("#cookbook_form") do
@@ -62,13 +61,13 @@ RSpec.describe "New Cookbook form page" do
       end
     end
     
-    context "Form field errors", :vcr => vcr_options do
+    context "Form field errors", :vcr do
       it 'will show an error if a form is submitted without a title, 
         and anything that was populated before will be prefilled' do
-        author = Faker::Book.author
-        publisher = Faker::Book.publisher
-        country_cuisine = Faker::Nation.nationality
-        isbn = Faker::Barcode.isbn
+          author = "Chelsea Monroe-Cassel"
+          publisher = "Insight Editions"
+          country_cuisine = "Azeroth"
+          isbn = "9781608878048"
         
         visit new_user_library_cookbook_path(@user.id, @library.id)
         
@@ -93,7 +92,7 @@ RSpec.describe "New Cookbook form page" do
       end
 
       it "will show an error if the isbn entered isn't all digits" do
-        title = Faker::Book.title
+        title = "Cooking for Babies"
         isbn = "abc312459a"
 
         visit new_user_library_cookbook_path(@user.id, @library.id)
@@ -109,7 +108,7 @@ RSpec.describe "New Cookbook form page" do
       end
       
       it "will show an error if the isbn entered is shorter than 10 digits" do
-        title = Faker::Book.title
+        title = "Cooking for Apple Lovers"
         isbn = "123456789"
 
         visit new_user_library_cookbook_path(@user.id, @library.id)
@@ -125,7 +124,7 @@ RSpec.describe "New Cookbook form page" do
       end
       
       it "will show an error if the isbn entered is longer than 13 digits" do
-        title = Faker::Book.title
+        title = "Cooking in Style"
         isbn = "12345678901234"
 
         visit new_user_library_cookbook_path(@user.id, @library.id)
@@ -141,7 +140,7 @@ RSpec.describe "New Cookbook form page" do
       end
 
       it "will show an error if the isbn entered is 12 digits" do
-        title = Faker::Book.title
+        title = "Cooking When You Don't Feel Like It"
         isbn = "123456789012"
 
         visit new_user_library_cookbook_path(@user.id, @library.id)
@@ -172,18 +171,18 @@ RSpec.describe "New Cookbook form page" do
     end
   end
 
-  xit 'will redirect to :new and show a message when the app fails to Save a cookbook' do
-  title = Faker::Book.title
-    author = Faker::Book.author
-    publisher = Faker::Book.publisher
-    country_cuisine = Faker::Nation.nationality
-    isbn = Faker::Barcode.isbn
-    library_id = nil
-    params = {title: title, author: author, publisher: publisher, country_cuisine: country_cuisine, isbn: isbn, library_id: library_id}
+  # xit 'will redirect to :new and show a message when the app fails to Save a cookbook' do
+  #   title = Faker::Book.title
+  #   author = Faker::Book.author
+  #   publisher = Faker::Book.publisher
+  #   country_cuisine = Faker::Nation.nationality
+  #   isbn = Faker::Barcode.isbn
+  #   library_id = nil
+  #   params = {title: title, author: author, publisher: publisher, country_cuisine: country_cuisine, isbn: isbn, library_id: library_id}
 
-    visit user_library_cookbooks_path(@user.id, @library.id, cookbook: params, method: :post)
+  #   visit user_library_cookbooks_path(@user.id, @library.id, cookbook: params, method: :post)
 
-    expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
-    expect(page).to have_content("Something went wrong. Please re-enter your cookbook's details.")
-  end
+  #   expect(current_path).to eq(new_user_library_cookbook_path(@user.id, @library.id))
+  #   expect(page).to have_content("Something went wrong. Please re-enter your cookbook's details.")
+  # end
 end

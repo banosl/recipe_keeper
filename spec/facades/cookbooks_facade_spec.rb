@@ -21,8 +21,8 @@ RSpec.describe CookbooksFacade do
         expect(cookbook).to be_instance_of(CookbookMatch)
         expect(cookbook.authors).to include("Eng Tie Ang")
         expect(cookbook.title).to be_a(String)
-        expect(cookbook.isbn_10).to eq("0962781045")
-        expect(cookbook.isbn_13).to eq("9780962781049")
+        expect(cookbook.isbn["isbn_10"]).to eq("0962781045")
+        expect(cookbook.isbn["isbn_13"]).to eq("9780962781049")
       end
     end
 
