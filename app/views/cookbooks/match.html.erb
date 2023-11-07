@@ -19,12 +19,11 @@
       <%= form_with model: @cookbook, url: user_library_cookbooks_path(@user.id, @user.library.id), method: :post do |form| %>
 
         <% @google_books_matches .each do |book_match| %>
-       
           <p><%= form.radio_button :user_entry, "match_#{@count}" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "Title: #{book_match.title}\n" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "Author: #{book_match.authors}\n" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "Description: #{book_match.description}\n" %></p>
-          <p><%= form.label :"user_entry_match_#{@count}", "ISBN: \n" %></p>
+          <p><%= form.label :"user_entry_match_#{@count}", "#{book_match.display_isbn}" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "Language: #{book_match.language}\n" %></p>
           <% @count += 1 %>
         <% end %>

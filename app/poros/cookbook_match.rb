@@ -20,9 +20,19 @@ class CookbookMatch
 
   def isbn
     result = {}
-    @industry_identifiers.each do |identifier|
-      result[identifier[:type].downcase] = identifier[:identifier]
+    if @industry_identifiers
+      @industry_identifiers.each do |identifier|
+        result[identifier[:type].sub("_", "-")] = identifier[:identifier]
+      end
     end
     result
+  end
+
+  def display_isbn
+    result = ""
+    isbn.each do |type, num|
+      result += "#{type}: #{num}\n"
+    end
+    result    
   end
 end

@@ -68,9 +68,13 @@ RSpec.describe CookbookMatch do
   describe "isbn methods" do
     it "#format_isbn formats the isbn attribute into a hash from the info in the search_results" do
       expect(@cookbook_match.isbn).to eq({
-        "isbn_10" => "0962781045",
-        "isbn_13" => "9780962781049"
+        "ISBN-10" => "0962781045",
+        "ISBN-13" => "9780962781049"
       })
+    end
+
+    it "formats the isbn hash into a string" do
+      expect(@cookbook_match.display_isbn).to eq("ISBN-10: 0962781045\nISBN-13: 9780962781049\n")
     end
   end
 end
