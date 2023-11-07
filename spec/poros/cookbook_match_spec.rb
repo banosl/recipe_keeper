@@ -6,28 +6,30 @@ RSpec.describe CookbookMatch do
       kind: "books#volume",
       id: "qsEOAAAACAAJ",
       volumeInfo: {
-          title: "Delightful Thai Cooking",
+          title: "Delightful Cooking",
+          subtitle: "Yummy",
           authors: [
-              "Eng Tie Ang"
+              "Leo Banos"
           ],
           publishedDate: "1990",
-          description: "Thai food is becoming increasingly popular, and this great new cookbook tellshow to prepare more than 100 delicious Thai dishes, most of which can be madein less than an hour. Includes detailed instructions, line drawings and colorphotographs.",
+          publisher: "Luca's Books",
+          description: "On a frosty day, Luca likes to make something yummy",
           industryIdentifiers: [
               {
                   type: "ISBN_10",
-                  identifier: "0962781045"
+                  identifier: "1234567890"
               },
               {
                   type: "ISBN_13",
-                  identifier: "9780962781049"
+                  identifier: "1234567890123"
               }
           ],
           categories: [
-              "Cookery, Thai"
+              "Cookery, Mexican"
           ],
           imageLinks: {
-              smallThumbnail: "http://books.google.com/books/content?id=qsEOAAAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-              thumbnail: "http://books.google.com/books/content?id=qsEOAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+              smallThumbnail: "http://books.luca.com/image_1",
+              thumbnail: "http://books.luca.com/image_11"
           },
           language: "en",
         }
@@ -38,11 +40,13 @@ RSpec.describe CookbookMatch do
 
   it "has attributes and exists" do
     expect(@cookbook_match).to be_instance_of(CookbookMatch)
-    expect(@cookbook_match.title).to eq("Delightful Thai Cooking")
-    expect(@cookbook_match.authors).to eq(["Eng Tie Ang"])
+    expect(@cookbook_match.title).to eq("Delightful Cooking")
+    expect(@cookbook_match.subtitle).to eq("Yummy")
+    expect(@cookbook_match.authors).to eq(["Leo Banos"])
+    expect(@cookbook_match.publisher).to eq("Luca's Books")
     expect(@cookbook_match.published_date).to eq("1990")
-    expect(@cookbook_match.description).to eq("Thai food is becoming increasingly popular, and this great new cookbook tellshow to prepare more than 100 delicious Thai dishes, most of which can be madein less than an hour. Includes detailed instructions, line drawings and colorphotographs.",)
-    expect(@cookbook_match.image_link).to eq("http://books.google.com/books/content?id=qsEOAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
+    expect(@cookbook_match.description).to eq("On a frosty day, Luca likes to make something yummy")
+    expect(@cookbook_match.image_link).to eq("http://books.luca.com/image_11")
     expect(@cookbook_match.language).to eq("en")
     expect(@cookbook_match.google_id).to eq("qsEOAAAACAAJ")
   end
@@ -52,13 +56,15 @@ RSpec.describe CookbookMatch do
       kind: "books#volume",
       id: "qsEOAAAACAAJ",
       volumeInfo: {
-          title: "Delightful Thai Cooking"
+          title: "Delightful Cooking"
         }
       }
     cookbook_match = CookbookMatch.new(cookbook_search_result)
 
-    expect(cookbook_match.title).to eq("Delightful Thai Cooking")
+    expect(cookbook_match.title).to eq("Delightful Cooking")
+    expect(cookbook_match.subtitle).to eq(nil)
     expect(cookbook_match.authors).to eq(nil)
+    expect(cookbook_match.publisher).to eq(nil)
     expect(cookbook_match.published_date).to eq(nil)
     expect(cookbook_match.description).to eq(nil)
     expect(cookbook_match.image_link).to eq(nil)
@@ -68,13 +74,13 @@ RSpec.describe CookbookMatch do
   describe "isbn methods" do
     it "#format_isbn formats the isbn attribute into a hash from the info in the search_results" do
       expect(@cookbook_match.isbn).to eq({
-        "ISBN-10" => "0962781045",
-        "ISBN-13" => "9780962781049"
+        "ISBN-10" => "1234567890",
+        "ISBN-13" => "1234567890123"
       })
     end
 
     it "formats the isbn hash into a string" do
-      expect(@cookbook_match.display_isbn).to eq("ISBN-10: 0962781045\nISBN-13: 9780962781049\n")
+      expect(@cookbook_match.display_isbn).to eq("ISBN-10: 1234567890\nISBN-13: 1234567890123\n")
     end
   end
 end

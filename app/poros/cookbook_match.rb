@@ -1,7 +1,9 @@
 class CookbookMatch
   attr_reader :google_id,
               :title,
+              :subtitle,
               :authors,
+              :publisher,
               :published_date,
               :description,
               :image_link,
@@ -10,7 +12,9 @@ class CookbookMatch
   def initialize(cookbook_search_result)
     @google_id = cookbook_search_result[:id]
     @title = cookbook_search_result[:volumeInfo][:title]
+    @subtitle = cookbook_search_result[:volumeInfo][:subtitle]
     @authors = cookbook_search_result[:volumeInfo][:authors]
+    @publisher = cookbook_search_result[:volumeInfo][:publisher]
     @published_date = cookbook_search_result[:volumeInfo][:publishedDate]
     @description = cookbook_search_result[:volumeInfo][:description]
     @language = cookbook_search_result[:volumeInfo][:language]
