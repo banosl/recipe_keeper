@@ -72,18 +72,5 @@ RSpec.describe CookbookMatch do
         "isbn_13" => "9780962781049"
       })
     end
-
-    xit "#isbn_10 can return the isbn number for that type" do
-      expect(@cookbook_match.isbn_10).to eq("0962781045")
-    end
-  
-    xit "#isbn_13 can return the isbn number for that type" do
-      expect(@cookbook_match.isbn_13).to eq("9780962781049")
-    end
-
-    xit "#find_isbn just returns the needed isbn depending on which is requested" do
-      expect(@cookbook_match.find_isbn("ISBN_10")).to eq("0962781045")
-      expect(@cookbook_match.find_isbn("ISBN_13")).to eq("9780962781049")
-    end
   end
 end
