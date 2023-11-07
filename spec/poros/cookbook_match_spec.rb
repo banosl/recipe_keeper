@@ -66,15 +66,22 @@ RSpec.describe CookbookMatch do
   end
     
   describe "isbn methods" do
-    it "#isbn_10 can return the isbn number for that type" do
+    it "#format_isbn formats the isbn attribute into a hash from the info in the search_results" do
+      expect(@cookbook_match.isbn).to eq({
+        "isbn_10" => "0962781045",
+        "isbn_13" => "9780962781049"
+      })
+    end
+
+    xit "#isbn_10 can return the isbn number for that type" do
       expect(@cookbook_match.isbn_10).to eq("0962781045")
     end
   
-    it "#isbn_13 can return the isbn number for that type" do
+    xit "#isbn_13 can return the isbn number for that type" do
       expect(@cookbook_match.isbn_13).to eq("9780962781049")
     end
 
-    it "#find_isbn just returns the needed isbn depending on which is requested" do
+    xit "#find_isbn just returns the needed isbn depending on which is requested" do
       expect(@cookbook_match.find_isbn("ISBN_10")).to eq("0962781045")
       expect(@cookbook_match.find_isbn("ISBN_13")).to eq("9780962781049")
     end
