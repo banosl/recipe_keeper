@@ -16,10 +16,14 @@
       <p>Nation of Origin: <%= @cookbook.country_cuisine %></p>
     </section>
 
+    <h2>Matches:</h2>
     <section id="cookbook_match">
       <%= form_with model: @cookbook, url: user_library_cookbooks_path(@user.id, @user.library.id), method: :post do |form| %>
 
         <% @google_books_matches .each do |book_match| %>
+          <% if book_match.image_link %>
+            <%= image_tag  book_match.image_link %>
+          <% end %>
           <p><%= form.radio_button :user_entry, "match_#{@count}" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "Title: #{book_match.title}\n" %></p>
           <% if book_match.subtitle %>

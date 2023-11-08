@@ -53,22 +53,27 @@ class CookbooksController <ApplicationController
   private
 
   def cookbook_params
-    params.require(:cookbook).permit(:title,
-                  :author,
-                  :publisher,
-                  :country_cuisine,
-                  :isbn,
-                  :library_id)
+    params.require(:cookbook).permit(
+                      :title,
+                      :author,
+                      :publisher,
+                      :country_cuisine,
+                      :isbn,
+                      :library_id)
   end
 
   def cookbook_match_params
     params.require(:cookbook).permit(
                       :user_entry,
                       :title,
+                      :subtitle,
                       :author,
                       :publisher,
                       :country_cuisine,
                       :isbn,
+                      :description,
+                      :language,
+                      :google_id,
                       :library_id)                                
   end
 end
