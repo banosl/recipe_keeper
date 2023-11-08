@@ -19,7 +19,7 @@ FactoryBot.define do
   factory :cookbook do
     title {Faker::Book.title}
     isbn {Faker::Barcode.isbn}
-    author {Faker::Book.author}
+    authors {Faker::Book.author}
     publisher {Faker::Book.publisher}
     country_cuisine {Faker::Nation.nationality}
     association :library

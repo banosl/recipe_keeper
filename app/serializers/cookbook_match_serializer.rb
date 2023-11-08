@@ -3,7 +3,7 @@ class CookbookMatchSerializer
     {
       title: cookbook_match.title,
       subtitle: cookbook_match.subtitle,
-      author: cookbook_match.authors,
+      authors: cookbook_match.authors,
       publisher: cookbook_match.publisher,
       published_date: cookbook_match.published_date,
       description: cookbook_match.description,

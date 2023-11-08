@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:cooking%2Bwhen%2Byou%2Bdon%27t%2Bfeel%2Blike%2Bit%2Bisbn:123456789012
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:cooking%2Bwhen%2Byou%2Bdon%27t%2Bfeel%2Blike%2Bit%2Binauthor:%2Bisbn:123456789012
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 07 Nov 2023 00:38:17 GMT
+      - Wed, 08 Nov 2023 21:50:59 GMT
       Server:
       - ESF
       Cache-Control:
@@ -49,5 +49,5 @@ http_interactions:
           "kind": "books#volumes",
           "totalItems": 0
         }
-  recorded_at: Tue, 07 Nov 2023 00:38:17 GMT
+  recorded_at: Wed, 08 Nov 2023 21:50:59 GMT
 recorded_with: VCR 6.1.0

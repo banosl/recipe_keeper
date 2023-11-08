@@ -42,8 +42,10 @@ class CookbookMatch
 
   def display_authors
     result = ""
-    @authors.each do |author|
-      result += ", #{author}"
+    if @authors
+      @authors.each do |author|
+        result += ", #{author}"
+      end
     end
     result.sub(", ", "")
   end

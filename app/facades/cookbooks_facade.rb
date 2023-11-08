@@ -18,8 +18,8 @@ class CookbooksFacade
       search_info += "intitle:#{cookbook_params[:title].downcase.gsub(" ", "+")}"
     end
 
-    if cookbook_params[:author] != ""
-      search_info += "+inauthor:#{cookbook_params[:author].downcase.gsub(" ", "+")}"
+    if cookbook_params[:authors] != ""
+      search_info += "+inauthor:#{cookbook_params[:authors][0].downcase.gsub(" ", "+")}"
     end
 
     if cookbook_params[:publisher] != ""

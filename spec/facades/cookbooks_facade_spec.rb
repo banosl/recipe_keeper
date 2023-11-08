@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CookbooksFacade do
   before :each do
     @cookbook_params = { title: "Delightful Thai Cooking",
-                          author: "Eng Tie Ang",
+                          authors: "Eng Tie Ang",
                           publisher: "Ambrosia Publications",
                           country_cuisine: "",
                           isbn: "0962781045",
@@ -28,7 +28,7 @@ RSpec.describe CookbooksFacade do
 
     it "returns an empty array when response items count is 0" do
       cookbook_params = { title: "Apple Pie Like Mom's",
-                          author: "",
+                          authors: "",
                           publisher: "",
                           country_cuisine: "",
                           isbn: "1",
@@ -48,7 +48,7 @@ RSpec.describe CookbooksFacade do
 
     it "returns a single string if only title is not blank" do
       cookbook_params = { title: "Delightful Thai Cooking",
-                          author: "",
+                          authors: "",
                           publisher: "",
                           country_cuisine: "",
                           isbn: "",

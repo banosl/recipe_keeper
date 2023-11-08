@@ -10,7 +10,7 @@ RSpec.describe CookbookMatchSerializer do
           title: "Delightful Cooking",
           subtitle: "Luca's Choice",
           authors: [
-              "Leo Banos"
+              "Leo Banos", "Luca Banos"
           ],
           publishedDate: "1990",
           publisher: "Kuma Books",
@@ -46,7 +46,7 @@ RSpec.describe CookbookMatchSerializer do
         {
           title: "Delightful Cooking",
           subtitle: "Luca's Choice",
-          author: ["Leo Banos"],
+          authors: ["Leo Banos", "Luca Banos"],
           publisher: "Kuma Books",
           published_date: "1990",
           description: "Cooking for Luca and his buddies.",
