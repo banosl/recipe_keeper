@@ -9,7 +9,7 @@ RSpec.describe CookbookMatch do
           title: "Delightful Cooking",
           subtitle: "Yummy",
           authors: [
-              "Leo Banos"
+              "Leo Banos", "Luca Banos"
           ],
           publishedDate: "1990",
           publisher: "Luca's Books",
@@ -42,7 +42,7 @@ RSpec.describe CookbookMatch do
     expect(@cookbook_match).to be_instance_of(CookbookMatch)
     expect(@cookbook_match.title).to eq("Delightful Cooking")
     expect(@cookbook_match.subtitle).to eq("Yummy")
-    expect(@cookbook_match.authors).to eq(["Leo Banos"])
+    expect(@cookbook_match.authors).to eq(["Leo Banos", "Luca Banos"])
     expect(@cookbook_match.publisher).to eq("Luca's Books")
     expect(@cookbook_match.published_date).to eq("1990")
     expect(@cookbook_match.description).to eq("On a frosty day, Luca likes to make something yummy")
@@ -71,7 +71,7 @@ RSpec.describe CookbookMatch do
     expect(cookbook_match.language).to eq(nil)
   end
     
-  describe "isbn methods" do
+  describe "isbn and authors methods" do
     it "#format_isbn formats the isbn attribute into a hash from the info in the search_results" do
       expect(@cookbook_match.isbn).to eq({
         "ISBN-10" => "1234567890",
@@ -81,6 +81,10 @@ RSpec.describe CookbookMatch do
 
     it "formats the isbn hash into a string" do
       expect(@cookbook_match.display_isbn).to eq("ISBN-10: 1234567890\nISBN-13: 1234567890123\n")
+    end
+
+    it "#display_authors formats them as a string" do
+      expect(@cookbook_match.display_authors).to eq("Leo Banos, Luca Banos")
     end
   end
 end

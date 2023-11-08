@@ -32,7 +32,7 @@
           <% if book_match.publisher %>
             <p><%= form.label :"user_entry_match_#{@count}", "Publisher: #{book_match.publisher}\n" %></p>
           <% end %>
-          <p><%= form.label :"user_entry_match_#{@count}", "Author: #{book_match.authors}\n" %></p>
+          <p><%= form.label :"user_entry_match_#{@count}", "Author: #{book_match.display_authors}\n" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "Description: #{book_match.description}\n" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "#{book_match.display_isbn}" %></p>
           <p><%= form.label :"user_entry_match_#{@count}", "Language: #{book_match.language}\n" %></p>
