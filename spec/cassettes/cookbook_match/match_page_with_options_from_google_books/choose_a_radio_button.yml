@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: 'https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:the%2Bsuper%2Bchicken%2Bcookbook%2Binauthor:'
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:the%2Bsuper%2Bchicken%2Bcookbook
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 08 Nov 2023 21:48:59 GMT
+      - Thu, 09 Nov 2023 16:45:17 GMT
       Server:
       - ESF
       Cache-Control:
@@ -47,46 +47,41 @@ http_interactions:
       string: |
         {
           "kind": "books#volumes",
-          "totalItems": 1,
+          "totalItems": 548,
           "items": [
             {
               "kind": "books#volume",
-              "id": "F55BAQAAIAAJ",
-              "etag": "Wh8vUmN4Kxc",
-              "selfLink": "https://www.googleapis.com/books/v1/volumes/F55BAQAAIAAJ",
+              "id": "_r0tnQEACAAJ",
+              "etag": "kzcAhl+WqjY",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/_r0tnQEACAAJ",
               "volumeInfo": {
-                "title": "The Publishers' Trade List Annual",
-                "publishedDate": "1974",
+                "title": "The Super Chicken Cookbook",
+                "authors": [
+                  "Iona Nixon"
+                ],
+                "publishedDate": "1979",
                 "industryIdentifiers": [
                   {
                     "type": "OTHER",
-                    "identifier": "STANFORD:36105124489183"
+                    "identifier": "OCLC:9287233"
                   }
                 ],
                 "readingModes": {
                   "text": false,
                   "image": false
                 },
-                "pageCount": 1872,
+                "pageCount": 176,
                 "printType": "BOOK",
                 "categories": [
-                  "American literature"
+                  "Cooking (Poultry)"
                 ],
                 "maturityRating": "NOT_MATURE",
                 "allowAnonLogging": false,
-                "contentVersion": "0.7.7.0.preview.0",
-                "panelizationSummary": {
-                  "containsEpubBubbles": false,
-                  "containsImageBubbles": false
-                },
-                "imageLinks": {
-                  "smallThumbnail": "http://books.google.com/books/content?id=F55BAQAAIAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-                  "thumbnail": "http://books.google.com/books/content?id=F55BAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-                },
+                "contentVersion": "preview-1.0.0",
                 "language": "en",
-                "previewLink": "http://books.google.com/books?id=F55BAQAAIAAJ&q=intitle:the%2Bsuper%2Bchicken%2Bcookbook%2Binauthor:&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook%2Binauthor:&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
-                "infoLink": "http://books.google.com/books?id=F55BAQAAIAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook%2Binauthor:&hl=&as_pt=BOOKS&source=gbs_api",
-                "canonicalVolumeLink": "https://books.google.com/books/about/The_Publishers_Trade_List_Annual.html?hl=&id=F55BAQAAIAAJ"
+                "previewLink": "http://books.google.com/books?id=_r0tnQEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=_r0tnQEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/The_Super_Chicken_Cookbook.html?hl=&id=_r0tnQEACAAJ"
               },
               "saleInfo": {
                 "country": "US",
@@ -105,15 +100,253 @@ http_interactions:
                 "pdf": {
                   "isAvailable": false
                 },
-                "webReaderLink": "http://play.google.com/books/reader?id=F55BAQAAIAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "webReaderLink": "http://play.google.com/books/reader?id=_r0tnQEACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              }
+            },
+            {
+              "kind": "books#volume",
+              "id": "hsxHGwAACAAJ",
+              "etag": "ocabmq48wbc",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/hsxHGwAACAAJ",
+              "volumeInfo": {
+                "title": "The Super Chicken Cookbook",
+                "authors": [
+                  "Claudia Carlin"
+                ],
+                "publishedDate": "1979",
+                "industryIdentifiers": [
+                  {
+                    "type": "OTHER",
+                    "identifier": "OCLC:26176239"
+                  }
+                ],
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 176,
+                "printType": "BOOK",
+                "categories": [
+                  "Cooking (Poultry)"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=hsxHGwAACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=2&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=hsxHGwAACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/The_Super_Chicken_Cookbook.html?hl=&id=hsxHGwAACAAJ"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=hsxHGwAACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              }
+            },
+            {
+              "kind": "books#volume",
+              "id": "NQUcIq2Y3lkC",
+              "etag": "cfIKyu0WJzQ",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/NQUcIq2Y3lkC",
+              "volumeInfo": {
+                "title": "The Super Chicken Cookbook",
+                "publishedDate": "1982",
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 132,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.2.1.0.preview.0",
+                "panelizationSummary": {
+                  "containsEpubBubbles": false,
+                  "containsImageBubbles": false
+                },
+                "imageLinks": {
+                  "smallThumbnail": "http://books.google.com/books/content?id=NQUcIq2Y3lkC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                  "thumbnail": "http://books.google.com/books/content?id=NQUcIq2Y3lkC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=NQUcIq2Y3lkC&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=NQUcIq2Y3lkC&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/The_Super_Chicken_Cookbook.html?hl=&id=NQUcIq2Y3lkC"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=NQUcIq2Y3lkC&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              }
+            },
+            {
+              "kind": "books#volume",
+              "id": "noRvzgEACAAJ",
+              "etag": "1N/kXxF5RyI",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/noRvzgEACAAJ",
+              "volumeInfo": {
+                "title": "Super Chicken",
+                "subtitle": "The Best Chicken Recipes",
+                "publishedDate": "2014",
+                "description": "Mealtimes need never be dull again with Super Chicken! This cookbook will offer all you need to create delicious home-made meals with this most versatile of ingredients.",
+                "industryIdentifiers": [
+                  {
+                    "type": "OTHER",
+                    "identifier": "OCLC:1245812844"
+                  }
+                ],
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 128,
+                "printType": "BOOK",
+                "categories": [
+                  "Cooking (Chicken)"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                  "containsEpubBubbles": false,
+                  "containsImageBubbles": false
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=noRvzgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=noRvzgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Super_Chicken.html?hl=&id=noRvzgEACAAJ"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=noRvzgEACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
                 "accessViewStatus": "NONE",
                 "quoteSharingAllowed": false
               },
               "searchInfo": {
-                "textSnippet": "... \u003cb\u003eCOOKBOOK\u003c/b\u003e De Proft ... 4.95 6.95 AFTERMATH OF SOVEREIGNTY Lowenthal ; Comitas . AFTERWORDS Brockman . 2.50 3.50 AGAIN ... \u003cb\u003eSUPER\u003c/b\u003e - SPY Teague 4.50 AMERICAN HISTORY MADE SIMPLE Estrin 1.95 4.50 AMERICAN ILLUSTRATED \u003cb\u003eCOOK BOOK\u003c/b\u003e AGES IN CHAOS&nbsp;..."
+                "textSnippet": "Mealtimes need never be dull again with Super Chicken! This cookbook will offer all you need to create delicious home-made meals with this most versatile of ingredients."
+              }
+            },
+            {
+              "kind": "books#volume",
+              "id": "BEHEsgEACAAJ",
+              "etag": "v5Cx1egysHI",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/BEHEsgEACAAJ",
+              "volumeInfo": {
+                "title": "Dump Chicken Recipes",
+                "subtitle": "Best and Super Delicious Dump Chicken Meals for the Busy Home Cook (Dump Dinners Cookbook)",
+                "authors": [
+                  "Jeanne K. Johnson"
+                ],
+                "publisher": "Createspace Independent Publishing Platform",
+                "publishedDate": "2015-05-22",
+                "description": "Best & Super Delicious Dump Chicken Meals For The Busy Home Cook to enjoy! Want to Make Delicious, Healthy, Easy Dump Chicken Recipes ? You've Come To The Right Place! You'll Learn To Make Delicious Dump Chicken Recipes Including... Amazing Aloha Dump Chicken. Baked Dump Chicken With Jam. Dump Chicken Fajita Filling. Sauteed Dump Chicken With Beans. Honeyed Dump Chicken. Dump Mixed Mustard and Chicken. Orange and Peach Dump Chicken. Dump Chicken with Apricot Much, much more! For a full list of what you can see inside, scroll up and click on the look inside feature and check out the Table of Contents! Take Action Right Now to Download your copy today!\"",
+                "industryIdentifiers": [
+                  {
+                    "type": "ISBN_10",
+                    "identifier": "1512277878"
+                  },
+                  {
+                    "type": "ISBN_13",
+                    "identifier": "9781512277876"
+                  }
+                ],
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 80,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                  "containsEpubBubbles": false,
+                  "containsImageBubbles": false
+                },
+                "imageLinks": {
+                  "smallThumbnail": "http://books.google.com/books/content?id=BEHEsgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                  "thumbnail": "http://books.google.com/books/content?id=BEHEsgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=BEHEsgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=BEHEsgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Dump_Chicken_Recipes.html?hl=&id=BEHEsgEACAAJ"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=BEHEsgEACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              },
+              "searchInfo": {
+                "textSnippet": "Best &amp; Super Delicious Dump Chicken Meals For The Busy Home Cook to enjoy! Want to Make Delicious, Healthy, Easy Dump Chicken Recipes ? You&#39;ve Come To The Right Place!You&#39;ll Learn To Make Delicious Dump Chicken Recipes Including."
               }
             }
           ]
         }
-  recorded_at: Wed, 08 Nov 2023 21:48:59 GMT
+  recorded_at: Thu, 09 Nov 2023 16:45:17 GMT
 recorded_with: VCR 6.1.0

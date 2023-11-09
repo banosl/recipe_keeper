@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 08 Nov 2023 21:48:55 GMT
+      - Thu, 09 Nov 2023 16:45:15 GMT
       Server:
       - ESF
       Cache-Control:
@@ -52,7 +52,7 @@ http_interactions:
             {
               "kind": "books#volume",
               "id": "kZM9XchfIfUC",
-              "etag": "vnAfE0XRrb8",
+              "etag": "+1CT0LEyCEY",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/kZM9XchfIfUC",
               "volumeInfo": {
                 "title": "Great British Cooking",
@@ -149,5 +149,155 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Wed, 08 Nov 2023 21:48:55 GMT
+  recorded_at: Thu, 09 Nov 2023 16:45:15 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:great%2Bbritish%2Bcooking%2Binauthor:jane%2Bgarmey%2Binpublisher:harper%2Bcollins%2Bisbn:9780062039019
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Thu, 09 Nov 2023 16:45:15 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "books#volumes",
+          "totalItems": 1,
+          "items": [
+            {
+              "kind": "books#volume",
+              "id": "kZM9XchfIfUC",
+              "etag": "CXUoLjliFJY",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/kZM9XchfIfUC",
+              "volumeInfo": {
+                "title": "Great British Cooking",
+                "subtitle": "A Wellkept Secret",
+                "authors": [
+                  "Jane Garmey"
+                ],
+                "publisher": "Harper Collins",
+                "publishedDate": "2013-07-02",
+                "description": "This book is a revelation to Americans who have never tasted real Cornish Pasties, Scotch Woodcock (a splendid version of scrambled eggs) or Brown Bread Ice Cream. From the sumptuous breakfasts that made England famous to the steamed puddings, trifles, meringues and syllabubs that are still renowned, no aspect of British cooking is overlooked. Soups, fish, meat and game, vegetables, sauces, high teas, scones, crumpets, hot cross buns, savories, preserves and sweets of all kinds are here in clear, precise recipes with ingredients and utensils translated into American terms.",
+                "industryIdentifiers": [
+                  {
+                    "type": "ISBN_13",
+                    "identifier": "9780062039019"
+                  },
+                  {
+                    "type": "ISBN_10",
+                    "identifier": "0062039016"
+                  }
+                ],
+                "readingModes": {
+                  "text": true,
+                  "image": false
+                },
+                "pageCount": 320,
+                "printType": "BOOK",
+                "categories": [
+                  "Cooking"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "0.2.2.0.preview.2",
+                "panelizationSummary": {
+                  "containsEpubBubbles": false,
+                  "containsImageBubbles": false
+                },
+                "imageLinks": {
+                  "smallThumbnail": "http://books.google.com/books/content?id=kZM9XchfIfUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                  "thumbnail": "http://books.google.com/books/content?id=kZM9XchfIfUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=kZM9XchfIfUC&pg=PP1&dq=intitle:great%2Bbritish%2Bcooking%2Binauthor:jane%2Bgarmey%2Binpublisher:harper%2Bcollins%2Bisbn:9780062039019&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=kZM9XchfIfUC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=kZM9XchfIfUC"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                  "amount": 11.99,
+                  "currencyCode": "USD"
+                },
+                "retailPrice": {
+                  "amount": 11.99,
+                  "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=kZM9XchfIfUC&rdid=book-kZM9XchfIfUC&rdot=1&source=gbs_api",
+                "offers": [
+                  {
+                    "finskyOfferType": 1,
+                    "listPrice": {
+                      "amountInMicros": 11990000,
+                      "currencyCode": "USD"
+                    },
+                    "retailPrice": {
+                      "amountInMicros": 11990000,
+                      "currencyCode": "USD"
+                    },
+                    "giftable": true
+                  }
+                ]
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": true,
+                  "acsTokenLink": "http://books.google.com/books/download/Great_British_Cooking-sample-epub.acsm?id=kZM9XchfIfUC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=kZM9XchfIfUC&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+              },
+              "searchInfo": {
+                "textSnippet": "A Wellkept Secret Jane \u003cb\u003eGarmey\u003c/b\u003e. Guff \u003cb\u003eBritish\u003c/b\u003e A WELL-KEPT* SECRET More tk 200 Rec lpes- from Meat Pies to Plum Pudding- Adapted f or American \u003cb\u003eCooks\u003c/b\u003e. JANE \u003cb\u003eG ARMEY\u003c/b\u003e AutK or of Great New \u003cb\u003eBritish Cooking\u003c/b\u003e. Front Cover."
+              }
+            }
+          ]
+        }
+  recorded_at: Thu, 09 Nov 2023 16:45:15 GMT
 recorded_with: VCR 6.1.0

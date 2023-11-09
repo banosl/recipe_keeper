@@ -12,7 +12,7 @@ RSpec.describe "New Cookbook form page" do
     expect(page).to have_content("Add a New Cookbook")
     within ("#cookbook_form") do
       expect(page).to have_field(:cookbook_title)
-      expect(page).to have_field(:cookbook_author)
+      expect(page).to have_field(:cookbook_authors)
       expect(page).to have_field(:cookbook_publisher)
       expect(page).to have_field(:cookbook_country_cuisine)
     end
@@ -42,7 +42,7 @@ RSpec.describe "New Cookbook form page" do
       visit new_user_library_cookbook_path(@user.id, @library.id)
       within ("#cookbook_form") do
         fill_in :cookbook_title, with: title
-        fill_in :cookbook_author, with: author
+        fill_in :cookbook_authors, with: author
         fill_in :cookbook_publisher, with: publisher
         fill_in :cookbook_country_cuisine, with: country_cuisine
         fill_in :cookbook_isbn, with: isbn
@@ -72,7 +72,7 @@ RSpec.describe "New Cookbook form page" do
         visit new_user_library_cookbook_path(@user.id, @library.id)
         
         within ("#cookbook_form") do
-          fill_in :cookbook_author, with: author
+          fill_in :cookbook_authors, with: author
           fill_in :cookbook_publisher, with: publisher
           fill_in :cookbook_country_cuisine, with: country_cuisine
           fill_in :cookbook_isbn, with: isbn
@@ -83,7 +83,7 @@ RSpec.describe "New Cookbook form page" do
         expect(page).to have_content("Please enter a title for your cookbook.")
   
         within ("#cookbook_form") do
-          expect(page).to have_field(:cookbook_author, with: author)
+          expect(page).to have_field(:cookbook_authors, with: author)
           expect(page).to have_field(:cookbook_publisher, with: publisher)
           expect(page).to have_field(:cookbook_country_cuisine, with: country_cuisine)
           expect(page).to have_field(:cookbook_isbn, with: isbn)

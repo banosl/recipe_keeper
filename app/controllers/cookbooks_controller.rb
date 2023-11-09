@@ -35,6 +35,7 @@ class CookbooksController <ApplicationController
   def create
     user = User.find(params[:user_id])
     google_books_matches = CookbooksFacade.cookbook_matches(cookbook_params) #THIS DOES A SECOND API CALL WHICH I DON"T LIKE
+
     if cookbook_match_params[:user_entry] == "true"
       cookbook = Cookbook.new(cookbook_params)
     else
@@ -55,11 +56,12 @@ class CookbooksController <ApplicationController
   def cookbook_params
     params.require(:cookbook).permit(
                       :title,
-                      :author,
                       :publisher,
                       :country_cuisine,
                       :isbn,
-                      :library_id)
+                      :library_id,
+                      authors: []
+    )
   end
 
   def cookbook_match_params
@@ -67,13 +69,14 @@ class CookbooksController <ApplicationController
                       :user_entry,
                       :title,
                       :subtitle,
-                      :author,
+                      :authors,
                       :publisher,
                       :country_cuisine,
                       :isbn,
                       :description,
                       :language,
                       :google_id,
-                      :library_id)                                
+                      :library_id
+    )                                
   end
 end

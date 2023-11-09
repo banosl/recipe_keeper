@@ -8,8 +8,8 @@
     <%= form_with model: @cookbook, url: match_new_user_library_cookbook_path(@user.id, @user.library.id), method: :get do |form| %>
       <%= form.label :title, "Title:" %>
       <p><%= form.text_field :title %></p>
-      <%= form.label :author, "Author:" %>
-      <p><%= form.text_field :author %></p>
+      <%= form.label :authors, "Author:" %>
+      <p><%= form.text_field :authors, multiple: true %></p>
       <%= form.label :publisher, "Publisher:" %>
       <p><%= form.text_field :publisher%></p>
       <%= form.label :isbn, "ISBN:" %>

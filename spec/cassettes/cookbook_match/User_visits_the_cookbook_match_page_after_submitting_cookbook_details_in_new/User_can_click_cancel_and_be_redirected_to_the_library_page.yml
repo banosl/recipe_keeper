@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 08 Nov 2023 21:48:58 GMT
+      - Thu, 09 Nov 2023 16:45:16 GMT
       Server:
       - ESF
       Cache-Control:
@@ -52,7 +52,7 @@ http_interactions:
             {
               "kind": "books#volume",
               "id": "kZM9XchfIfUC",
-              "etag": "qB+bpSyrLcI",
+              "etag": "5vJmnXK5dwQ",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/kZM9XchfIfUC",
               "volumeInfo": {
                 "title": "Great British Cooking",
@@ -149,5 +149,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Wed, 08 Nov 2023 21:48:58 GMT
+  recorded_at: Thu, 09 Nov 2023 16:45:16 GMT
 recorded_with: VCR 6.1.0
