@@ -5,12 +5,12 @@
 <table id="library">
   <tr>
     <th>Title</th>
-    <th>Author</th>
+    <th><%= "Author(s)" %></th>
   </tr>
   <% @cookbooks.each do |cookbook| %>
     <tr>
     <td><%= link_to cookbook.title, user_library_cookbook_path(@user.id, @user.library.id, cookbook.id) %></td> 
-    <td><%= cookbook.author %></td>
+    <td><%= cookbook.display_authors %></td>
     </tr>
   <% end %>
 </table>
