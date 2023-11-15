@@ -15,15 +15,7 @@ class CookbooksController <ApplicationController
         redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
         flash.alert = "Please enter a title for your cookbook."
       elsif !params[:cookbook][:isbn].blank?
-        isbn = params[:cookbook][:isbn]
-        length = isbn.length
-        if !isbn.scan(/\D/).empty?
-          redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
-          flash.alert = "Please check the ISBN. It should be all digits."
-        elsif length < 10 || length > 13 || length == 12
-          redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
-          flash.alert = "Please check the ISBN. It should be either 10 or 13 digits in length."
-        end
+        isbn_form_errors
       end
     end
 
@@ -78,5 +70,17 @@ class CookbooksController <ApplicationController
                       :google_id,
                       :library_id
     )                                
+  end
+
+  def isbn_form_errors
+    isbn = params[:cookbook][:isbn]
+    length = isbn.length
+    if !isbn.scan(/\D/).empty?
+      redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
+      flash.alert = "Please check the ISBN. It should be all digits."
+    elsif length < 10 || length > 13 || length == 12
+      redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
+      flash.alert = "Please check the ISBN. It should be either 10 or 13 digits in length."
+    end
   end
 end
