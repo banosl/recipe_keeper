@@ -5,7 +5,7 @@ RSpec.describe GoogleBooksService do
     it "returns a response with no more than 5 book matches" do
       search_info = "intitle:great+british+cooking"
       response = GoogleBooksService.get_book_matches(search_info)
-
+      
       expect(response).to be_a(Hash)
       expect(response[:items]).to be_a(Array)
       expect(response[:items].count).to eq(5)
