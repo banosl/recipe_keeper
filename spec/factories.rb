@@ -18,10 +18,15 @@ FactoryBot.define do
 
   factory :cookbook do
     title {Faker::Book.title}
+    subtitle {Faker::Book.title}
     isbn {Faker::Barcode.isbn}
-    authors {Faker::Book.author}
+    authors {[Faker::Book.author]}
     publisher {Faker::Book.publisher}
     country_cuisine {Faker::Nation.nationality}
+    published_date {Faker::Date.in_date_period}
+    image_link {"https://tenor.com/view/pikachu-togepi-cute-eat-pokemon-gif-22078112"}
+    language {Faker::Nation.language}
+    description {Faker::Food.description}
     association :library
   end
 
@@ -30,7 +35,7 @@ FactoryBot.define do
     association :cookbook
   end
 
-  factory :recipes do
+  factory :recipe do
     name {Faker::Food.dish}
     country_of_origin {Faker::Nation.nationality}
     page {Faker::Number.between(from: 10, to: 500)}
