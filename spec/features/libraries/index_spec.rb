@@ -29,15 +29,15 @@ RSpec.describe 'library index' do
       visit user_libraries_path(@user.id)
       
       within "#library" do
-        expect(page).to have_table_row("Title" => book1.title, "Author(s)" => book1.display_authors)
+        expect(page).to have_table_row("Title" => book1.title, "Author(s)" => book1.authors.to_sentence)
         expect(page).to have_link(book1.title, href: user_library_cookbook_path(@user.id, @library.id, book1.id))
-        expect(page).to have_table_row("Title" => book2.title, "Author(s)" => book2.display_authors)
+        expect(page).to have_table_row("Title" => book2.title, "Author(s)" => book2.authors.to_sentence)
         expect(page).to have_link(book2.title, href: user_library_cookbook_path(@user.id, @library.id, book2.id))
-        expect(page).to have_table_row("Title" => book3.title, "Author(s)" => book3.display_authors)
+        expect(page).to have_table_row("Title" => book3.title, "Author(s)" => book3.authors.to_sentence)
         expect(page).to have_link(book3.title, href: user_library_cookbook_path(@user.id, @library.id, book3.id))
-        expect(page).to have_table_row("Title" => book4.title, "Author(s)" => book4.display_authors)
+        expect(page).to have_table_row("Title" => book4.title, "Author(s)" => book4.authors.to_sentence)
         expect(page).to have_link(book4.title, href: user_library_cookbook_path(@user.id, @library.id, book4.id))
-        expect(page).to have_table_row("Title" => book5.title, "Author(s)" => book5.display_authors)
+        expect(page).to have_table_row("Title" => book5.title, "Author(s)" => book5.authors.to_sentence)
         expect(page).to have_link(book5.title, href: user_library_cookbook_path(@user.id, @library.id, book5.id))
         expect(page).to_not have_table_row("Title" => "be the dream", "Author(s)" => "bob")
       end
