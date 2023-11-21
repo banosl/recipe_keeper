@@ -7,6 +7,7 @@ RSpec.describe Cookbook, type: :model do
 
   describe 'relationships' do
     it {should belong_to :library}
-    it {should have_many :recipes}
+    it {should have_many :chapters}
+    it {should have_many(:recipes).through(:chapters)}
   end
 end

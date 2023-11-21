@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_08_202157) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_21_173117) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chapters", force: :cascade do |t|
+    t.string "name"
+    t.bigint "cookbook_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cookbook_id"], name: "index_chapters_on_cookbook_id"
+  end
 
   create_table "cookbooks", force: :cascade do |t|
     t.string "title"
@@ -64,11 +72,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_202157) do
     t.integer "page"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "cookbook_id", null: false
     t.integer "meal_time"
     t.integer "meal_type"
     t.integer "food_group"
-    t.index ["cookbook_id"], name: "index_recipes_on_cookbook_id"
+    t.bigint "chapter_id", null: false
+    t.index ["chapter_id"], name: "index_recipes_on_chapter_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,9 +91,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_202157) do
     t.integer "oauth_provider"
   end
 
+  add_foreign_key "chapters", "cookbooks"
   add_foreign_key "cookbooks", "libraries"
   add_foreign_key "libraries", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
-  add_foreign_key "recipes", "cookbooks"
+  add_foreign_key "recipes", "chapters"
 end
