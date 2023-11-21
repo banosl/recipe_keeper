@@ -25,6 +25,11 @@ FactoryBot.define do
     association :library
   end
 
+  factory :chapter do
+    name {Faker::Food.ingredient}
+    association :cookbook
+  end
+
   factory :recipes do
     name {Faker::Food.dish}
     country_of_origin {Faker::Nation.nationality}
@@ -80,6 +85,6 @@ FactoryBot.define do
       food_group {:dairy}
     end
 
-    association :cookbook
+    association :chapter
   end
 end
