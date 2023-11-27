@@ -24,7 +24,7 @@ FactoryBot.define do
     publisher {Faker::Book.publisher}
     country_cuisine {Faker::Nation.nationality}
     published_date {Faker::Date.in_date_period}
-    image_link {"https://tenor.com/view/pikachu-togepi-cute-eat-pokemon-gif-22078112"}
+    image_link {"https://media.tenor.com/wDD-YmMOjgwAAAAC/pikachu-togepi.gif"}
     language {Faker::Nation.language}
     description {Faker::Food.description}
     association :library

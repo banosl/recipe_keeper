@@ -1,4 +1,8 @@
 class CookbooksController <ApplicationController
+  def show
+    @cookbook = Cookbook.find(params[:id])
+  end
+  
   def new
     @user = User.find(params[:user_id])
     if params[:cookbook]

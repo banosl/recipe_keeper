@@ -1,0 +1,18 @@
+doctype html
+html
+  head 
+
+  body 
+    section id="cookbook_image_#{@cookbook.id}"
+      img src= @cookbook.image_link
+
+    section id="cookbook_details_#{@cookbook.id}"
+      p = @cookbook.title
+      p = @cookbook.subtitle
+      p = "Author(s): #{@cookbook.authors.to_sentence}"
+      p = "Published by: #{@cookbook.publisher}, #{DateTime.parse(@cookbook.published_date).to_date.year.to_s}"
+      p = @cookbook.isbn
+      p = "Language: #{@cookbook.language}"
+      p = @cookbook.description
+      p = "Added on: #{@cookbook.created_at.strftime("%B %d, %Y")}"
+      p = "Number of recipes added: #{@cookbook.recipe_count}"
