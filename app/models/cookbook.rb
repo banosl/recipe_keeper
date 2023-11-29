@@ -8,4 +8,12 @@ class Cookbook < ApplicationRecord
   def recipe_count
     recipes.count
   end
+
+  def published_year
+    if published_date.nil?
+      "Year unknown"
+    else
+      published_date.length == 4? published_date : DateTime.parse(published_date).to_date.year.to_s
+    end
+  end
 end
