@@ -13,7 +13,7 @@ html
       p = @cookbook.title
       p = @cookbook.subtitle
       p = "Author(s): #{@cookbook.authors.to_sentence}"
-      p = "Published by: #{@cookbook.publisher}, #{DateTime.parse(@cookbook.published_date).to_date.year.to_s}"
+      p = "Published by: #{@cookbook.publisher}, #{@cookbook.published_year}"
       p = @cookbook.isbn
       p = "Language: #{@cookbook.language}"
       p = @cookbook.description

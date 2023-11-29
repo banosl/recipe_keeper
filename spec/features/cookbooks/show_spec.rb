@@ -5,7 +5,6 @@ RSpec.describe "Cookbook Show Page" do
     @user = create(:user, :google)
     @user.create_library
     @cookbook = create(:cookbook, library: @user.library)
-    @cookbook_no_image = create(:cookbook, library: @user.library, image_link: nil)
     @chapter = create(:chapter, cookbook: @cookbook)
     @recipes = create_list(:recipe, 20, :breakfast, :salad, :dairy, chapter: @chapter)
   end
@@ -22,7 +21,7 @@ RSpec.describe "Cookbook Show Page" do
         expect(page).to have_content(@cookbook.title)
         expect(page).to have_content(@cookbook.subtitle)
         expect(page).to have_content("Author(s): #{@cookbook.authors.to_sentence}")
-        expect(page).to have_content("Published by: #{@cookbook.publisher}, #{DateTime.parse(@cookbook.published_date).to_date.year.to_s}")
+        expect(page).to have_content("Published by: #{@cookbook.publisher}, #{@cookbook.published_year}")
         expect(page).to have_content(@cookbook.isbn)
         expect(page).to have_content("Language: #{@cookbook.language}")
         expect(page).to have_content(@cookbook.description)
@@ -32,10 +31,20 @@ RSpec.describe "Cookbook Show Page" do
     end
 
     it "If a book doesn't have an image, it displays a default 'no image' image" do
-      visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook_no_image.id)
+      cookbook_no_image = create(:cookbook, library: @user.library, image_link: nil)
+      visit user_library_cookbook_path(@user.id, @user.library.id, cookbook_no_image.id)
       
-      within "#cookbook_image_#{@cookbook_no_image.id}" do
+      within "#cookbook_image_#{cookbook_no_image.id}" do
         expect(page).to have_css("img[src*='/assets/no_image']")
+      end
+    end
+
+    it "If published date is nil then 'Published by' is followed by 'Year unknown'" do
+      cookbook_nil_published_year = create(:cookbook, library: @user.library, published_date: nil)
+      visit user_library_cookbook_path(@user.id, @user.library.id, cookbook_nil_published_year.id)
+
+      within("#cookbook_details_#{cookbook_nil_published_year.id}") do
+        expect(page).to have_content("Published by: #{cookbook_nil_published_year.publisher}, Year unknown")
       end
     end
   end
