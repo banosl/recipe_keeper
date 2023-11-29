@@ -4,7 +4,10 @@ html
 
   body 
     section id="cookbook_image_#{@cookbook.id}"
-      img src= @cookbook.image_link
+      - if @cookbook.image_link == nil
+          = image_tag("no_image.png")
+      - else
+          img src= @cookbook.image_link
 
     section id="cookbook_details_#{@cookbook.id}"
       p = @cookbook.title

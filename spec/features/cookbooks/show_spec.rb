@@ -5,9 +5,11 @@ RSpec.describe "Cookbook Show Page" do
     @user = create(:user, :google)
     @user.create_library
     @cookbook = create(:cookbook, library: @user.library)
+    @cookbook_no_image = create(:cookbook, library: @user.library, image_link: nil)
     @chapter = create(:chapter, cookbook: @cookbook)
     @recipes = create_list(:recipe, 20, :breakfast, :salad, :dairy, chapter: @chapter)
   end
+
   describe "Cookbook info" do
     it "Displays the cookbook's title, subtitle, author(s), publisher, isbn, published date, image, language, description, date added to library, number of recipes" do
       visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
@@ -29,9 +31,13 @@ RSpec.describe "Cookbook Show Page" do
       end
     end
 
-    it "If a book doesn't have a subtitle or description the page doesn't even say 'subtitle' or 'description'"
-
-    it "If a book doesn't have an image, it displays a default 'no image' image"
+    it "If a book doesn't have an image, it displays a default 'no image' image" do
+      visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook_no_image.id)
+      
+      within "#cookbook_image_#{@cookbook_no_image.id}" do
+        expect(page).to have_css("img[src*='/assets/no_image']")
+      end
+    end
   end
 
   describe "Recipes Table" do
