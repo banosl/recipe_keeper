@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :libraries, only: [:index] do
       resources :cookbooks, only: [:new, :create, :show] do #is this too long of a route?
         get 'match', on: :new
+        resources :recipes, only: [:show]
       end
     end
   end

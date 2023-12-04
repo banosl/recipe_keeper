@@ -60,7 +60,20 @@ RSpec.describe "Cookbook Show Page" do
   end
 
   describe "Recipes Table" do
-    it "Displays the recipes in a table with columns for 'name', 'chapter', and page number"
+    it "Displays the recipes in a table with columns for 'name', 'chapter', and page number" do
+      visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+  
+      within "#recipes" do
+        expect(page).to have_table_row("Name" => @recipes[0].name, "Chapter" => @recipes[0].chapter.name, "Page" => @recipes[0].page)
+        expect(page).to have_table_row("Name" => @recipes[1].name, "Chapter" => @recipes[1].chapter.name, "Page" => @recipes[1].page)
+        expect(page).to have_table_row("Name" => @recipes[2].name, "Chapter" => @recipes[2].chapter.name, "Page" => @recipes[2].page)
+        expect(page).to have_table_row("Name" => @recipes[3].name, "Chapter" => @recipes[3].chapter.name, "Page" => @recipes[3].page)
+        expect(page).to have_table_row("Name" => @recipes[4].name, "Chapter" => @recipes[4].chapter.name, "Page" => @recipes[4].page)
+        expect(page).to have_table_row("Name" => @recipes[5].name, "Chapter" => @recipes[5].chapter.name, "Page" => @recipes[5].page)
+        expect(page).to have_table_row("Name" => @recipes[18].name, "Chapter" => @recipes[18].chapter.name, "Page" => @recipes[18].page)
+        expect(page).to have_table_row("Name" => @recipes[19].name, "Chapter" => @recipes[19].chapter.name, "Page" => @recipes[19].page)
+      end
+    end
   end
 
   describe "Buttons" do

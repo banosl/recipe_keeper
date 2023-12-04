@@ -22,3 +22,14 @@ html
       p = @cookbook.description
       p = "Added on: #{@cookbook.created_at.strftime("%B %d, %Y")}"
       p = "Number of recipes added: #{@cookbook.recipe_count}"
+
+    table id="recipes"
+      tr 
+        th Name 
+        th Chapter 
+        th Page 
+      - @cookbook.recipes.each do |recipe|
+        tr
+          td = link_to(recipe.name, user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id))
+          td = recipe.chapter.name
+          td = recipe.page
