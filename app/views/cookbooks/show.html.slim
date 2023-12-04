@@ -4,7 +4,7 @@ html
 
   body 
     section id="cookbook_image_#{@cookbook.id}"
-      - if @cookbook.image_link == nil
+      - if @cookbook.image_link.nil?
           = image_tag("no_image.png")
       - else
           img src= @cookbook.image_link
@@ -14,7 +14,10 @@ html
       p = @cookbook.subtitle
       p = "Author(s): #{@cookbook.authors.to_sentence}"
       p = "Published by: #{@cookbook.publisher}, #{@cookbook.published_year}"
-      p = @cookbook.isbn
+      - if @cookbook.isbn.nil?
+        p = "Identifiers: Unknown"
+      - else 
+        p = "Identifiers: #{@cookbook.identifiers}"
       p = "Language: #{@cookbook.language}"
       p = @cookbook.description
       p = "Added on: #{@cookbook.created_at.strftime("%B %d, %Y")}"
