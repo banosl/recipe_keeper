@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_21_173117) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_30_180932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,7 +24,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_173117) do
 
   create_table "cookbooks", force: :cascade do |t|
     t.string "title"
-    t.string "isbn"
     t.string "authors", array: true
     t.string "publisher"
     t.datetime "created_at", null: false
@@ -37,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_173117) do
     t.string "google_id"
     t.string "subtitle"
     t.string "description"
+    t.jsonb "isbn"
     t.index ["library_id"], name: "index_cookbooks_on_library_id"
   end
 
