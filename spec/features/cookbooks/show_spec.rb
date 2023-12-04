@@ -65,13 +65,21 @@ RSpec.describe "Cookbook Show Page" do
   
       within "#recipes" do
         expect(page).to have_table_row("Name" => @recipes[0].name, "Chapter" => @recipes[0].chapter.name, "Page" => @recipes[0].page)
+        expect(page).to have_link(@recipes[0].name, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes[0].id))
         expect(page).to have_table_row("Name" => @recipes[1].name, "Chapter" => @recipes[1].chapter.name, "Page" => @recipes[1].page)
+        expect(page).to have_link(@recipes[1].name, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes[1].id))
         expect(page).to have_table_row("Name" => @recipes[2].name, "Chapter" => @recipes[2].chapter.name, "Page" => @recipes[2].page)
+        expect(page).to have_link(@recipes[2].name, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes[2].id))
         expect(page).to have_table_row("Name" => @recipes[3].name, "Chapter" => @recipes[3].chapter.name, "Page" => @recipes[3].page)
+        expect(page).to have_link(@recipes[3].name, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes[3].id))
         expect(page).to have_table_row("Name" => @recipes[4].name, "Chapter" => @recipes[4].chapter.name, "Page" => @recipes[4].page)
+        expect(page).to have_link(@recipes[4].name, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes[4].id))
         expect(page).to have_table_row("Name" => @recipes[5].name, "Chapter" => @recipes[5].chapter.name, "Page" => @recipes[5].page)
+        expect(page).to have_link(@recipes[5].name, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes[5].id))
         expect(page).to have_table_row("Name" => @recipes[18].name, "Chapter" => @recipes[18].chapter.name, "Page" => @recipes[18].page)
+        expect(page).to have_link(@recipes[18].name, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes[18].id))
         expect(page).to have_table_row("Name" => @recipes[19].name, "Chapter" => @recipes[19].chapter.name, "Page" => @recipes[19].page)
+        expect(page).to have_link(@recipes[19].name, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes[19].id))
       end
     end
   end

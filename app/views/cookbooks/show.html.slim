@@ -30,6 +30,6 @@ html
         th Page 
       - @cookbook.recipes.each do |recipe|
         tr
-          td = link_to(recipe.name, user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id))
+          td = link_to(recipe.name, user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id))
           td = recipe.chapter.name
           td = recipe.page
