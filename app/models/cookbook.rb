@@ -16,4 +16,12 @@ class Cookbook < ApplicationRecord
       published_date.length == 4? published_date : DateTime.parse(published_date).to_date.year.to_s
     end
   end
+
+  def identifiers
+    result = ""
+    isbn.each do |type, value|
+      result += "#{type}: #{value} "
+    end
+    result
+  end
 end

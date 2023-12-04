@@ -15,7 +15,7 @@ RSpec.describe Cookbook, type: :model do
     before :each do
       @user = create(:user, :google)
       @user.create_library
-      @cookbook = create(:cookbook, library: @user.library, published_date: "2019-03-27")
+      @cookbook = create(:cookbook, library: @user.library, published_date: "2019-03-27", isbn: {"ISBN-13": Faker::Barcode.isbn})
       @chapter = create(:chapter, cookbook: @cookbook)
       @recipes = create_list(:recipe, 20, :breakfast, :salad, :dairy, chapter: @chapter)
     end
@@ -31,6 +31,10 @@ RSpec.describe Cookbook, type: :model do
       expect(@cookbook.published_year).to eq("2019")
       expect(cookbook_year.published_year).to eq("1782")
       expect(cookbook_nil_year.published_year).to eq("Year unknown")
+    end
+
+    it "#identifiers returns the isbn number info as a string" do
+      expect(@cookbook.identifiers).to eq("ISBN-13: #{@cookbook.isbn["ISBN-13"]} ")
     end
   end
 end
