@@ -1,7 +1,7 @@
 doctype html
 html
   head 
-
+    = link_to("My Library", user_libraries_path(@user.id))
   body 
     section id="cookbook_image_#{@cookbook.id}"
       - if @cookbook.image_link.nil?
