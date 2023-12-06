@@ -27,7 +27,7 @@ html
       div data-controller="cookbook"
         = form_with model: @cookbook, url: user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :delete do |form|
           = form.submit("Delete #{@cookbook.title}", data: { action: "click->cookbook#delete" })
-      
+      = button_to("Edit #{@cookbook.title}", edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :get)
 
     table id="recipes"
       h2 Recipes

@@ -127,7 +127,7 @@ RSpec.describe "Cookbook Show Page" do
         click_button("Edit #{@cookbook.title}")
       end
 
-      expect(page).to have_current_path()
+      expect(page).to have_current_path(edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
     end
 
     it "has a button for return to library" do
