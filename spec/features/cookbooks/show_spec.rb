@@ -102,6 +102,24 @@ RSpec.describe "Cookbook Show Page" do
       expect(page).to_not have_content(cookbook1.title)
     end
 
+    it "Has a button for delete cookbook. When clicked and the confirmation comes up and a user selects cancel the cookbook is not deleted", js: true do
+      cookbook1 = create(:cookbook, title: "The worst pancakes ever", library: @user.library, isbn: {"ISBN-13": Faker::Barcode.isbn})
+      visit user_libraries_path(@user.id)
+      expect(page).to have_link(cookbook1.title)
+      click_link(cookbook1.title)
+
+      within("#cookbook_options") do
+        expect(page).to have_button("Delete #{cookbook1.title}")
+        dismiss_confirm do
+          click_button("Delete #{cookbook1.title}")
+        end
+      end
+
+      expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, cookbook1.id))
+      click_link("My Library")
+      expect(page).to have_content(cookbook1.title)
+    end
+
     it "has a button for edit cookbook which directs the user to the edit form"
 
     it "has a button for return to library" do

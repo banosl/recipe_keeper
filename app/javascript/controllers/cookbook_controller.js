@@ -6,7 +6,6 @@ export default class extends Controller {
   }
   delete(event) {
     let confirmed = confirm("Are you sure?")
-    console.log("Confirmed", confirmed)
 
     if(!confirmed) {
       event.preventDefault()
