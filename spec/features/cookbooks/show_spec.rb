@@ -120,7 +120,15 @@ RSpec.describe "Cookbook Show Page" do
       expect(page).to have_content(cookbook1.title)
     end
 
-    it "has a button for edit cookbook which directs the user to the edit form"
+    it "has a button for edit cookbook which directs the user to the edit form" do
+      visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      within("#cookbook_options") do
+        expect(page).to have_button("Edit #{@cookbook.title}")
+        click_button("Edit #{@cookbook.title}")
+      end
+
+      expect(page).to have_current_path()
+    end
 
     it "has a button for return to library" do
       visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
