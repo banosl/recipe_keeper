@@ -34,6 +34,13 @@ class CookbooksController <ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(params[:user_id])
+    cookbook = Cookbook.find(params[:id])
+    cookbook.destroy
+    redirect_to user_libraries_path(user.id)
+  end
+
   private
 
   def cookbook_params

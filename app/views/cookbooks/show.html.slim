@@ -22,10 +22,17 @@ html
       p = @cookbook.description
       p = "Added on: #{@cookbook.created_at.strftime("%B %d, %Y")}"
       p = "Number of recipes added: #{@cookbook.recipe_count}"
+    
+    section id="cookbook_options"
+      div data-controller="cookbook"
+        = form_with model: @cookbook, url: user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :delete do |form|
+          = form.submit("Delete #{@cookbook.title}", data: { action: "click->cookbook#delete" })
+      
 
     table id="recipes"
+      h2 Recipes
       tr 
-        th Name 
+        th Name
         th Chapter 
         th Page 
       - @cookbook.recipes.each do |recipe|
