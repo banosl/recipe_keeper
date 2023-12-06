@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :sign_in, only: [:index]
   resources :users, only: [:index, :create] do
     resources :libraries, only: [:index] do
-      resources :cookbooks, only: [:new, :create, :show] do #is this too long of a route?
+      resources :cookbooks, only: [:new, :create, :show, :destroy] do #is this too long of a route?
         get 'match', on: :new
         resources :recipes, only: [:show]
       end
