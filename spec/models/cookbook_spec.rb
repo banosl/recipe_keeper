@@ -7,14 +7,34 @@ RSpec.describe Cookbook, type: :model do
 
   describe 'relationships' do
     it {should belong_to :library}
-    it {should have_many :recipes}
+    it {should have_many :chapters}
+    it {should have_many(:recipes).through(:chapters)}
   end
 
-  describe "Instance Methods" do
-    it "#display_authors formats the array of authors to a string" do
-      cookbook = Cookbook.new({title: "James and the Cooking Art of Canada", authors: ["James Buchannan", "Bon James", "James James"]})
+  describe "instance methods" do
+    before :each do
+      @user = create(:user, :google)
+      @user.create_library
+      @cookbook = create(:cookbook, library: @user.library, published_date: "2019-03-27", isbn: {"ISBN-13": Faker::Barcode.isbn})
+      @chapter = create(:chapter, cookbook: @cookbook)
+      @recipes = create_list(:recipe, 20, :breakfast, :salad, :dairy, chapter: @chapter)
+    end
+    
+    it "#recipe_count returns the number of recipes added to the cookbook by the user" do
+      expect(@cookbook.recipe_count).to eq(20)
+    end
+  
+    it "#published_year will determine if the info from google books api gives a full date or just the year and return just the year" do
+      cookbook_year = create(:cookbook, library: @user.library, published_date: "1782")
+      cookbook_nil_year = create(:cookbook, library: @user.library, published_date: nil)
+      
+      expect(@cookbook.published_year).to eq("2019")
+      expect(cookbook_year.published_year).to eq("1782")
+      expect(cookbook_nil_year.published_year).to eq("Year unknown")
+    end
 
-      expect(cookbook.display_authors).to eq("James Buchannan, Bon James, James James")
+    it "#identifiers returns the isbn number info as a string" do
+      expect(@cookbook.identifiers).to eq("ISBN-13: #{@cookbook.isbn["ISBN-13"]} ")
     end
   end
 end

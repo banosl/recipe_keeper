@@ -1,4 +1,9 @@
 class CookbooksController <ApplicationController
+  def show
+    @user = User.find(params[:user_id])
+    @cookbook = Cookbook.find(params[:id])
+  end
+  
   def new
     @user = User.find(params[:user_id])
     if params[:cookbook]
@@ -27,6 +32,17 @@ class CookbooksController <ApplicationController
       flash.alert = "Something went wrong. Please re-enter your cookbook's details."
       render :new
     end
+  end
+
+  def edit
+    @user = User.find(params[:user_id])
+  end
+
+  def destroy
+    user = User.find(params[:user_id])
+    cookbook = Cookbook.find(params[:id])
+    cookbook.destroy
+    redirect_to user_libraries_path(user.id)
   end
 
   private

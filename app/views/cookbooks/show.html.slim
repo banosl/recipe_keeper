@@ -1,0 +1,42 @@
+doctype html
+html
+  head 
+    = link_to("My Library", user_libraries_path(@user.id))
+  body 
+    section id="cookbook_image_#{@cookbook.id}"
+      - if @cookbook.image_link.nil?
+          = image_tag("no_image.png")
+      - else
+          img src= @cookbook.image_link
+
+    section id="cookbook_details_#{@cookbook.id}"
+      p = @cookbook.title
+      p = @cookbook.subtitle
+      p = "Author(s): #{@cookbook.authors.to_sentence}"
+      p = "Published by: #{@cookbook.publisher}, #{@cookbook.published_year}"
+      - if @cookbook.isbn.nil?
+        p = "Identifiers: Unknown"
+      - else 
+        p = "Identifiers: #{@cookbook.identifiers}"
+      p = "Language: #{@cookbook.language}"
+      p = @cookbook.description
+      p = "Added on: #{@cookbook.created_at.strftime("%B %d, %Y")}"
+      p = "Number of recipes added: #{@cookbook.recipe_count}"
+    
+    section id="cookbook_options"
+      div data-controller="cookbook"
+        = form_with model: @cookbook, url: user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :delete do |form|
+          = form.submit("Delete #{@cookbook.title}", data: { action: "click->cookbook#delete" })
+      = button_to("Edit #{@cookbook.title}", edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :get)
+
+    table id="recipes"
+      h2 Recipes
+      tr 
+        th Name
+        th Chapter 
+        th Page 
+      - @cookbook.recipes.each do |recipe|
+        tr
+          td = link_to(recipe.name, user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id))
+          td = recipe.chapter.name
+          td = recipe.page

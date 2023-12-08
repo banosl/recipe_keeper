@@ -10,7 +10,7 @@
     <section id="user_entries">
       <h2> You Entered: </h2>
       <p>Title: <%= @cookbook.title %></p>
-      <p>Authors: <%= @cookbook.display_authors %></p>
+      <p>Authors: <%= @cookbook.authors.to_sentence %></p>
       <p>Publisher: <%= @cookbook.publisher %></p>
       <p>ISBN: <%= @cookbook.isbn %></p>
       <p>Nation of Origin: <%= @cookbook.country_cuisine %></p>

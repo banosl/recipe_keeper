@@ -18,14 +18,23 @@ FactoryBot.define do
 
   factory :cookbook do
     title {Faker::Book.title}
-    isbn {Faker::Barcode.isbn}
-    authors {Faker::Book.author}
+    subtitle {Faker::Book.title}
+    authors {[Faker::Book.author]}
     publisher {Faker::Book.publisher}
     country_cuisine {Faker::Nation.nationality}
+    published_date {Faker::Date.in_date_period}
+    image_link {"https://media.tenor.com/wDD-YmMOjgwAAAAC/pikachu-togepi.gif"}
+    language {Faker::Nation.language}
+    description {Faker::Food.description}
     association :library
   end
 
-  factory :recipes do
+  factory :chapter do
+    name {Faker::Food.ingredient}
+    association :cookbook
+  end
+
+  factory :recipe do
     name {Faker::Food.dish}
     country_of_origin {Faker::Nation.nationality}
     page {Faker::Number.between(from: 10, to: 500)}
@@ -80,6 +89,6 @@ FactoryBot.define do
       food_group {:dairy}
     end
 
-    association :cookbook
+    association :chapter
   end
 end

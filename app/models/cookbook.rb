@@ -2,13 +2,26 @@ class Cookbook < ApplicationRecord
   validates_presence_of :title
   
   belongs_to :library
-  has_many :recipes, dependent: :destroy
+  has_many :chapters, dependent: :destroy
+  has_many :recipes, through: :chapters
 
-  def display_authors
-    result = ""
-    authors.each do |name|
-      result += ", #{name}"
+  def recipe_count
+    recipes.count
+  end
+
+  def published_year
+    if published_date.nil?
+      "Year unknown"
+    else
+      published_date.length == 4? published_date : DateTime.parse(published_date).to_date.year.to_s
     end
-    result.sub(", ", "")
+  end
+
+  def identifiers
+    result = ""
+    isbn.each do |type, value|
+      result += "#{type}: #{value} "
+    end
+    result
   end
 end
