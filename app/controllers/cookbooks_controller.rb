@@ -35,7 +35,7 @@ class CookbooksController <ApplicationController
   end
 
   def edit
-    
+    @user = User.find(params[:user_id])
   end
 
   def destroy
