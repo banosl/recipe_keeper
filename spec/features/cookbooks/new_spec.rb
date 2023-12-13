@@ -80,8 +80,9 @@ RSpec.describe "New Cookbook form page" do
           choose :cookbook_user_entry_true
           click_button "Save Cookbook"
         end
-        # expect(Cookbook.find_by(title: "A Monkey's Guide to Bananas").isbn).to be(nil)
-        # puts VCR.current_cassette.inspect
+        
+        expect(page).to have_current_path(user_libraries_path(@user.id))
+        expect(Cookbook.find_by(title: "Banana Cooking").isbn).to be(nil)
       end
     end
     

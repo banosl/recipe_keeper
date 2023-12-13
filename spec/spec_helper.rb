@@ -32,7 +32,6 @@ VCR.configure do |c|
   c.configure_rspec_metadata!
   c.ignore_localhost = true
   # c.debug_logger = $stderr
-  c.allow_http_connections_when_no_cassette = true
 end
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
