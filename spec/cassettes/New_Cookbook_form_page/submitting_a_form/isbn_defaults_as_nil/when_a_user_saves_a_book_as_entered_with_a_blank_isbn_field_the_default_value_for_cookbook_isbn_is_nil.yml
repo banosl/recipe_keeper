@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:cooking%2Bfor%2Bbabies%2Bisbn:abc312459a
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:banana%2Bcooking%2Binauthor:luca%2Bbanos%2Binpublisher:i%2Bpublish
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 13 Dec 2023 18:11:42 GMT
+      - Wed, 13 Dec 2023 18:11:41 GMT
       Server:
       - ESF
       Cache-Control:
@@ -49,5 +49,5 @@ http_interactions:
           "kind": "books#volumes",
           "totalItems": 0
         }
-  recorded_at: Wed, 13 Dec 2023 18:11:42 GMT
+  recorded_at: Wed, 13 Dec 2023 18:11:41 GMT
 recorded_with: VCR 6.1.0

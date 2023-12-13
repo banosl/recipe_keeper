@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Thu, 09 Nov 2023 16:45:17 GMT
+      - Wed, 13 Dec 2023 18:11:37 GMT
       Server:
       - ESF
       Cache-Control:
@@ -52,7 +52,7 @@ http_interactions:
             {
               "kind": "books#volume",
               "id": "_r0tnQEACAAJ",
-              "etag": "kzcAhl+WqjY",
+              "etag": "f8oUE6ICL9s",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/_r0tnQEACAAJ",
               "volumeInfo": {
                 "title": "The Super Chicken Cookbook",
@@ -108,7 +108,7 @@ http_interactions:
             {
               "kind": "books#volume",
               "id": "hsxHGwAACAAJ",
-              "etag": "ocabmq48wbc",
+              "etag": "wqpN2vGafhE",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/hsxHGwAACAAJ",
               "volumeInfo": {
                 "title": "The Super Chicken Cookbook",
@@ -163,60 +163,8 @@ http_interactions:
             },
             {
               "kind": "books#volume",
-              "id": "NQUcIq2Y3lkC",
-              "etag": "cfIKyu0WJzQ",
-              "selfLink": "https://www.googleapis.com/books/v1/volumes/NQUcIq2Y3lkC",
-              "volumeInfo": {
-                "title": "The Super Chicken Cookbook",
-                "publishedDate": "1982",
-                "readingModes": {
-                  "text": false,
-                  "image": false
-                },
-                "pageCount": 132,
-                "printType": "BOOK",
-                "maturityRating": "NOT_MATURE",
-                "allowAnonLogging": false,
-                "contentVersion": "0.2.1.0.preview.0",
-                "panelizationSummary": {
-                  "containsEpubBubbles": false,
-                  "containsImageBubbles": false
-                },
-                "imageLinks": {
-                  "smallThumbnail": "http://books.google.com/books/content?id=NQUcIq2Y3lkC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-                  "thumbnail": "http://books.google.com/books/content?id=NQUcIq2Y3lkC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-                },
-                "language": "en",
-                "previewLink": "http://books.google.com/books?id=NQUcIq2Y3lkC&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
-                "infoLink": "http://books.google.com/books?id=NQUcIq2Y3lkC&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
-                "canonicalVolumeLink": "https://books.google.com/books/about/The_Super_Chicken_Cookbook.html?hl=&id=NQUcIq2Y3lkC"
-              },
-              "saleInfo": {
-                "country": "US",
-                "saleability": "NOT_FOR_SALE",
-                "isEbook": false
-              },
-              "accessInfo": {
-                "country": "US",
-                "viewability": "NO_PAGES",
-                "embeddable": false,
-                "publicDomain": false,
-                "textToSpeechPermission": "ALLOWED",
-                "epub": {
-                  "isAvailable": false
-                },
-                "pdf": {
-                  "isAvailable": false
-                },
-                "webReaderLink": "http://play.google.com/books/reader?id=NQUcIq2Y3lkC&hl=&as_pt=BOOKS&source=gbs_api",
-                "accessViewStatus": "NONE",
-                "quoteSharingAllowed": false
-              }
-            },
-            {
-              "kind": "books#volume",
               "id": "noRvzgEACAAJ",
-              "etag": "1N/kXxF5RyI",
+              "etag": "ORLGzR4yjAo",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/noRvzgEACAAJ",
               "volumeInfo": {
                 "title": "Super Chicken",
@@ -246,7 +194,7 @@ http_interactions:
                   "containsImageBubbles": false
                 },
                 "language": "en",
-                "previewLink": "http://books.google.com/books?id=noRvzgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+                "previewLink": "http://books.google.com/books?id=noRvzgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
                 "infoLink": "http://books.google.com/books?id=noRvzgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
                 "canonicalVolumeLink": "https://books.google.com/books/about/Super_Chicken.html?hl=&id=noRvzgEACAAJ"
               },
@@ -277,8 +225,60 @@ http_interactions:
             },
             {
               "kind": "books#volume",
+              "id": "NQUcIq2Y3lkC",
+              "etag": "OStHThK2ZX0",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/NQUcIq2Y3lkC",
+              "volumeInfo": {
+                "title": "The Super Chicken Cookbook",
+                "publishedDate": "1982",
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 132,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.2.1.0.preview.0",
+                "panelizationSummary": {
+                  "containsEpubBubbles": false,
+                  "containsImageBubbles": false
+                },
+                "imageLinks": {
+                  "smallThumbnail": "http://books.google.com/books/content?id=NQUcIq2Y3lkC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                  "thumbnail": "http://books.google.com/books/content?id=NQUcIq2Y3lkC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=NQUcIq2Y3lkC&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=NQUcIq2Y3lkC&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/The_Super_Chicken_Cookbook.html?hl=&id=NQUcIq2Y3lkC"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=NQUcIq2Y3lkC&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              }
+            },
+            {
+              "kind": "books#volume",
               "id": "BEHEsgEACAAJ",
-              "etag": "v5Cx1egysHI",
+              "etag": "XHLnNNIIjbg",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/BEHEsgEACAAJ",
               "volumeInfo": {
                 "title": "Dump Chicken Recipes",
@@ -348,5 +348,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Thu, 09 Nov 2023 16:45:17 GMT
+  recorded_at: Wed, 13 Dec 2023 18:11:37 GMT
 recorded_with: VCR 6.1.0

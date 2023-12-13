@@ -28,42 +28,66 @@ RSpec.describe "New Cookbook form page" do
     expect(page).to have_current_path(user_libraries_path(@user.id))
   end
 
-  describe "submitting a form", :vcr do
-    it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
+  describe "submitting a form" do
+    context "saving a cookbook as entered", :vcr do
+      it 'can fill out and submit the form. Then the user is redirected to the match page but with matches/confirmation options
       after clicking Save Cookbook, the cookbook is created and the user is redirected to the library and they can see their book listed',
       js: true do
-      
-      title = "World of Warcraft The official Cookbook"
-      author = "Chelsea Monroe-Cassel"
-      publisher = "Insight Editions"
-      country_cuisine = "Azeroth"
-      isbn = "9781608878048"
-      
-      visit new_user_library_cookbook_path(@user.id, @library.id)
-      within ("#cookbook_form") do
-        fill_in :cookbook_title, with: title
-        fill_in :cookbook_authors, with: author
-        fill_in :cookbook_publisher, with: publisher
-        fill_in :cookbook_country_cuisine, with: country_cuisine
-        fill_in :cookbook_isbn, with: isbn
-        click_button 'Submit'
-      end
- 
-      within ("#cookbook_match") do
-        choose :cookbook_user_entry_true
-        click_button "Save Cookbook"
-      end
+        title = "World of Warcraft The official Cookbook"
+        author = "Chelsea Monroe-Cassel"
+        publisher = "Insight Editions"
+        country_cuisine = "Azeroth"
+        isbn = "9781608878048"
+        
+        visit new_user_library_cookbook_path(@user.id, @library.id)
+        within ("#cookbook_form") do
+          fill_in :cookbook_title, with: title
+          fill_in :cookbook_authors, with: author
+          fill_in :cookbook_publisher, with: publisher
+          fill_in :cookbook_country_cuisine, with: country_cuisine
+          fill_in :cookbook_isbn, with: isbn
+          click_button 'Submit'
+        end
   
-      expect(page).to have_current_path(user_libraries_path(@user.id))
-      
-      within "#library" do
-        expect(page).to have_table_row("Title" => title, "Author" => author)
+        within ("#cookbook_match") do
+          choose :cookbook_user_entry_true
+          click_button "Save Cookbook"
+        end
+    
+        expect(page).to have_current_path(user_libraries_path(@user.id))
+        
+        within "#library" do
+          expect(page).to have_table_row("Title" => title, "Author" => author)
+        end
+      end
+    end
+
+    context "isbn defaults as nil", :vcr do
+      it "when a user saves a book as entered, with a blank isbn field the default value for cookbook.isbn is nil", js: true do
+        title = "Banana Cooking"
+        author = "Luca Banos"
+        publisher = "I Publish"
+
+        visit new_user_library_cookbook_path(@user.id, @library.id)
+        within ("#cookbook_form") do
+          fill_in :cookbook_title, with: title
+          fill_in :cookbook_authors, with: author
+          fill_in :cookbook_publisher, with: publisher
+          click_button 'Submit'
+        end
+
+        within ("#cookbook_match") do
+          choose :cookbook_user_entry_true
+          click_button "Save Cookbook"
+        end
+        # expect(Cookbook.find_by(title: "A Monkey's Guide to Bananas").isbn).to be(nil)
+        # puts VCR.current_cassette.inspect
       end
     end
     
-    context "Form field errors", :vcr do
+    context "form field errors", :vcr do
       it 'will show an error if a form is submitted without a title, 
-        and anything that was populated before will be prefilled' do
+      and anything that was populated before will be prefilled' do
           author = "Chelsea Monroe-Cassel"
           publisher = "Insight Editions"
           country_cuisine = "Azeroth"

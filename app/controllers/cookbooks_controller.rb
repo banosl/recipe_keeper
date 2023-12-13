@@ -100,6 +100,7 @@ class CookbooksController <ApplicationController
   def create_cookbook(google_books_matches, user)
     if cookbook_match_params[:user_entry] == "true"
       cookbook = Cookbook.new(cookbook_params)
+      cookbook.update!(isbn: nil)
     else
       index = cookbook_match_params[:user_entry].last.to_i - 1
       data = CookbookMatchSerializer.match_data(google_books_matches[index], user.library.id)
