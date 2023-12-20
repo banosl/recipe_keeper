@@ -31,6 +31,7 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.configure_rspec_metadata!
   c.ignore_localhost = true
+  # c.debug_logger = $stderr
 end
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

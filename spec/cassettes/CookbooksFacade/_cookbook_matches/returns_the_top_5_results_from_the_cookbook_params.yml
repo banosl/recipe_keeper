@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 08 Nov 2023 22:03:44 GMT
+      - Wed, 13 Dec 2023 18:11:28 GMT
       Server:
       - ESF
       Cache-Control:
@@ -52,7 +52,7 @@ http_interactions:
             {
               "kind": "books#volume",
               "id": "qsEOAAAACAAJ",
-              "etag": "vS9j/maYIr0",
+              "etag": "8vxNzxuAzB8",
               "selfLink": "https://www.googleapis.com/books/v1/volumes/qsEOAAAACAAJ",
               "volumeInfo": {
                 "title": "Delightful Thai Cooking",
@@ -123,5 +123,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Wed, 08 Nov 2023 22:03:44 GMT
+  recorded_at: Wed, 13 Dec 2023 18:11:28 GMT
 recorded_with: VCR 6.1.0
