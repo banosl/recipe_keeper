@@ -42,5 +42,15 @@ RSpec.describe 'library index' do
         expect(page).to_not have_table_row("Title" => "be the dream", "Author(s)" => "bob")
       end
     end
+
+    it "if a cookbook is saved from the API with authors as nil, the table displays 'Authors Unknown'" do
+      book1 = create(:cookbook, library: @library, authors: nil)
+
+      visit user_libraries_path(@user.id)
+
+      within "#library" do
+        expect(page).to have_table_row("Title" => book1.title, "Author(s)" => "Unknown")
+      end
+    end
   end
 end
