@@ -57,6 +57,16 @@ RSpec.describe "Cookbook Show Page" do
         expect(page).to have_content("Identifiers: Unknown")
       end
     end
+
+    it "If Authors is nil then 'Author(s) is followed by 'Unknown'" do
+      cookbook_nil_author = create(:cookbook, library: @user.library, authors: nil)
+
+      visit user_library_cookbook_path(@user.id, @user.library.id, cookbook_nil_author.id)
+
+      within ("#cookbook_details_#{cookbook_nil_author.id}") do
+        expect(page).to have_content("Author(s): Unknown")
+      end
+    end
   end
 
   describe "Recipes Table" do
