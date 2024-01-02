@@ -36,6 +36,11 @@ class CookbooksController <ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
+    @cookbook = Cookbook.find(params[:id])
+  end
+
+  def update
+    binding.pry
   end
 
   def destroy
