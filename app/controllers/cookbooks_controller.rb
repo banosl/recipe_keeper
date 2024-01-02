@@ -40,7 +40,12 @@ class CookbooksController <ApplicationController
   end
 
   def update
-    binding.pry
+    cookbook = Cookbook.find(params[:id])
+    user = User.find(params[:user_id])
+    
+    if cookbook.update!(cookbook_update_params)
+      redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
+    end
   end
 
   def destroy
@@ -77,6 +82,18 @@ class CookbooksController <ApplicationController
                       :google_id,
                       :library_id
     )                                
+  end
+
+  def cookbook_update_params
+    params.require(:cookbook).permit(
+                      :title,
+                      :subtitle,
+                      :publisher,
+                      :description,
+                      :language,
+                      :published_date,
+                      authors: [],
+    )
   end
 
   def form_errors

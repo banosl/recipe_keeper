@@ -42,11 +42,12 @@ RSpec.describe "Edit Cookbook Page" do
       expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
 
       within "#cookbook_details_#{@cookbook.id}" do
-        expect(page).to have_content("Title: Luca and the Tiny Peaches Cookbook")
-        expect(page).to have_content("Subtitle: In May")
+        expect(page).to have_content("Luca and the Tiny Peaches Cookbook")
+        expect(page).to have_content("In May")
         expect(page).to have_content("Author(s): Leo Banos")
         expect(page).to have_content("Published by: Karki Chronicles, 2023")
         expect(page).to have_content("Language: German")
+        expect(page).to have_content("There once was a man that liked peaches way too much.")
       end
     end
 
