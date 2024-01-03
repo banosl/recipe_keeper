@@ -51,7 +51,21 @@ RSpec.describe "Edit Cookbook Page" do
       end
     end
 
-    it "User can update authors with multiple authors"
+    it "User can update authors with multiple authors" do
+      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+
+      within "#edit_#{@cookbook.id}" do
+        fill_in :cookbook_authors, with: "Luca Tiwa, Leo Bingo"
+        click_button "Update"
+      end
+
+      expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+
+      within "#cookbook_details_#{@cookbook.id}" do
+        expect(page).to have_content("Author(s): Luca Tiwa, Leo Bingo")
+      end
+      
+    end
 
     it "User can click cancel and return to the cookbook show page with no changes"
 
@@ -61,7 +75,7 @@ RSpec.describe "Edit Cookbook Page" do
   describe "Edit form errors" do
     it "It will show error if the form is submitted without a title"
 
-    it "Will show an error if the isbn is changed so that it's not all digits"
+    it "Will show 'Author unknown' if the author(s) are deleted'"
 
     it "Will show an error if the isbn is changed so that it's shorter than 10 digits, equal to 12 digits, or longer than 13"
   end
