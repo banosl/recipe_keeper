@@ -82,7 +82,16 @@ RSpec.describe "Edit Cookbook Page" do
       end
     end
 
-    it "User can click cancel and return to the cookbook show page with no changes"
+    it "User can click cancel and return to the cookbook show page with no changes" do
+      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+
+      within "#edit_#{@cookbook.id}" do
+        click_button "Cancel"
+      end
+
+      expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+      expect(page).to have_content(@cookbook.title)
+    end
 
     it "User can upload their own picture"
   end

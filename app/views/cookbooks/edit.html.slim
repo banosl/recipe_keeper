@@ -21,4 +21,4 @@ html
         = form.label :description, "Description:"
         p = form.text_area :description, value: @cookbook.description, size: "70x5"
         = form.submit "Update"
-      = button_to "Cancel", user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      = button_to "Cancel", user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :get
