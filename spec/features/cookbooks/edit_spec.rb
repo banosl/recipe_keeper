@@ -24,6 +24,16 @@ RSpec.describe "Edit Cookbook Page" do
       end
     end
 
+    it "If authors is nil, the text field is blank" do
+      @cookbook.update!(authors: nil)
+
+      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+
+      within "#edit_#{@cookbook.id}" do
+        expect(page).to have_field(:cookbook_authors, with: "")
+      end
+    end
+
     it "The form updates the cookbook info after clicking submit" do
       visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
 

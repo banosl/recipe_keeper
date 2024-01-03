@@ -11,7 +11,7 @@ html
         = form.label :title, "Subtitle:" 
         p = form.text_field :subtitle, value: @cookbook.subtitle
         = form.label :authors, "Author:" 
-        p = form.text_field :authors, multiple: true, value: @cookbook.authors.to_sentence
+        p = form.text_field :authors, multiple: true, value: !@cookbook.authors.nil? ? @cookbook.authors.to_sentence : ""
         = form.label :publisher, "Publisher:" 
         p = form.text_field :publisher, value: @cookbook.publisher
         = form.label :published_date, "Published Year:"
