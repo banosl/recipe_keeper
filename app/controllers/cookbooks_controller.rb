@@ -43,14 +43,7 @@ class CookbooksController <ApplicationController
     cookbook = Cookbook.find(params[:id])
     user = User.find(params[:user_id])
     
-    if cookbook.update(cookbook_update_params)
-      if cookbook.authors == [""]
-        cookbook.update!(authors: nil)
-      end
-      redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
-    else
-      form_errors(edit_user_library_cookbook_path(user.id, user.library.id, cookbook.id))
-    end
+    update_cookbook(cookbook, user, cookbook_update_params)
   end
 
   def destroy
@@ -134,5 +127,16 @@ class CookbooksController <ApplicationController
       cookbook = Cookbook.new(data)
     end
     cookbook
+  end
+
+  def update_cookbook(cookbook, user, params)
+    if cookbook.update(params)
+      if cookbook.authors == [""]
+        cookbook.update!(authors: nil)
+      end
+      redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
+    else
+      form_errors(edit_user_library_cookbook_path(user.id, user.library.id, cookbook.id))
+    end
   end
 end
