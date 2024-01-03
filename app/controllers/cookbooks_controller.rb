@@ -15,7 +15,7 @@ class CookbooksController <ApplicationController
 
   def match
     @user = User.find(params[:user_id])
-    form_errors
+    form_errors(new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params))
 
     @cookbook = Cookbook.new(cookbook_params)
     @google_books_matches = CookbooksFacade.cookbook_matches(cookbook_params)
@@ -49,7 +49,6 @@ class CookbooksController <ApplicationController
       end
       redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
     else
-      # binding.pry
       form_errors(edit_user_library_cookbook_path(user.id, user.library.id, cookbook.id))
     end
   end
@@ -106,7 +105,6 @@ class CookbooksController <ApplicationController
     if params[:cookbook]
       if params[:cookbook][:title].blank?
         redirect_to path
-        # new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
         flash.alert = "Please enter a title for your cookbook."
       elsif !params[:cookbook][:isbn].blank?
         isbn_form_errors
