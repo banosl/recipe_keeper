@@ -97,7 +97,16 @@ RSpec.describe "Edit Cookbook Page" do
   end
 
   describe "Edit form errors" do
-    it "It will show error if the form is submitted without a title"
+    it "It will show error if the form is submitted without a title" do
+      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
 
+      within "#edit_#{@cookbook.id}" do
+        fill_in :cookbook_title, with: ""
+        click_button "Update"
+      end
+
+      expect(page).to have_current_path(edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+      expect(page).to have_content("Please enter a title for your cookbook.")
+    end
   end
 end

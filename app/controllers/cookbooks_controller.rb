@@ -43,11 +43,14 @@ class CookbooksController <ApplicationController
     cookbook = Cookbook.find(params[:id])
     user = User.find(params[:user_id])
     
-    if cookbook.update!(cookbook_update_params)
+    if cookbook.update(cookbook_update_params)
       if cookbook.authors == [""]
         cookbook.update!(authors: nil)
       end
       redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
+    else
+      # binding.pry
+      form_errors(edit_user_library_cookbook_path(user.id, user.library.id, cookbook.id))
     end
   end
 
@@ -99,10 +102,11 @@ class CookbooksController <ApplicationController
     )
   end
 
-  def form_errors
+  def form_errors(path)
     if params[:cookbook]
       if params[:cookbook][:title].blank?
-        redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
+        redirect_to path
+        # new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
         flash.alert = "Please enter a title for your cookbook."
       elsif !params[:cookbook][:isbn].blank?
         isbn_form_errors
