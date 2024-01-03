@@ -12,12 +12,15 @@ html
     section id="cookbook_details_#{@cookbook.id}"
       p = @cookbook.title
       p = @cookbook.subtitle
-      p = "Author(s): #{@cookbook.authors.to_sentence}"
+      - if @cookbook.authors.nil?
+          p = "Author(s): Unknown"
+      - else 
+          p = "Author(s): #{@cookbook.authors.to_sentence}"
       p = "Published by: #{@cookbook.publisher}, #{@cookbook.published_year}"
       - if @cookbook.isbn.nil?
-        p = "Identifiers: Unknown"
+          p = "Identifiers: Unknown"
       - else 
-        p = "Identifiers: #{@cookbook.identifiers}"
+          p = "Identifiers: #{@cookbook.identifiers}"
       p = "Language: #{@cookbook.language}"
       p = @cookbook.description
       p = "Added on: #{@cookbook.created_at.strftime("%B %d, %Y")}"

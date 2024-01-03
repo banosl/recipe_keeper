@@ -15,7 +15,7 @@ class CookbooksController <ApplicationController
 
   def match
     @user = User.find(params[:user_id])
-    form_errors
+    form_errors(new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params))
 
     @cookbook = Cookbook.new(cookbook_params)
     @google_books_matches = CookbooksFacade.cookbook_matches(cookbook_params)
@@ -36,6 +36,14 @@ class CookbooksController <ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
+    @cookbook = Cookbook.find(params[:id])
+  end
+
+  def update
+    cookbook = Cookbook.find(params[:id])
+    user = User.find(params[:user_id])
+    
+    update_cookbook(cookbook, user, cookbook_update_params)
   end
 
   def destroy
@@ -74,10 +82,22 @@ class CookbooksController <ApplicationController
     )                                
   end
 
-  def form_errors
+  def cookbook_update_params
+    params.require(:cookbook).permit(
+                      :title,
+                      :subtitle,
+                      :publisher,
+                      :description,
+                      :language,
+                      :published_date,
+                      authors: [],
+    )
+  end
+
+  def form_errors(path)
     if params[:cookbook]
       if params[:cookbook][:title].blank?
-        redirect_to new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params)
+        redirect_to path
         flash.alert = "Please enter a title for your cookbook."
       elsif !params[:cookbook][:isbn].blank?
         isbn_form_errors
@@ -107,5 +127,16 @@ class CookbooksController <ApplicationController
       cookbook = Cookbook.new(data)
     end
     cookbook
+  end
+
+  def update_cookbook(cookbook, user, params)
+    if cookbook.update(params)
+      if cookbook.authors == [""]
+        cookbook.update!(authors: nil)
+      end
+      redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
+    else
+      form_errors(edit_user_library_cookbook_path(user.id, user.library.id, cookbook.id))
+    end
   end
 end

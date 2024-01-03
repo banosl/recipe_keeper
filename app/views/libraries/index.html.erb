@@ -10,7 +10,11 @@
   <% @cookbooks.each do |cookbook| %>
     <tr>
     <td><%= link_to cookbook.title, user_library_cookbook_path(@user.id, @user.library.id, cookbook.id) %></td> 
-    <td><%= cookbook.authors.to_sentence %></td>
+    <td><% if cookbook.authors.nil? %>
+             <p>Unknown</p>
+        <% else %>
+          <%= cookbook.authors.to_sentence %>
+        <% end %></td>
     </tr>
   <% end %>
 </table>

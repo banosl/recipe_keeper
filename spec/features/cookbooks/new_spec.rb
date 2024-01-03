@@ -85,7 +85,7 @@ RSpec.describe "New Cookbook form page" do
         expect(Cookbook.find_by(title: "Banana Cooking").isbn).to be(nil)
       end
     end
-    
+
     context "form field errors", :vcr do
       it 'will show an error if a form is submitted without a title, 
       and anything that was populated before will be prefilled' do

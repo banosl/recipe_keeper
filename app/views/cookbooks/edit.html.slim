@@ -2,4 +2,23 @@ doctype html
 html
   head 
     = link_to("My Library", user_libraries_path(@user.id))
-  body 
+  body
+    h1 = "Edit #{@cookbook.title}" 
+    section id="edit_#{@cookbook.id}"
+      = form_with model: @cookbook, url: user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :put do |form|
+        = form.label :title, "Title:" 
+        p = form.text_field :title, value: @cookbook.title
+        = form.label :title, "Subtitle:" 
+        p = form.text_field :subtitle, value: @cookbook.subtitle
+        = form.label :authors, "Author:" 
+        p = form.text_field :authors, multiple: true, value: @cookbook.authors.to_sentence
+        = form.label :publisher, "Publisher:" 
+        p = form.text_field :publisher, value: @cookbook.publisher
+        = form.label :published_date, "Published Year:"
+        p = form.text_field :published_date, value: @cookbook.published_year
+        = form.label :language, "Language:"
+        p = form.text_field :language, value: @cookbook.language
+        = form.label :description, "Description:"
+        p = form.text_area :description, value: @cookbook.description, size: "70x5"
+        = form.submit "Update"
+      = button_to "Cancel", user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :get
