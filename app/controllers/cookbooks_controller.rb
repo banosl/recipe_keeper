@@ -44,6 +44,9 @@ class CookbooksController <ApplicationController
     user = User.find(params[:user_id])
     
     if cookbook.update!(cookbook_update_params)
+      if cookbook.authors == [""]
+        cookbook.update!(authors: nil)
+      end
       redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
     end
   end
