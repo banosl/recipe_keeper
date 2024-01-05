@@ -2,19 +2,26 @@ require 'rails_helper'
 
 RSpec.describe 'library index' do
   before :each do
-    @user = User.create({first_name: "Leo", last_name: "Banos Garcia", email: "leo@leo.com"})
+    @user = create(:user, :google)
     @library = @user.create_library
+  end
+
+  before :each do
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.add_mock(:google_oauth2, uid: @user.google_id, info: {email: @user.email}, credentials: {token: @user.google_token})
   end
 
   describe 'visiting a users library' do
     it 'shows a users library page with [names] library at the top' do
       visit user_libraries_path(@user.id)
+      click_button "Google Sign In"
    
       expect(page).to have_content("#{@user.first_name}'s Library")
     end
 
     it 'shows a button to add a cookbook' do
       visit user_libraries_path(@user.id)
+      click_button "Google Sign In"
 
       expect(page).to have_link("Add a cookbook to my library", href: new_user_library_cookbook_path(@user.id, @library.id))
     end
@@ -27,6 +34,7 @@ RSpec.describe 'library index' do
       book5 = create(:cookbook, library: @library)
 
       visit user_libraries_path(@user.id)
+      click_button "Google Sign In"
       
       within "#library" do
         expect(page).to have_table_row("Title" => book1.title, "Author(s)" => book1.authors.to_sentence)
@@ -47,6 +55,7 @@ RSpec.describe 'library index' do
       book1 = create(:cookbook, library: @library, authors: nil)
 
       visit user_libraries_path(@user.id)
+      click_button "Google Sign In"
 
       within "#library" do
         expect(page).to have_table_row("Title" => book1.title, "Author(s)" => "Unknown")
