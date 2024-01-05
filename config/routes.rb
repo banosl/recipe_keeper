@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'sessions#create'
 
   resources :sign_in, only: [:index]
+  resources :sessions, only: [:destroy]
   resources :users, only: [:index, :create] do
     resources :libraries, only: [:index] do
       resources :cookbooks, except: [:index] do #is this too long of a route?
