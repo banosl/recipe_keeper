@@ -1,11 +1,13 @@
 class CookbooksController <ApplicationController
+  before_action :logged_in_user
+
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find(session[:user_id])
     @cookbook = Cookbook.find(params[:id])
   end
   
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(session[:user_id])
     if params[:cookbook]
       @cookbook = Cookbook.new(cookbook_params)
     else
@@ -14,7 +16,7 @@ class CookbooksController <ApplicationController
   end
 
   def match
-    @user = User.find(params[:user_id])
+    @user = User.find(session[:user_id])
     form_errors(new_user_library_cookbook_path(@user.id, @user.library.id, cookbook: cookbook_params))
 
     @cookbook = Cookbook.new(cookbook_params)
@@ -23,7 +25,7 @@ class CookbooksController <ApplicationController
   end
 
   def create
-    user = User.find(params[:user_id])
+    user = User.find(session[:user_id])
     google_books_matches = CookbooksFacade.cookbook_matches(cookbook_params)
 
     if create_cookbook(google_books_matches, user).save
@@ -35,19 +37,19 @@ class CookbooksController <ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.find(session[:user_id])
     @cookbook = Cookbook.find(params[:id])
   end
 
   def update
     cookbook = Cookbook.find(params[:id])
-    user = User.find(params[:user_id])
+    user = User.find(session[:user_id])
     
     update_cookbook(cookbook, user, cookbook_update_params)
   end
 
   def destroy
-    user = User.find(params[:user_id])
+    user = User.find(session[:user_id])
     cookbook = Cookbook.find(params[:id])
     cookbook.destroy
     redirect_to user_libraries_path(user.id)
