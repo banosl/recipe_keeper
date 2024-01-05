@@ -5,6 +5,11 @@ class SessionsController < ApplicationController
 
     redirect_to user_libraries_path(session[:user_id])
   end
+
+  def destroy
+    log_out
+    redirect_to root_url
+  end
   
   private
 
