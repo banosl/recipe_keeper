@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= button_to "Log Out", session_path(@user.id), method: :delete %>
 </head>
 <body>
   <center><h1> Add a New Cookbook </h1></center>

@@ -9,9 +9,18 @@ RSpec.describe "Edit Cookbook Page" do
     @recipes = create_list(:recipe, 20, :breakfast, :salad, :dairy, chapter: @chapter)
   end
 
+  before :each do
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.add_mock(:google_oauth2, uid: @user.google_id, info: {first_name: @user.first_name, last_name: @user.last_name, email: @user.email}, credentials: {token: @user.google_token})
+  end
+
   describe "Edit form" do
     it "Existing info about the cookbook is prepopulated in the form" do
-      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      visit sign_in_index_path
+      
+      click_button "Google Sign In"
+      click_link(@cookbook.title)
+      click_button("Edit #{@cookbook.title}")
 
       within "#edit_#{@cookbook.id}" do
         expect(page).to have_field(:cookbook_title, with: @cookbook.title)
@@ -27,7 +36,11 @@ RSpec.describe "Edit Cookbook Page" do
     it "If authors is nil, the text field is blank" do
       @cookbook.update!(authors: nil)
 
-      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      visit sign_in_index_path
+      
+      click_button "Google Sign In"
+      click_link(@cookbook.title)
+      click_button("Edit #{@cookbook.title}")
 
       within "#edit_#{@cookbook.id}" do
         expect(page).to have_field(:cookbook_authors, with: "")
@@ -35,7 +48,11 @@ RSpec.describe "Edit Cookbook Page" do
     end
 
     it "The form updates the cookbook info after clicking submit" do
-      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      visit sign_in_index_path
+      
+      click_button "Google Sign In"
+      click_link(@cookbook.title)
+      click_button("Edit #{@cookbook.title}")
 
       within "#edit_#{@cookbook.id}" do
         fill_in :cookbook_title, with: "Luca and the Tiny Peaches Cookbook"
@@ -62,7 +79,11 @@ RSpec.describe "Edit Cookbook Page" do
     end
 
     it "User can update authors with multiple authors" do
-      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      visit sign_in_index_path
+      
+      click_button "Google Sign In"
+      click_link(@cookbook.title)
+      click_button("Edit #{@cookbook.title}")
 
       within "#edit_#{@cookbook.id}" do
         fill_in :cookbook_authors, with: "Luca Tiwa, Leo Bingo"
@@ -78,7 +99,11 @@ RSpec.describe "Edit Cookbook Page" do
     end
 
     it "Will show 'Author unknown' if the author(s) are deleted" do
-      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      visit sign_in_index_path
+      
+      click_button "Google Sign In"
+      click_link(@cookbook.title)
+      click_button("Edit #{@cookbook.title}")
 
       within "#edit_#{@cookbook.id}" do
         fill_in :cookbook_authors, with: ""
@@ -93,7 +118,11 @@ RSpec.describe "Edit Cookbook Page" do
     end
 
     it "User can click cancel and return to the cookbook show page with no changes" do
-      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      visit sign_in_index_path
+      
+      click_button "Google Sign In"
+      click_link(@cookbook.title)
+      click_button("Edit #{@cookbook.title}")
 
       within "#edit_#{@cookbook.id}" do
         click_button "Cancel"
@@ -108,7 +137,11 @@ RSpec.describe "Edit Cookbook Page" do
 
   describe "Edit form errors" do
     it "It will show error if the form is submitted without a title" do
-      visit edit_user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      visit sign_in_index_path
+      
+      click_button "Google Sign In"
+      click_link(@cookbook.title)
+      click_button("Edit #{@cookbook.title}")
 
       within "#edit_#{@cookbook.id}" do
         fill_in :cookbook_title, with: ""

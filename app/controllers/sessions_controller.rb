@@ -2,8 +2,12 @@ class SessionsController < ApplicationController
   def create
     user = User.find_or_create_user(user_params)
     session[:user_id] = user.id
+    redirect_back_or(user_libraries_path(session[:user_id]))
+  end
 
-    redirect_to user_libraries_path(session[:user_id])
+  def destroy
+    log_out
+    redirect_to root_path
   end
   
   private

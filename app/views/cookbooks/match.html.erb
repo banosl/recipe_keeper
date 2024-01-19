@@ -2,6 +2,7 @@
 <html>
 <head>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <%= button_to "Log Out", session_path(@user.id), method: :delete %>
 </head>
 
 <body>
