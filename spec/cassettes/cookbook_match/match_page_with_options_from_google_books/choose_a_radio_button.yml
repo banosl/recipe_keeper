@@ -1,0 +1,393 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:great%2Bbritish%2Bcooking%2Binauthor:jane%2Bgarmey%2Binpublisher:harper%2Bcollins%2Bisbn:9780062039019
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 19 Jan 2024 02:02:33 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJraW5kIjogImJvb2tzI3ZvbHVtZXMiLAogICJ0b3RhbEl0ZW1zIjogMSwKICAiaXRlbXMiOiBbCiAgICB7CiAgICAgICJraW5kIjogImJvb2tzI3ZvbHVtZSIsCiAgICAgICJpZCI6ICJrWk05WGNoZklmVUMiLAogICAgICAiZXRhZyI6ICJ2bjluS2hTdnVHdyIsCiAgICAgICJzZWxmTGluayI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9ib29rcy92MS92b2x1bWVzL2taTTlYY2hmSWZVQyIsCiAgICAgICJ2b2x1bWVJbmZvIjogewogICAgICAgICJ0aXRsZSI6ICJHcmVhdCBCcml0aXNoIENvb2tpbmciLAogICAgICAgICJzdWJ0aXRsZSI6ICJBIFdlbGwtS2VwdCBTZWNyZXQiLAogICAgICAgICJhdXRob3JzIjogWwogICAgICAgICAgIkphbmUgR2FybWV5IgogICAgICAgIF0sCiAgICAgICAgInB1Ymxpc2hlciI6ICJIYXJwZXIgQ29sbGlucyIsCiAgICAgICAgInB1Ymxpc2hlZERhdGUiOiAiMjAxMy0wNy0wMiIsCiAgICAgICAgImRlc2NyaXB0aW9uIjogIlRoaXMgYm9vayBpcyBhIHJldmVsYXRpb24gdG8gQW1lcmljYW5zIHdobyBoYXZlIG5ldmVyIHRhc3RlZCByZWFsIENvcm5pc2ggUGFzdGllcywgU2NvdGNoIFdvb2Rjb2NrIChhIHNwbGVuZGlkIHZlcnNpb24gb2Ygc2NyYW1ibGVkIGVnZ3MpIG9yIEJyb3duIEJyZWFkIEljZSBDcmVhbS4gRnJvbSB0aGUgc3VtcHR1b3VzIGJyZWFrZmFzdHMgdGhhdCBtYWRlIEVuZ2xhbmQgZmFtb3VzIHRvIHRoZSBzdGVhbWVkIHB1ZGRpbmdzLCB0cmlmbGVzLCBtZXJpbmd1ZXMgYW5kIHN5bGxhYnVicyB0aGF0IGFyZSBzdGlsbCByZW5vd25lZCwgbm8gYXNwZWN0IG9mIEJyaXRpc2ggY29va2luZyBpcyBvdmVybG9va2VkLiBTb3VwcywgZmlzaCwgbWVhdCBhbmQgZ2FtZSwgdmVnZXRhYmxlcywgc2F1Y2VzLCBoaWdoIHRlYXMsIHNjb25lcywgY3J1bXBldHMsIGhvdCBjcm9zcyBidW5zLCBzYXZvcmllcywgcHJlc2VydmVzIGFuZCBzd2VldHMgb2YgYWxsIGtpbmRzIGFyZSBoZXJlIGluIGNsZWFyLCBwcmVjaXNlIHJlY2lwZXMgd2l0aCBpbmdyZWRpZW50cyBhbmQgdXRlbnNpbHMgdHJhbnNsYXRlZCBpbnRvIEFtZXJpY2FuIHRlcm1zLiIsCiAgICAgICAgImluZHVzdHJ5SWRlbnRpZmllcnMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJ0eXBlIjogIklTQk5fMTMiLAogICAgICAgICAgICAiaWRlbnRpZmllciI6ICI5NzgwMDYyMDM5MDE5IgogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgInR5cGUiOiAiSVNCTl8xMCIsCiAgICAgICAgICAgICJpZGVudGlmaWVyIjogIjAwNjIwMzkwMTYiCiAgICAgICAgICB9CiAgICAgICAgXSwKICAgICAgICAicmVhZGluZ01vZGVzIjogewogICAgICAgICAgInRleHQiOiB0cnVlLAogICAgICAgICAgImltYWdlIjogZmFsc2UKICAgICAgICB9LAogICAgICAgICJwYWdlQ291bnQiOiAzNDYsCiAgICAgICAgInByaW50VHlwZSI6ICJCT09LIiwKICAgICAgICAiY2F0ZWdvcmllcyI6IFsKICAgICAgICAgICJDb29raW5nIgogICAgICAgIF0sCiAgICAgICAgIm1hdHVyaXR5UmF0aW5nIjogIk5PVF9NQVRVUkUiLAogICAgICAgICJhbGxvd0Fub25Mb2dnaW5nIjogdHJ1ZSwKICAgICAgICAiY29udGVudFZlcnNpb24iOiAiMC41LjUuMC5wcmV2aWV3LjIiLAogICAgICAgICJwYW5lbGl6YXRpb25TdW1tYXJ5IjogewogICAgICAgICAgImNvbnRhaW5zRXB1YkJ1YmJsZXMiOiBmYWxzZSwKICAgICAgICAgICJjb250YWluc0ltYWdlQnViYmxlcyI6IGZhbHNlCiAgICAgICAgfSwKICAgICAgICAiaW1hZ2VMaW5rcyI6IHsKICAgICAgICAgICJzbWFsbFRodW1ibmFpbCI6ICJodHRwOi8vYm9va3MuZ29vZ2xlLmNvbS9ib29rcy9jb250ZW50P2lkPWtaTTlYY2hmSWZVQyZwcmludHNlYz1mcm9udGNvdmVyJmltZz0xJnpvb209NSZlZGdlPWN1cmwmc291cmNlPWdic19hcGkiLAogICAgICAgICAgInRodW1ibmFpbCI6ICJodHRwOi8vYm9va3MuZ29vZ2xlLmNvbS9ib29rcy9jb250ZW50P2lkPWtaTTlYY2hmSWZVQyZwcmludHNlYz1mcm9udGNvdmVyJmltZz0xJnpvb209MSZlZGdlPWN1cmwmc291cmNlPWdic19hcGkiCiAgICAgICAgfSwKICAgICAgICAibGFuZ3VhZ2UiOiAiZW4iLAogICAgICAgICJwcmV2aWV3TGluayI6ICJodHRwOi8vYm9va3MuZ29vZ2xlLmNvbS9ib29rcz9pZD1rWk05WGNoZklmVUMmcGc9UFQxNCZkcT1pbnRpdGxlOmdyZWF0JTJCYnJpdGlzaCUyQmNvb2tpbmclMkJpbmF1dGhvcjpqYW5lJTJCZ2FybWV5JTJCaW5wdWJsaXNoZXI6aGFycGVyJTJCY29sbGlucyUyQmlzYm46OTc4MDA2MjAzOTAxOSZobD0mYXNfcHQ9Qk9PS1MmY2Q9MSZzb3VyY2U9Z2JzX2FwaSIsCiAgICAgICAgImluZm9MaW5rIjogImh0dHBzOi8vcGxheS5nb29nbGUuY29tL3N0b3JlL2Jvb2tzL2RldGFpbHM/aWQ9a1pNOVhjaGZJZlVDJnNvdXJjZT1nYnNfYXBpIiwKICAgICAgICAiY2Fub25pY2FsVm9sdW1lTGluayI6ICJodHRwczovL3BsYXkuZ29vZ2xlLmNvbS9zdG9yZS9ib29rcy9kZXRhaWxzP2lkPWtaTTlYY2hmSWZVQyIKICAgICAgfSwKICAgICAgInNhbGVJbmZvIjogewogICAgICAgICJjb3VudHJ5IjogIlVTIiwKICAgICAgICAic2FsZWFiaWxpdHkiOiAiRk9SX1NBTEUiLAogICAgICAgICJpc0Vib29rIjogdHJ1ZSwKICAgICAgICAibGlzdFByaWNlIjogewogICAgICAgICAgImFtb3VudCI6IDE0Ljk5LAogICAgICAgICAgImN1cnJlbmN5Q29kZSI6ICJVU0QiCiAgICAgICAgfSwKICAgICAgICAicmV0YWlsUHJpY2UiOiB7CiAgICAgICAgICAiYW1vdW50IjogOS45OSwKICAgICAgICAgICJjdXJyZW5jeUNvZGUiOiAiVVNEIgogICAgICAgIH0sCiAgICAgICAgImJ1eUxpbmsiOiAiaHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYm9va3MvZGV0YWlscz9pZD1rWk05WGNoZklmVUMmcmRpZD1ib29rLWtaTTlYY2hmSWZVQyZyZG90PTEmc291cmNlPWdic19hcGkiLAogICAgICAgICJvZmZlcnMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJmaW5za3lPZmZlclR5cGUiOiAxLAogICAgICAgICAgICAibGlzdFByaWNlIjogewogICAgICAgICAgICAgICJhbW91bnRJbk1pY3JvcyI6IDE0OTkwMDAwLAogICAgICAgICAgICAgICJjdXJyZW5jeUNvZGUiOiAiVVNEIgogICAgICAgICAgICB9LAogICAgICAgICAgICAicmV0YWlsUHJpY2UiOiB7CiAgICAgICAgICAgICAgImFtb3VudEluTWljcm9zIjogOTk5MDAwMCwKICAgICAgICAgICAgICAiY3VycmVuY3lDb2RlIjogIlVTRCIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgImdpZnRhYmxlIjogdHJ1ZQogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgImFjY2Vzc0luZm8iOiB7CiAgICAgICAgImNvdW50cnkiOiAiVVMiLAogICAgICAgICJ2aWV3YWJpbGl0eSI6ICJQQVJUSUFMIiwKICAgICAgICAiZW1iZWRkYWJsZSI6IHRydWUsCiAgICAgICAgInB1YmxpY0RvbWFpbiI6IGZhbHNlLAogICAgICAgICJ0ZXh0VG9TcGVlY2hQZXJtaXNzaW9uIjogIkFMTE9XRUQiLAogICAgICAgICJlcHViIjogewogICAgICAgICAgImlzQXZhaWxhYmxlIjogdHJ1ZSwKICAgICAgICAgICJhY3NUb2tlbkxpbmsiOiAiaHR0cDovL2Jvb2tzLmdvb2dsZS5jb20vYm9va3MvZG93bmxvYWQvR3JlYXRfQnJpdGlzaF9Db29raW5nLXNhbXBsZS1lcHViLmFjc20/aWQ9a1pNOVhjaGZJZlVDJmZvcm1hdD1lcHViJm91dHB1dD1hY3M0X2Z1bGZpbGxtZW50X3Rva2VuJmRsX3R5cGU9c2FtcGxlJnNvdXJjZT1nYnNfYXBpIgogICAgICAgIH0sCiAgICAgICAgInBkZiI6IHsKICAgICAgICAgICJpc0F2YWlsYWJsZSI6IGZhbHNlCiAgICAgICAgfSwKICAgICAgICAid2ViUmVhZGVyTGluayI6ICJodHRwOi8vcGxheS5nb29nbGUuY29tL2Jvb2tzL3JlYWRlcj9pZD1rWk05WGNoZklmVUMmaGw9JmFzX3B0PUJPT0tTJnNvdXJjZT1nYnNfYXBpIiwKICAgICAgICAiYWNjZXNzVmlld1N0YXR1cyI6ICJTQU1QTEUiLAogICAgICAgICJxdW90ZVNoYXJpbmdBbGxvd2VkIjogZmFsc2UKICAgICAgfSwKICAgICAgInNlYXJjaEluZm8iOiB7CiAgICAgICAgInRleHRTbmlwcGV0IjogIkEgV2VsbC1LZXB0IFNlY3JldCBKYW5lIFx1MDAzY2JcdTAwM2VHYXJtZXlcdTAwM2MvYlx1MDAzZS4gSW50cm9kdWN0aW9uLiBJdCBpcyB3aWRlbHkgaGVsZCB0aGF0IFx1MDAzY2JcdTAwM2VCcml0aXNoIGN1aXNpbmVcdTAwM2MvYlx1MDAzZSBpcyBhIGR1YmlvdXMgYWZmYWlyLiBBcyBNcnMuIFJhbXNheSBzYWlkLCBpbiBWaXJnaW5pYSBXb29sZiYjMzk7cyBUbyB0aGUgTGlnaHRob3VzZSwg4oCcV2hhdCBwYXNzZXMgZm9yIFx1MDAzY2JcdTAwM2Vjb29rZXJ5XHUwMDNjL2JcdTAwM2UgaW4gXHUwMDNjYlx1MDAzZUVuZ2xhbmRcdTAwM2MvYlx1MDAzZSBpcyBhbiBhYm9taW5hdGlvbi4gLi4uIEl0IGlzIHB1dHRpbmcmbmJzcDsuLi4iCiAgICAgIH0KICAgIH0KICBdCn0K
+  recorded_at: Fri, 19 Jan 2024 02:02:33 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/books/v1/volumes?maxResults=5&printType=books&q=intitle:the%2Bsuper%2Bchicken%2Bcookbook
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 19 Jan 2024 02:02:35 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "books#volumes",
+          "totalItems": 464,
+          "items": [
+            {
+              "kind": "books#volume",
+              "id": "Llu_GQAACAAJ",
+              "etag": "WWDdQiex+qU",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/Llu_GQAACAAJ",
+              "volumeInfo": {
+                "title": "Super chicken cookbook",
+                "authors": [
+                  "Iona Nixon"
+                ],
+                "publishedDate": "1982",
+                "industryIdentifiers": [
+                  {
+                    "type": "OTHER",
+                    "identifier": "OCLC:13046776"
+                  }
+                ],
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 128,
+                "printType": "BOOK",
+                "categories": [
+                  "Cooking (Poultry)"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=Llu_GQAACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=Llu_GQAACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Super_chicken_cookbook.html?hl=&id=Llu_GQAACAAJ"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=Llu_GQAACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              }
+            },
+            {
+              "kind": "books#volume",
+              "id": "hsxHGwAACAAJ",
+              "etag": "sLbu+Kl/ZnY",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/hsxHGwAACAAJ",
+              "volumeInfo": {
+                "title": "The Super Chicken Cookbook",
+                "authors": [
+                  "Claudia Carlin"
+                ],
+                "publishedDate": "1979",
+                "industryIdentifiers": [
+                  {
+                    "type": "OTHER",
+                    "identifier": "OCLC:26176239"
+                  }
+                ],
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 176,
+                "printType": "BOOK",
+                "categories": [
+                  "Cooking (Poultry)"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=hsxHGwAACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=2&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=hsxHGwAACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/The_Super_Chicken_Cookbook.html?hl=&id=hsxHGwAACAAJ"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=hsxHGwAACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              }
+            },
+            {
+              "kind": "books#volume",
+              "id": "noRvzgEACAAJ",
+              "etag": "OzlRp7Mqy2g",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/noRvzgEACAAJ",
+              "volumeInfo": {
+                "title": "Super Chicken",
+                "subtitle": "The Best Chicken Recipes",
+                "publishedDate": "2014",
+                "description": "Mealtimes need never be dull again with Super Chicken! This cookbook will offer all you need to create delicious home-made meals with this most versatile of ingredients.",
+                "industryIdentifiers": [
+                  {
+                    "type": "OTHER",
+                    "identifier": "OCLC:1245812844"
+                  }
+                ],
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 128,
+                "printType": "BOOK",
+                "categories": [
+                  "Cooking (Chicken)"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                  "containsEpubBubbles": false,
+                  "containsImageBubbles": false
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=noRvzgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=noRvzgEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Super_Chicken.html?hl=&id=noRvzgEACAAJ"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=noRvzgEACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              },
+              "searchInfo": {
+                "textSnippet": "Mealtimes need never be dull again with Super Chicken! This cookbook will offer all you need to create delicious home-made meals with this most versatile of ingredients."
+              }
+            },
+            {
+              "kind": "books#volume",
+              "id": "NQUcIq2Y3lkC",
+              "etag": "5BcAkrRi1XA",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/NQUcIq2Y3lkC",
+              "volumeInfo": {
+                "title": "The Super Chicken Cookbook",
+                "publishedDate": "1982",
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 132,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.2.1.0.preview.0",
+                "panelizationSummary": {
+                  "containsEpubBubbles": false,
+                  "containsImageBubbles": false
+                },
+                "imageLinks": {
+                  "smallThumbnail": "http://books.google.com/books/content?id=NQUcIq2Y3lkC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                  "thumbnail": "http://books.google.com/books/content?id=NQUcIq2Y3lkC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=NQUcIq2Y3lkC&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=NQUcIq2Y3lkC&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/The_Super_Chicken_Cookbook.html?hl=&id=NQUcIq2Y3lkC"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=NQUcIq2Y3lkC&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              }
+            },
+            {
+              "kind": "books#volume",
+              "id": "XeHQoAEACAAJ",
+              "etag": "dcta/dLyuR4",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/XeHQoAEACAAJ",
+              "volumeInfo": {
+                "title": "Super Chicken",
+                "subtitle": "The Best Chicken Recipes",
+                "authors": [
+                  "Parragon Book Service Limited"
+                ],
+                "publishedDate": "2014",
+                "description": "Mealtimes need never be dull again with Super Chicken! This cookbook will offer all you need to create delicious home-made meals with this most versatile of ingredients.",
+                "industryIdentifiers": [
+                  {
+                    "type": "ISBN_10",
+                    "identifier": "1472329864"
+                  },
+                  {
+                    "type": "ISBN_13",
+                    "identifier": "9781472329868"
+                  }
+                ],
+                "readingModes": {
+                  "text": false,
+                  "image": false
+                },
+                "pageCount": 128,
+                "printType": "BOOK",
+                "categories": [
+                  "Cooking (Chicken)"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=XeHQoAEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=XeHQoAEACAAJ&dq=intitle:the%2Bsuper%2Bchicken%2Bcookbook&hl=&as_pt=BOOKS&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Super_Chicken.html?hl=&id=XeHQoAEACAAJ"
+              },
+              "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+              },
+              "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                  "isAvailable": false
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=XeHQoAEACAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+              },
+              "searchInfo": {
+                "textSnippet": "This cookbook will offer all you need to create delicious homemade meals with this most versatile of ingredients."
+              }
+            }
+          ]
+        }
+  recorded_at: Fri, 19 Jan 2024 02:02:35 GMT
+recorded_with: VCR 6.2.0
