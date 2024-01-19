@@ -4,6 +4,7 @@ RSpec.describe "New Cookbook form page" do
   before :each do
     @user = create(:user, :google)
     @library = @user.create_library
+    sign_in_as(@user)
   end
 
   it "has the fields for adding a new cookbook" do

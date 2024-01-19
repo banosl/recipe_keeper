@@ -7,6 +7,7 @@ RSpec.describe "Cookbook Show Page" do
     @cookbook = create(:cookbook, library: @user.library, isbn: {"ISBN-13": Faker::Barcode.isbn})
     @chapter = create(:chapter, cookbook: @cookbook)
     @recipes = create_list(:recipe, 20, :breakfast, :salad, :dairy, chapter: @chapter)
+    sign_in_as(@user)
   end
 
   describe "Cookbook info" do
