@@ -11,7 +11,7 @@ RSpec.describe "Edit Cookbook Page" do
 
   before :each do
     OmniAuth.config.test_mode = true
-    OmniAuth.config.add_mock(:google_oauth2, uid: @user.google_id, info: {email: @user.email}, credentials: {token: @user.google_token})
+    OmniAuth.config.add_mock(:google_oauth2, uid: @user.google_id, info: {first_name: @user.first_name, last_name: @user.last_name, email: @user.email}, credentials: {token: @user.google_token})
   end
 
   describe "Edit form" do
