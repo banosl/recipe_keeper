@@ -1,5 +1,5 @@
 # Recipe Keeper
-boop bap bep
+boop bap bep beep
 Recipe Keeper is a Rails application designed to serve as an online library for your physical cookbooks at home. Within this app, each user can maintain a private digital library, allowing them to digitize their cookbook recipes for easy access. Users can conveniently search for recipes based on various categories. While the app is still in the development stage, progress and features are being tracked using GitHub projects.
 
 I embarked on creating this app to bring order to my extensive collection of cookbooks and to simplify the process of retrieving recipes. Once the foundational library functionality is complete, my plan is to introduce a unique feature. This upcoming addition will generate meal suggestions based on designated parameters, combining protein, fruits/vegetables, and grain dish recipes to inspire delightful and balanced meals.
