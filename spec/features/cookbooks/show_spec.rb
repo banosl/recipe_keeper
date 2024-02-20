@@ -148,5 +148,13 @@ RSpec.describe "Cookbook Show Page" do
       click_link("My Library")
       expect(page).to have_current_path(user_libraries_path(@user.id))
     end
+
+    it "has a button for adding a recipe" do
+      visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      expect(page).to have_button("Add a Recipe")
+
+      click_button("Add a Recipe")
+      expect(page).to have_current_path(new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id))
+    end
   end
 end

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :libraries, only: [:index] do
       resources :cookbooks, except: [:index] do #is this too long of a route?
         get 'match', on: :new
-        resources :recipes, only: [:show]
+        resources :recipes, except: [:index]
       end
     end
   end
