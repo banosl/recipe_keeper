@@ -1,0 +1,6 @@
+doctype html
+html
+  head 
+    = link_to("My Library", user_libraries_path(@user.id))
+    = button_to("Log Out", session_path(@user.id), method: :delete)
+  body 

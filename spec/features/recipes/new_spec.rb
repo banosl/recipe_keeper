@@ -20,9 +20,9 @@ RSpec.describe "Add a recipe form page" do
     
     it "Large text box for adding recipe instructions"
 
-    it "There is a text box for page, servings, prep time"
+    it "There is a text box for page, servings, prep time, respectively"
 
-    it "THere is an option for uploading a photo or photos"
+    it "There is an option for uploading a photo or photos"
   end
 
   context "submitting a form" do
