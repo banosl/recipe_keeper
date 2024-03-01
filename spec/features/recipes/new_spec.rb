@@ -23,7 +23,7 @@ RSpec.describe "Add a recipe form page" do
 
     it "There are check boxes for meal times, they can be checked" do
       visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
-      within("#recipe_form") do
+      within("#meal_times") do
         expect(page).to have_field(:recipe_breakfast)
         expect(page).to have_field(:recipe_brunch)
         expect(page).to have_field(:recipe_lunch)
@@ -44,7 +44,7 @@ RSpec.describe "Add a recipe form page" do
 
     it "There are radio buttons for food group" do
       visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
-      within("#recipe_form") do
+      within("#food_group") do
         expect(page).to have_field(:recipe_food_group_grain)
         expect(page).to have_field(:recipe_food_group_protein)
         expect(page).to have_field(:recipe_food_group_fruit_vegetables)
@@ -53,9 +53,9 @@ RSpec.describe "Add a recipe form page" do
       end
     end
 
-    xit "There are radio buttons for meal type" do
-      within("#recipe_form") do
-        #field names might be off
+    it "There are radio buttons for meal type" do
+      visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      within("#meal_type") do
         expect(page).to have_field(:recipe_meal_type_appetizer)
         expect(page).to have_field(:recipe_meal_type_salad)
         expect(page).to have_field(:recipe_meal_type_entree)
