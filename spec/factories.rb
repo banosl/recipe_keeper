@@ -92,6 +92,9 @@ FactoryBot.define do
     trait :dairy do
       food_group {:dairy}
     end
+    trait :other do
+      food_group {:other}
+    end
 
     association :chapter
   end
