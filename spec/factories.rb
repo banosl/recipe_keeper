@@ -55,6 +55,10 @@ FactoryBot.define do
       meal_time {:dinner}
     end
 
+    trait :snack do
+      meal_time {:snack}
+    end
+
     trait :appetizer do
       meal_type {:appetizer}
     end
