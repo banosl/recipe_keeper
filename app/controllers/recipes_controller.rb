@@ -4,7 +4,6 @@ class RecipesController < ApplicationController
   def new
     @user = User.find(session[:user_id])
     @cookbook = Cookbook.find(params[:cookbook_id])
-    # binding.pry
     if params[:recipe]
       @recipe = Recipe.new(recipe_params)
     else
@@ -17,7 +16,11 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(
                       :name,
-                      :meal_time,
+                      :breakfast,
+                      :brunch,
+                      :lunch,
+                      :dinner,
+                      :snack,
                       :meal_type,
                       :food_group,
                       :page,
