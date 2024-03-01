@@ -6,6 +6,7 @@ html
   body
     section id="recipe_form"
       = form_with model: @recipe, url: user_library_cookbook_recipes_path(@user.id, @user.library.id, @cookbook.id), method: :post do |form|
+        p = "Select meal times(s):"
         = form.check_box :breakfast
         = form.label :breakfast, "Breakfast"
         = form.check_box :brunch
@@ -16,4 +17,15 @@ html
         = form.label :dinner, "Dinner"
         = form.check_box :snack
         = form.label :snack, "Snack"
-        = form.submit "Add Recipe"
+        p = "Select a food group:"
+        = form.radio_button :food_group, :grain
+        = form.label :food_group_grain, "Grain"
+        = form.radio_button :food_group, :protein
+        = form.label :food_group_protein, "Protein"
+        = form.radio_button :food_group, :fruit_vegetables
+        = form.label :food_group_fruit_vegetables, "Fruits & Vegetables"
+        = form.radio_button :food_group, :dairy
+        = form.label :food_group_dairy, "Dairy"
+        = form.radio_button :food_group, :other
+        = form.label :food_group_other, "Other"
+        p = form.submit "Add Recipe"

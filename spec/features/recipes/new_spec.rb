@@ -42,18 +42,19 @@ RSpec.describe "Add a recipe form page" do
       end
     end
 
-    xit "There are radio buttons for food group" do
-      within("recipe_form") do
-        #field names might be off
-        expect(page).to have_radio_button(:recipe_food_group_grain)
+    it "There are radio buttons for food group" do
+      visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      within("#recipe_form") do
+        expect(page).to have_field(:recipe_food_group_grain)
         expect(page).to have_field(:recipe_food_group_protein)
         expect(page).to have_field(:recipe_food_group_fruit_vegetables)
         expect(page).to have_field(:recipe_food_group_dairy)
+        expect(page).to have_field(:recipe_food_group_other)
       end
     end
 
     xit "There are radio buttons for meal type" do
-      within("recipe_form") do
+      within("#recipe_form") do
         #field names might be off
         expect(page).to have_field(:recipe_meal_type_appetizer)
         expect(page).to have_field(:recipe_meal_type_salad)
@@ -64,21 +65,21 @@ RSpec.describe "Add a recipe form page" do
     end
     
     xit "There is a drop down list for chapter available" do
-      within("recipe_form") do
+      within("#recipe_form") do
         expect(page).to have_field(:recipe_chapter)
         #one for each option
       end
     end
     
     xit "There is the option to add a new chapter in the drop down list" do
-      within("recipe_form") do
+      within("#recipe_form") do
         #expect an add chapter option
       end
     end
     
     it "Large text box for adding recipe instructions"
 
-    it "There is a text box for page, servings, prep time, respectively"
+    it "There is a text box for name, page, servings, prep time, respectively"
 
     it "There is an option for uploading a photo or photos"
   end
