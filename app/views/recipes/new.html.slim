@@ -3,4 +3,17 @@ html
   head 
     = link_to("My Library", user_libraries_path(@user.id))
     = button_to("Log Out", session_path(@user.id), method: :delete)
-  body 
+  body
+    section id="recipe_form"
+      = form_with model: @recipe, url: user_library_cookbook_recipes_path(@user.id, @user.library.id, @cookbook.id), method: :post do |form|
+        = form.check_box :breakfast
+        = form.label :breakfast, "Breakfast"
+        = form.check_box :brunch
+        = form.label :brunch, "Brunch"
+        = form.check_box :lunch
+        = form.label :lunch, "Lunch"
+        = form.check_box :dinner
+        = form.label :dinner, "Dinner"
+        = form.check_box :snack
+        = form.label :snack, "Snack"
+        = form.submit "Add Recipe"

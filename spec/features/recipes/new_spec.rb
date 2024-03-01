@@ -21,14 +21,24 @@ RSpec.describe "Add a recipe form page" do
       end
     end
 
-    it "There are check boxes for meal times" do
-      within("recipe_form") do
-        #field names might be off
-        expect(page).to have_checkbox(:recipe_breakfast)
+    it "There are check boxes for meal times, they can be checked" do
+      visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      within("#recipe_form") do
+        expect(page).to have_field(:recipe_breakfast)
         expect(page).to have_field(:recipe_brunch)
         expect(page).to have_field(:recipe_lunch)
         expect(page).to have_field(:recipe_dinner)
         expect(page).to have_field(:recipe_snack)
+        check :recipe_breakfast
+        expect(page).to have_checked_field(:recipe_breakfast)
+        check :recipe_brunch
+        expect(page).to have_checked_field(:recipe_brunch)
+        check :recipe_lunch
+        expect(page).to have_checked_field(:recipe_lunch)
+        check :recipe_dinner
+        expect(page).to have_checked_field(:recipe_dinner)
+        check :recipe_snack
+        expect(page).to have_checked_field(:recipe_snack)
       end
     end
 
