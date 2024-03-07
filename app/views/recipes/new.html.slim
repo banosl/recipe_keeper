@@ -6,6 +6,9 @@ html
   body
     section id="recipe_form"
       = form_with model: @recipe, url: user_library_cookbook_recipes_path(@user.id, @user.library.id, @cookbook.id), method: :post do |form|
+        section id="chapter"
+          p = "Select a chapter or add a new one:"
+          = form.select :chapter, @chapters
         section id="meal_times"  
           p = "Select meal times(s):"
           = form.check_box :breakfast
@@ -37,7 +40,7 @@ html
           = form.radio_button :meal_type, :salad
           = form.label :meal_type_salad, "Salad"
           = form.radio_button :meal_type, :entree
-          = form.label :meal_type_entree, "Entr\u0117e"
+          = form.label :meal_type_entree, "Entr\u00E9e"
           = form.radio_button :meal_type, :dessert
           = form.label :meal_type_dessert, "Dessert"
           = form.radio_button :meal_type, :drink

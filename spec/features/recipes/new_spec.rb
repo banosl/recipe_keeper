@@ -5,7 +5,8 @@ RSpec.describe "Add a recipe form page" do
     @user = create(:user, :google)
     @user.create_library
     @cookbook = create(:cookbook, library: @user.library, isbn: {"ISBN-13": Faker::Barcode.isbn})
-    @chapter = create(:chapter, cookbook: @cookbook)
+    @chapter_1 = create(:chapter, cookbook: @cookbook)
+    @chapter_2 = create(:chapter, cookbook: @cookbook)
     sign_in_as(@user)
   end
 
@@ -64,18 +65,14 @@ RSpec.describe "Add a recipe form page" do
       end
     end
     
-    xit "There is a drop down list for chapter available" do
-      within("#recipe_form") do
-        expect(page).to have_field(:recipe_chapter)
-        #one for each option
+    it "There is a drop down list for chapter available plus an option to add a new chapter" do
+      visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      within("#chapter") do
+        expect(page).to have_select(:recipe_chapter, with_options: [@chapter_1.name, @chapter_2.name, "New Chapter"])
       end
     end
-    
-    xit "There is the option to add a new chapter in the drop down list" do
-      within("#recipe_form") do
-        #expect an add chapter option
-      end
-    end
+
+    it "When New Chapter is chosen, a new field appears for a user to enter the name for the new chapter."
     
     it "Large text box for adding recipe instructions"
 
@@ -88,10 +85,16 @@ RSpec.describe "Add a recipe form page" do
     context "a successful form submission" do
       it "ingredients can be entered one per line with the measurement on the same line separated by a comma
       after submission ingredients individually create a recipe_ingredient"
+
+      it "Meal times, food group, and meal type are saved correctly"
+
+      it "A chapter from the drop down list saves as an association to the recipe"
+
+      it "When add chapter is chosen, and the add chapter name field is filled when submitted, a new chapter is created."
     end
     #a test here per user input
     context "errors for an unsuccessful form submission" do
-      it "i"
+      it "If new chapter is selected, the add chapter field cannot be empty"
     end
   end
 
