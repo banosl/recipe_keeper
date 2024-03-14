@@ -49,4 +49,7 @@ html
           = form.label :meal_type_dessert, "Dessert"
           = form.radio_button :meal_type, :drink
           = form.label :meal_type_drink, "Drink"
+        section id="instructions"
+          p = "Enter cooking instructions."
+          = form.text_area :instructions
         p = form.submit "Add Recipe"

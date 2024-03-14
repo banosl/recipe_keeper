@@ -87,7 +87,14 @@ RSpec.describe "Add a recipe form page" do
       end
     end
     
-    it "Large text box for adding recipe instructions"
+    it "There is a large text box for adding recipe instructions" do
+      visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      click_button("Add a Recipe")
+
+      within("#instructions") do
+        expect(page).to have_field(:recipe_instructions)
+      end
+    end
 
     it "There is a text box for name, page, servings, prep time, respectively"
 
@@ -104,8 +111,10 @@ RSpec.describe "Add a recipe form page" do
       it "A chapter from the drop down list saves as an association to the recipe"
 
       it "When add chapter is chosen, and the add chapter name field is filled when submitted, a new chapter is created."
+
+      it "Insructions are saved."
     end
-    #a test here per user input
+
     context "errors for an unsuccessful form submission" do
       it "If new chapter is selected, the add chapter field cannot be empty"
 
