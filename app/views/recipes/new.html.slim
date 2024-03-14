@@ -1,14 +1,18 @@
 doctype html
 html
   head 
+    script src="https://code.jquery.com/jquery-3.6.0.min.js"
     = link_to("My Library", user_libraries_path(@user.id))
     = button_to("Log Out", session_path(@user.id), method: :delete)
   body
+    = javascript_include_tag 'new_chapter_field'
     section id="recipe_form"
       = form_with model: @recipe, url: user_library_cookbook_recipes_path(@user.id, @user.library.id, @cookbook.id), method: :post do |form|
         section id="chapter"
           p = "Select a chapter or add a new one:"
-          = form.select :chapter, @chapters
+          = form.select :chapter, @chapters, selected: "Chapters"
+          p = form.label :new_chapter, "New chapter name:", id: "recipe_new_chapter_label"
+          = form.text_field :new_chapter, disabled: true, id: "recipe_new_chapter_field"
         section id="meal_times"  
           p = "Select meal times(s):"
           = form.check_box :breakfast

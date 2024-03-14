@@ -10,7 +10,7 @@ RSpec.describe "Add a recipe form page" do
     sign_in_as(@user)
   end
 
-  context "Form Fields" do
+  describe "Form Fields" do
     xit "There is a text box for entering ingredients separated by comma with an example entry" do
       #i want to build a microservice api for ingredients with their nutrition data
       #for now i will skip ingredients
@@ -65,14 +65,27 @@ RSpec.describe "Add a recipe form page" do
       end
     end
     
-    it "There is a drop down list for chapter available plus an option to add a new chapter" do
+    it "There is a drop down list for chapter available plus an option to add a new chapter", js: true do
       visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
       within("#chapter") do
-        expect(page).to have_select(:recipe_chapter, with_options: [@chapter_1.name, @chapter_2.name, "New Chapter"])
+        expect(page).to have_select(:recipe_chapter, with_options: [@chapter_1.name, @chapter_2.name, "Add New Chapter"])
       end
     end
 
-    it "When New Chapter is chosen, a new field appears for a user to enter the name for the new chapter."
+    it "When New Chapter is chosen, a new field appears for a user to enter the name for the new chapter.", js: true do
+      visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      click_button("Add a Recipe")
+      within("#chapter") do
+        expect(page).to have_select(:recipe_chapter, selected: "Chapters")
+        expect(page).to_not have_field(:recipe_new_chapter_field, disabled: true)
+        expect(page).to_not have_content("New chapter name:")
+        select @chapter_1.name, from: :recipe_chapter
+        select "Add New Chapter", from: :recipe_chapter
+        expect(page).to have_select(:recipe_chapter, selected: "Add New Chapter")
+        expect(page).to have_field(:recipe_new_chapter_field, disabled: false)
+        expect(page).to have_content("New chapter name:")
+      end
+    end
     
     it "Large text box for adding recipe instructions"
 
@@ -95,6 +108,8 @@ RSpec.describe "Add a recipe form page" do
     #a test here per user input
     context "errors for an unsuccessful form submission" do
       it "If new chapter is selected, the add chapter field cannot be empty"
+
+      it "A new chapter cannot be named 'New Chapter, Add New Chapter, or Chapter'"
     end
   end
 

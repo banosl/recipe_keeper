@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   def new
     @user = User.find(session[:user_id])
     @cookbook = Cookbook.find(params[:cookbook_id])
-    @chapters = @cookbook.chapters.map {|chapter| chapter.name}.append("New Chapter")
+    @chapters = @cookbook.chapters.map {|chapter| chapter.name}.append("Add New Chapter").insert(0,"Chapters")
     
     if params[:recipe]
       @recipe = Recipe.new(recipe_params)
