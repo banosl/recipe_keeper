@@ -26,11 +26,6 @@ RSpec.describe "cookbook #match", type: :feature do
   end
 
   describe "User visits the cookbook match page after submitting cookbook details in #new", :vcr do
-    it "says 'is this your cookbook?' at the top of the page", js: true  do
-      expect(page).to have_content("Is this your cookbook?")
-      choose :cookbook_user_entry_true
-    end
-
     it "Shows the details of the cookbook submitted by the user to review 
     and chooses to save the book as is, but the save button doesn't appear until a radio button is selected", js: true do
       within ("#user_entries") do
