@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_19_012245) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_19_015246) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,7 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_19_012245) do
     t.integer "page"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "meal_time"
     t.integer "meal_type"
     t.integer "food_group"
     t.bigint "chapter_id", null: false
@@ -81,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_19_012245) do
     t.integer "prep_minutes"
     t.text "description"
     t.text "instructions"
+    t.string "meal_time", array: true
     t.index ["chapter_id"], name: "index_recipes_on_chapter_id"
   end
 
