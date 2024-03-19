@@ -73,8 +73,7 @@ RSpec.describe "Add a recipe form page" do
     end
 
     it "When New Chapter is chosen, a new field appears for a user to enter the name for the new chapter.", js: true do
-      visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
-      click_button("Add a Recipe")
+      visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
       within("#chapter") do
         expect(page).to have_select(:recipe_chapter, selected: "Chapters")
         expect(page).to_not have_field(:recipe_new_chapter_field, disabled: true)
@@ -88,22 +87,29 @@ RSpec.describe "Add a recipe form page" do
     end
     
     it "There is a large text box for adding recipe instructions" do
-      visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
-      click_button("Add a Recipe")
-
+      visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
       within("#instructions") do
         expect(page).to have_field(:recipe_instructions)
       end
     end
 
-    it "There is a text box for name, page, servings, prep time, respectively"
+    it "There is a text box for name, page, servings, prep time, respectively" do
+      visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      within("#text_questions") do
+        expect(page).to have_field(:recipe_name)
+        expect(page).to have_field(:recipe_page)
+        expect(page).to have_field(:recipe_servings)
+        expect(page).to have_field(:recipe_prep_hours)
+        expect(page).to have_field(:recipe_prep_minutes)
+      end
+    end
 
     it "There is an option for uploading a photo or photos"
   end
 
   context "submitting a form" do
     context "a successful form submission" do
-      it "ingredients can be entered one per line with the measurement on the same line separated by a comma
+      xit "ingredients can be entered one per line with the measurement on the same line separated by a comma
       after submission ingredients individually create a recipe_ingredient"
 
       it "Meal times, food group, and meal type are saved correctly"
@@ -119,6 +125,10 @@ RSpec.describe "Add a recipe form page" do
       it "If new chapter is selected, the add chapter field cannot be empty"
 
       it "A new chapter cannot be named 'New Chapter, Add New Chapter, or Chapter'"
+
+      it "Servings must be an integer"
+
+      it "Prep time should be entered as digits"
     end
   end
 
