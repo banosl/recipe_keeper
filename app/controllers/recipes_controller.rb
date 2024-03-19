@@ -13,19 +13,30 @@ class RecipesController < ApplicationController
     end
   end
 
+  def create
+    user = User.find(session[:user_id])
+    cookbook = Cookbook.find(params[:cookbook_id])
+    binding.pry
+  end
+
   private
 
   def recipe_params
     params.require(:recipe).permit(
                       :name,
+                      :page,
+                      :servings,
+                      :prep_hours,
+                      :prep_minutes,
+                      :description,
+                      :new_chapter,
                       :breakfast,
                       :brunch,
                       :lunch,
                       :dinner,
                       :snack,
-                      :meal_type,
                       :food_group,
-                      :page,
+                      :meal_type,
                       :chapter_id
     )
   end

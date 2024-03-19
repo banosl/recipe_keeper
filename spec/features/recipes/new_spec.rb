@@ -101,6 +101,7 @@ RSpec.describe "Add a recipe form page" do
         expect(page).to have_field(:recipe_servings)
         expect(page).to have_field(:recipe_prep_hours)
         expect(page).to have_field(:recipe_prep_minutes)
+        expect(page).to have_field(:recipe_description)
       end
     end
 
@@ -112,7 +113,35 @@ RSpec.describe "Add a recipe form page" do
       xit "ingredients can be entered one per line with the measurement on the same line separated by a comma
       after submission ingredients individually create a recipe_ingredient"
 
-      it "Meal times, food group, and meal type are saved correctly"
+      it 'A user fills out a form with name, page, servings, prep time, meal times, food group, meal type, existing chapter and instructions', js: true do
+        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+        within('#text_questions') do
+          fill_in :recipe_name, with: Faker::Food.dish
+          fill_in :recipe_page, with: Faker::Number.number(digits: 3)
+          fill_in :recipe_servings, with: Faker::Number.number(digits: 1)
+          fill_in :recipe_prep_hours, with: Faker::Number.between(from: 1, to: 24)
+          fill_in :recipe_prep_minutes, with: Faker::Number.between(from: 1, to: 60)
+          fill_in :recipe_description, with: Faker::Food.description
+        end
+        within('#chapter') do
+          select @chapter_1.name, from: :recipe_chapter
+        end
+        within('#meal_times') do
+          check :recipe_breakfast
+          check :recipe_dinner
+        end
+        within('#food_group') do
+          choose :recipe_food_group_protein
+        end
+        within('#meal_type') do
+          choose :recipe_meal_type_entree
+        end
+        within('#instructions') do
+          fill_in :recipe_instructions, with: Faker::ChuckNorris.fact
+        end
+        click_button('Add Recipe')
+        expect(current_path).to eq(visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+      end
 
       it "A chapter from the drop down list saves as an association to the recipe"
 

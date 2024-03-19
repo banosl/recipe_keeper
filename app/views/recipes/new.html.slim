@@ -21,6 +21,8 @@ html
           = form.label :prep_hours, " Hours "
           = form.text_field :prep_minutes
           = form.label :prep_minutes, " Minutes"
+          p = "Description:"
+          = form.text_area :description
         section id="chapter"
           p = "Select a chapter or add a new one:"
           = form.select :chapter, @chapters, selected: "Chapters"
