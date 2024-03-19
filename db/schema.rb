@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_30_180932) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_19_012245) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_180932) do
     t.string "google_id"
     t.string "subtitle"
     t.string "description"
-    t.jsonb "isbn"
+    t.jsonb "isbn", default: ""
     t.index ["library_id"], name: "index_cookbooks_on_library_id"
   end
 
@@ -76,6 +76,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_180932) do
     t.integer "meal_type"
     t.integer "food_group"
     t.bigint "chapter_id", null: false
+    t.integer "servings"
+    t.integer "prep_hours"
+    t.integer "prep_minutes"
+    t.text "description"
+    t.text "instructions"
     t.index ["chapter_id"], name: "index_recipes_on_chapter_id"
   end
 
