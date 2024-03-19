@@ -25,21 +25,21 @@ RSpec.describe "Add a recipe form page" do
     it "There are check boxes for meal times, they can be checked" do
       visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
       within("#meal_times") do
-        expect(page).to have_field(:recipe_breakfast)
-        expect(page).to have_field(:recipe_brunch)
-        expect(page).to have_field(:recipe_lunch)
-        expect(page).to have_field(:recipe_dinner)
-        expect(page).to have_field(:recipe_snack)
-        check :recipe_breakfast
-        expect(page).to have_checked_field(:recipe_breakfast)
-        check :recipe_brunch
-        expect(page).to have_checked_field(:recipe_brunch)
-        check :recipe_lunch
-        expect(page).to have_checked_field(:recipe_lunch)
-        check :recipe_dinner
-        expect(page).to have_checked_field(:recipe_dinner)
-        check :recipe_snack
-        expect(page).to have_checked_field(:recipe_snack)
+        expect(page).to have_field(:recipe_meal_time_breakfast)
+        expect(page).to have_field(:recipe_meal_time_brunch)
+        expect(page).to have_field(:recipe_meal_time_lunch)
+        expect(page).to have_field(:recipe_meal_time_dinner)
+        expect(page).to have_field(:recipe_meal_time_snack)
+        check :recipe_meal_time_breakfast
+        expect(page).to have_checked_field(:recipe_meal_time_breakfast)
+        check :recipe_meal_time_brunch
+        expect(page).to have_checked_field(:recipe_meal_time_brunch)
+        check :recipe_meal_time_lunch
+        expect(page).to have_checked_field(:recipe_meal_time_lunch)
+        check :recipe_meal_time_dinner
+        expect(page).to have_checked_field(:recipe_meal_time_dinner)
+        check :recipe_meal_time_snack
+        expect(page).to have_checked_field(:recipe_meal_time_snack)
       end
     end
 
@@ -127,8 +127,8 @@ RSpec.describe "Add a recipe form page" do
           select @chapter_1.name, from: :recipe_chapter
         end
         within('#meal_times') do
-          check :recipe_breakfast
-          check :recipe_dinner
+          check :recipe_meal_time_breakfast
+          check :recipe_meal_time_dinner
         end
         within('#food_group') do
           choose :recipe_food_group_protein
@@ -155,9 +155,11 @@ RSpec.describe "Add a recipe form page" do
 
       it "A new chapter cannot be named 'New Chapter, Add New Chapter, or Chapter'"
 
+      it "A user must select a chapter and it cannot be 'Chapters'"
+
       it "Servings must be an integer"
 
-      it "Prep time should be entered as digits"
+      it "Prep time should be entered as digits with hours only from 1 to 24 and minutes from 1 to 60"
     end
   end
 
