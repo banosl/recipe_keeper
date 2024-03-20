@@ -25,11 +25,11 @@ html
           = form.text_area :description
         section id="chapter"
           p = "Select a chapter or add a new one:"
-          = form.select :chapter, @chapters, selected: "Chapters"
-          p = form.label :new_chapter, "New chapter name:", id: "recipe_new_chapter_label"
-          = form.text_field :new_chapter, disabled: true, id: "recipe_new_chapter_field"
+          = form.collection_select :chapter_id, @cookbook.chapters + [OpenStruct.new(id: "new", name: "Add New Chapter")], :id, :name, {prompt: "Chapters"}
+          p = form.label :new_chapter_field, "New chapter name:", id: "recipe_new_chapter_label"
+          = form.text_field :new_chapter_field, disabled: true, id: "recipe_new_chapter_field"
         section id="meal_times"  
-          p = form.label :meal_time, "Select meal times(s):"
+          p = "Select meal times(s):"
           = form.collection_check_boxes :meal_time, ["breakfast", "brunch", "lunch", "dinner", "snack"], :itself, :capitalize
         section id="food_group"
           p = "Select a food group:"
