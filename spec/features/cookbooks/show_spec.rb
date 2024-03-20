@@ -6,7 +6,7 @@ RSpec.describe "Cookbook Show Page" do
     @user.create_library
     @cookbook = create(:cookbook, library: @user.library, isbn: {"ISBN-13": Faker::Barcode.isbn})
     @chapter = create(:chapter, cookbook: @cookbook)
-    @recipes = create_list(:recipe, 20, :breakfast, :salad, :dairy, chapter: @chapter)
+    @recipes = create_list(:recipe, 20, :salad, :dairy, chapter: @chapter)
     sign_in_as(@user)
   end
 
@@ -50,8 +50,7 @@ RSpec.describe "Cookbook Show Page" do
     end
 
     it "If isbn is nil then 'Identifiers' is followed by 'Unknown'" do
-      cookbook_nil_isbn = create(:cookbook, library: @user.library)
-
+      cookbook_nil_isbn = create(:cookbook, library: @user.library, isbn: nil)
       visit user_library_cookbook_path(@user.id, @user.library.id, cookbook_nil_isbn.id)
 
       within ("#cookbook_details_#{cookbook_nil_isbn.id}") do
@@ -60,7 +59,7 @@ RSpec.describe "Cookbook Show Page" do
     end
 
     it "If Authors is nil then 'Author(s) is followed by 'Unknown'" do
-      cookbook_nil_author = create(:cookbook, library: @user.library, authors: nil)
+      cookbook_nil_author = create(:cookbook, library: @user.library, authors: nil, isbn: {"ISBN-13": Faker::Barcode.isbn})
 
       visit user_library_cookbook_path(@user.id, @user.library.id, cookbook_nil_author.id)
 

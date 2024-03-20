@@ -150,8 +150,9 @@ RSpec.describe "Add a recipe form page" do
         end
       end
 
-      it "When add chapter is chosen, and the add chapter name field is filled when submitted, a new chapter is created."
+      it "When 'Add New Chapter' is chosen, and the add chapter name field is filled when submitted, a new chapter is created."
 
+      it "Servings, prep time, description, meal time, food group, meal type, and instructions can be left blank"
     end
 
     context "errors for an unsuccessful form submission" do
@@ -164,6 +165,10 @@ RSpec.describe "Add a recipe form page" do
       it "Servings must be an integer"
 
       it "Prep time should be entered as digits with hours only from 1 to 24 and minutes from 1 to 60"
+
+      it "A recipe must have a name"
+
+      it "A recipe must have a page number, and it must be an integer"
 
     end
   end
