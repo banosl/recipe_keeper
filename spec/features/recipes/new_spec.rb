@@ -150,7 +150,45 @@ RSpec.describe "Add a recipe form page" do
         end
       end
 
-      it "When 'Add New Chapter' is chosen, and the add chapter name field is filled when submitted, a new chapter is created."
+      it "When 'Add New Chapter' is chosen, and the add chapter name field is filled when submitted, a new chapter is created.", js: true do
+        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+        within('#text_questions') do
+          @recipe = Faker::Food.dish
+          @page = Faker::Number.number(digits: 3)
+          @chapter = Faker::Food.ethnic_category
+
+          fill_in :recipe_name, with: @recipe
+          fill_in :recipe_page, with: @page
+          fill_in :recipe_servings, with: Faker::Number.number(digits: 1)
+          fill_in :recipe_prep_hours, with: Faker::Number.between(from: 1, to: 24)
+          fill_in :recipe_prep_minutes, with: Faker::Number.between(from: 1, to: 60)
+          fill_in :recipe_description, with: Faker::Food.description
+        end
+        within('#chapter') do
+          expect(page).to_not have_select(:recipe_chapter_id, options: [@chapter])
+          select "Add New Chapter", from: :recipe_chapter_id
+          fill_in :recipe_new_chapter_field, with: @chapter
+        end
+        within('#meal_times') do
+          check :recipe_meal_time_breakfast
+          check :recipe_meal_time_dinner
+        end
+        within('#food_group') do
+          choose :recipe_food_group_protein
+        end
+        within('#meal_type') do
+          choose :recipe_meal_type_entree
+        end
+        within('#instructions') do
+          fill_in :recipe_instructions, with: Faker::ChuckNorris.fact
+        end
+        click_button('Add Recipe')
+        expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+        within('#recipes') do
+          expect(page).to have_table_row("Name" => @recipe, "Chapter" => @chapter, "Page" => @page)
+          expect(page).to have_link(@recipe, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @cookbook.recipes[0].id))
+        end
+      end
 
       it "Servings, prep time, description, meal time, food group, meal type, and instructions can be left blank"
     end
