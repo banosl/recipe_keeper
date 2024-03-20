@@ -16,12 +16,12 @@ class RecipesController < ApplicationController
   def create
     user = User.find(session[:user_id])
     cookbook = Cookbook.find(params[:cookbook_id])
-    # if chapter_params[:chapter]
-    #   chapter = Chapter.find_by(cookbook_id: cookbook.id, name: chapter_params[:chapter])
-    # elsif chapter_params[:new_chapter]
-    #   chapter = Chapter.create({cookbook_id: cookbook.id, name: chapter_params[:new_chapter]})
-    # end
-    binding.pry
+    recipe = Recipe.new(recipe_params)
+    
+    # binding.pry
+    if recipe.save
+      redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
+    end
   end
 
   private
@@ -38,14 +38,8 @@ class RecipesController < ApplicationController
                     :food_group,
                     :meal_type,
                     :chapter_id,
+                    :new_chapter,
                     meal_time: [],
-    )
-  end
-
-  def chapter_params
-    params.require( :recipe ).permit(
-                    :chapter,
-                    :new_chapter
     )
   end
 end

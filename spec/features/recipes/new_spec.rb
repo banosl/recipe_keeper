@@ -113,11 +113,14 @@ RSpec.describe "Add a recipe form page" do
       xit "ingredients can be entered one per line with the measurement on the same line separated by a comma
       after submission ingredients individually create a recipe_ingredient"
 
-      xit 'A user fills out a form with name, page, servings, prep time, meal times, food group, meal type, existing chapter and instructions', js: true do
+      it 'A user fills out a form with name, page, servings, prep time, meal times, food group, meal type, existing chapter and instructions', js: true do
         visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
         within('#text_questions') do
-          fill_in :recipe_name, with: Faker::Food.dish
-          fill_in :recipe_page, with: Faker::Number.number(digits: 3)
+          @recipe = Faker::Food.dish
+          @page = Faker::Number.number(digits: 3)
+
+          fill_in :recipe_name, with: @recipe
+          fill_in :recipe_page, with: @page
           fill_in :recipe_servings, with: Faker::Number.number(digits: 1)
           fill_in :recipe_prep_hours, with: Faker::Number.between(from: 1, to: 24)
           fill_in :recipe_prep_minutes, with: Faker::Number.between(from: 1, to: 60)
@@ -140,14 +143,15 @@ RSpec.describe "Add a recipe form page" do
           fill_in :recipe_instructions, with: Faker::ChuckNorris.fact
         end
         click_button('Add Recipe')
-        expect(current_path).to eq(visit user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+        expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+        within('#recipes') do
+          expect(page).to have_table_row("Name" => @recipe, "Chapter" => @chapter_1.name, "Page" => @page)
+          expect(page).to have_link(@recipe, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @cookbook.recipes[0].id))
+        end
       end
-
-      it "A chapter from the drop down list saves as an association to the recipe"
 
       it "When add chapter is chosen, and the add chapter name field is filled when submitted, a new chapter is created."
 
-      it "Insructions are saved."
     end
 
     context "errors for an unsuccessful form submission" do
@@ -160,6 +164,7 @@ RSpec.describe "Add a recipe form page" do
       it "Servings must be an integer"
 
       it "Prep time should be entered as digits with hours only from 1 to 24 and minutes from 1 to 60"
+
     end
   end
 
