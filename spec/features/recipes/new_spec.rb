@@ -190,7 +190,25 @@ RSpec.describe "Add a recipe form page" do
         end
       end
 
-      it "Servings, prep time, description, meal time, food group, meal type, and instructions can be left blank"
+      it "Servings, prep time, description, meal time, food group, meal type, and instructions can be left blank", js: true do
+        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+        within('#text_questions') do
+          @recipe = Faker::Food.dish
+          @page = Faker::Number.number(digits: 3)
+
+          fill_in :recipe_name, with: @recipe
+          fill_in :recipe_page, with: @page
+        end
+        within('#chapter') do
+          select @chapter_1.name, from: :recipe_chapter_id
+        end
+        click_button('Add Recipe')
+        expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+        within('#recipes') do
+          expect(page).to have_table_row("Name" => @recipe, "Chapter" => @chapter_1.name, "Page" => @page)
+          expect(page).to have_link(@recipe, href: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @cookbook.recipes[0].id))
+        end
+      end
     end
 
     context "errors for an unsuccessful form submission" do
