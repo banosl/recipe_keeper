@@ -30,4 +30,16 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        recipe:
+          attributes:
+            page:
+              not_a_number: "must be a number"
+            servings:
+              not_a_number: "must be a number"
+            prep_hours:
+              not_a_number: "must be a number"
+            prep_minutes:
+              not_a_number: "must be a number"
