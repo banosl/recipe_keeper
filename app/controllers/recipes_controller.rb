@@ -35,6 +35,9 @@ class RecipesController < ApplicationController
       redirect_to new_user_library_cookbook_recipe_path(user.id, user.library.id, cookbook.id)
     elsif recipe.save
       redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
+    else
+      flash.alert = recipe.errors.full_messages
+      redirect_to new_user_library_cookbook_recipe_path(user.id, user.library.id, cookbook.id)
     end
     
   end

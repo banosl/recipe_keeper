@@ -264,7 +264,29 @@ RSpec.describe "Add a recipe form page" do
         expect(page).to have_content("Please select a chapter.")
       end
 
-      it "Servings must be an integer"
+      it "Servings, Prep hours, Prep minutes, and Page must be an number" do
+        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+        within('#text_questions') do
+          @recipe = Faker::Food.dish
+          @page = Faker::Number.number(digits: 3)
+
+          fill_in :recipe_name, with: @recipe
+          fill_in :recipe_page, with: "Bob"
+          fill_in :recipe_servings, with: "Bob"
+          fill_in :recipe_prep_hours, with: "Bob"
+          fill_in :recipe_prep_minutes, with: "Bob"
+        end
+        within('#chapter') do
+          select @chapter_1.name, from: :recipe_chapter_id
+        end
+        click_button('Add Recipe')
+
+        expect(page).to have_current_path(new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id))
+        expect(page).to have_content("Page must be a number")
+        expect(page).to have_content("Servings must be a number")
+        expect(page).to have_content("Prep hours must be a number")
+        expect(page).to have_content("Prep minutes must be a number")
+      end
 
       it "Prep time should be entered as digits with hours only from 1 to 24 and minutes from 1 to 60"
 
