@@ -3,7 +3,10 @@ class Recipe < ApplicationRecord
   enum food_group: {grain: 0, protein: 1, fruit_vegetables: 2, dairy: 3, other: 4}
   
   validates_presence_of :name, :page
-  validates_numericality_of :page, :servings, :prep_hours, :prep_minutes
+  validates :page, numericality: true, if: -> {page.present?}
+  validates :servings, numericality: true, if: -> {servings.present?}
+  validates :prep_hours, numericality: true, if: -> {prep_hours.present?}
+  validates :prep_minutes, numericality: true, if: -> {prep_minutes.present?}
 
   belongs_to :chapter
   has_many :recipe_ingredients
