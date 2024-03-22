@@ -249,7 +249,20 @@ RSpec.describe "Add a recipe form page" do
         expect(page).to have_content("A new chapter cannot be named 'Add New Chapter'.")
       end
 
-      it "A user must select a chapter and it cannot be 'Chapters'"
+      it "A user must select a chapter and it cannot be 'Chapters'", js: true do
+        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+        within('#text_questions') do
+          @recipe = Faker::Food.dish
+          @page = Faker::Number.number(digits: 3)
+
+          fill_in :recipe_name, with: @recipe
+          fill_in :recipe_page, with: @page
+        end
+        click_button('Add Recipe')
+
+        expect(page).to have_current_path(new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id))
+        expect(page).to have_content("Please select a chapter.")
+      end
 
       it "Servings must be an integer"
 

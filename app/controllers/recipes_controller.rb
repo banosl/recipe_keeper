@@ -13,8 +13,8 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @user = User.find(session[:user_id])
-    @cookbook = Cookbook.find(params[:cookbook_id])
+    user = User.find(session[:user_id])
+    cookbook = Cookbook.find(params[:cookbook_id])
     recipe = Recipe.new(recipe_params)
 
     #creating a chapter
@@ -23,15 +23,18 @@ class RecipesController < ApplicationController
       recipe.update(chapter_id: chapter.id)
     end
     #errors
-    
-    if chapter_params[:chapter_id] == "new" && chapter_params[:new_chapter_field].blank?
+    # binding.pry
+    if chapter_params[:chapter_id].blank?
+      flash.alert = "Please select a chapter."
+      redirect_to new_user_library_cookbook_recipe_path(user.id, user.library.id, cookbook.id)
+    elsif chapter_params[:chapter_id] == "new" && chapter_params[:new_chapter_field].blank?
       flash.alert = "When adding a new chapter, the 'New chapter name' field cannot be left blank."
-      redirect_to new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      redirect_to new_user_library_cookbook_recipe_path(user.id, user.library.id, cookbook.id)
     elsif chapter_params[:chapter_id] == "new" && ["chapter", "new chapter", "add new chapter"].include?(chapter_params[:new_chapter_field].downcase)
       flash.alert = "A new chapter cannot be named '#{chapter_params[:new_chapter_field]}'."
-      redirect_to new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      redirect_to new_user_library_cookbook_recipe_path(user.id, user.library.id, cookbook.id)
     elsif recipe.save
-      redirect_to user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id)
+      redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
     end
     
   end
