@@ -212,9 +212,42 @@ RSpec.describe "Add a recipe form page" do
     end
 
     context "errors for an unsuccessful form submission" do
-      it "If new chapter is selected, the add chapter field cannot be empty"
+      it "If new chapter is selected, the add chapter field cannot be empty", js: true do
+        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+        within('#text_questions') do
+          @recipe = Faker::Food.dish
+          @page = Faker::Number.number(digits: 3)
 
-      it "A new chapter cannot be named 'New Chapter, Add New Chapter, or Chapter'"
+          fill_in :recipe_name, with: @recipe
+          fill_in :recipe_page, with: @page
+        end
+        within('#chapter') do
+          select "Add New Chapter", from: :recipe_chapter_id
+        end
+        click_button('Add Recipe')
+
+        expect(page).to have_current_path(new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id))
+        expect(page).to have_content("When adding a new chapter, the 'New chapter name' field cannot be left blank.")
+      end
+
+      it "A new chapter cannot be named 'New Chapter, Add New Chapter, or Chapter'", js: true do
+        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+        within('#text_questions') do
+          @recipe = Faker::Food.dish
+          @page = Faker::Number.number(digits: 3)
+
+          fill_in :recipe_name, with: @recipe
+          fill_in :recipe_page, with: @page
+        end
+        within('#chapter') do
+          select "Add New Chapter", from: :recipe_chapter_id
+          fill_in :recipe_new_chapter_field, with: "Add New Chapter"
+        end
+        click_button('Add Recipe')
+
+        expect(page).to have_current_path(new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id))
+        expect(page).to have_content("A new chapter cannot be named 'Add New Chapter'.")
+      end
 
       it "A user must select a chapter and it cannot be 'Chapters'"
 
