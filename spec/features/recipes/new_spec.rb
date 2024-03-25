@@ -212,11 +212,13 @@ RSpec.describe "Add a recipe form page" do
     end
 
     context "errors for an unsuccessful form submission" do
-      it "If new chapter is selected, the add chapter field cannot be empty", js: true do
-        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      before :each do
         @recipe = Faker::Food.dish
         @page = Faker::Number.number(digits: 3)
+        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      end
 
+      it "If new chapter is selected, the add chapter field cannot be empty", js: true do
         within('#text_questions') do
           fill_in :recipe_name, with: @recipe
           fill_in :recipe_page, with: @page
@@ -231,10 +233,6 @@ RSpec.describe "Add a recipe form page" do
       end
 
       it "A new chapter cannot be named 'New Chapter, Add New Chapter, or Chapter'", js: true do
-        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
-        @recipe = Faker::Food.dish
-        @page = Faker::Number.number(digits: 3)
-        
         within('#text_questions') do
           fill_in :recipe_name, with: @recipe
           fill_in :recipe_page, with: @page
@@ -250,10 +248,6 @@ RSpec.describe "Add a recipe form page" do
       end
 
       it "A user must select a chapter and it cannot be 'Chapters'", js: true do
-        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
-        @recipe = Faker::Food.dish
-        @page = Faker::Number.number(digits: 3)
-
         within('#text_questions') do
           fill_in :recipe_name, with: @recipe
           fill_in :recipe_page, with: @page
@@ -265,10 +259,6 @@ RSpec.describe "Add a recipe form page" do
       end
 
       it "Servings, Prep hours, Prep minutes, and Page must be an number" do
-        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
-        @recipe = Faker::Food.dish
-        @page = Faker::Number.number(digits: 3)
-
         within('#text_questions') do
           fill_in :recipe_name, with: @recipe
           fill_in :recipe_page, with: "Bob"
@@ -289,10 +279,6 @@ RSpec.describe "Add a recipe form page" do
       end
 
       it "Prep time should be entered as digits with hours only from 1  to 24 and minutes from 1 to 60", js: true do
-        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
-        @recipe = Faker::Food.dish
-        @page = Faker::Number.number(digits: 3)
-
         within('#text_questions') do
           fill_in :recipe_name, with: @recipe
           fill_in :recipe_page, with: @page
@@ -310,9 +296,6 @@ RSpec.describe "Add a recipe form page" do
       end
 
       it "A recipe must have a name", js: true do
-        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
-        @page = Faker::Number.number(digits: 3)
-        
         within('#text_questions') do
           fill_in :recipe_page, with: @page
         end
@@ -326,9 +309,6 @@ RSpec.describe "Add a recipe form page" do
       end
 
       it "A recipe must have a page number", js: true do
-        visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
-        @recipe = Faker::Food.dish
-
         within('#text_questions') do
           fill_in :recipe_name, with: @recipe
         end
