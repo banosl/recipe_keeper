@@ -59,3 +59,4 @@ html
           p = "Enter cooking instructions."
           = form.text_area :instructions
         p = form.submit "Add Recipe"
+        p = button_to("Cancel", user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :get)

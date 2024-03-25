@@ -320,13 +320,21 @@ RSpec.describe "Add a recipe form page" do
         expect(page).to have_current_path(new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id))
         expect(page).to have_content("Page can't be blank")
       end
-
     end
   end
 
   context "Buttons" do
-    it "There is a submit button"
+    it "There is a submit button" do
+      visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+      expect(page).to have_button("Add Recipe")
+    end
 
-    it "There is a cancel button that takes the user back to the cookbook show page"
+    it "There is a cancel button that takes the user back to the cookbook show page" do
+      visit new_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id)
+
+      expect(page).to have_button("Cancel")
+      click_button("Cancel")
+      expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+    end
   end
 end
