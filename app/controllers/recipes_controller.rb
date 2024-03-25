@@ -17,11 +17,8 @@ class RecipesController < ApplicationController
     cookbook = Cookbook.find(params[:cookbook_id])
     recipe = Recipe.new(recipe_params)
 
-    #creating a chapter
-    if chapter_params[:chapter_id] == "new"
-      chapter = Chapter.create(name: chapter_params[:new_chapter_field], cookbook_id: params[:cookbook_id])
-      recipe.update(chapter_id: chapter.id)
-    end
+    create_chapter(chapter_params, recipe, cookbook)
+   
     #errors
     if chapter_params[:chapter_id].blank?
       flash.alert = "Please select a chapter."
@@ -64,5 +61,12 @@ class RecipesController < ApplicationController
                    :chapter_id,
                    :new_chapter_field
     )
+  end
+
+  def create_chapter(chapter_params, recipe, cookbook)
+    if chapter_params[:chapter_id] == "new"
+      chapter = Chapter.create(name: chapter_params[:new_chapter_field], cookbook_id: cookbook.id)
+      recipe.update(chapter_id: chapter.id)
+    end
   end
 end
