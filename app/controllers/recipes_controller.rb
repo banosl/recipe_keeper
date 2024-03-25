@@ -23,7 +23,6 @@ class RecipesController < ApplicationController
       recipe.update(chapter_id: chapter.id)
     end
     #errors
-    # binding.pry
     if chapter_params[:chapter_id].blank?
       flash.alert = "Please select a chapter."
       redirect_to new_user_library_cookbook_recipe_path(user.id, user.library.id, cookbook.id)
