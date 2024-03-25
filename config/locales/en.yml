@@ -41,5 +41,7 @@ en:
               not_a_number: "must be a number"
             prep_hours:
               not_a_number: "must be a number"
+              in: "must be within the range of 0 to 24"
             prep_minutes:
               not_a_number: "must be a number"
+              in: "must be within the range of 0 to 60"

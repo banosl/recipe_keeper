@@ -4,9 +4,9 @@ class Recipe < ApplicationRecord
   
   validates_presence_of :name, :page
   validates :page, numericality: true, if: -> {page.present?}
-  validates :servings, numericality: true, if: -> {servings.present?}
-  validates :prep_hours, numericality: true, if: -> {prep_hours.present?}
-  validates :prep_minutes, numericality: true, if: -> {prep_minutes.present?}
+  validates :servings, numericality: {only_integer: true}, if: -> {servings.present?}
+  validates :prep_hours, numericality: {only_integer: true, in: (0..24)}, if: -> {prep_hours.present?}
+  validates :prep_minutes, numericality: {only_integer: true, in: (0..60)}, if: -> {prep_minutes.present?}
 
   belongs_to :chapter
   has_many :recipe_ingredients
