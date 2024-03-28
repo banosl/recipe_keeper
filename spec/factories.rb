@@ -38,22 +38,7 @@ FactoryBot.define do
     name {Faker::Food.dish}
     country_of_origin {Faker::Nation.nationality}
     page {Faker::Number.between(from: 10, to: 500)}
-
-    trait :breakfast do
-      meal_time {:breakfast}
-    end
-
-    trait :brunch do
-      meal_time {:brunch}
-    end
-
-    trait :lunch do
-      meal_time {:lunch}
-    end
-
-    trait :dinner do
-      meal_time {:dinner}
-    end
+    meal_time {["breakfast", "brunch"]}
 
     trait :appetizer do
       meal_type {:appetizer}
@@ -87,6 +72,9 @@ FactoryBot.define do
     end
     trait :dairy do
       food_group {:dairy}
+    end
+    trait :other do
+      food_group {:other}
     end
 
     association :chapter

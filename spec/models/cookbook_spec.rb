@@ -17,7 +17,7 @@ RSpec.describe Cookbook, type: :model do
       @user.create_library
       @cookbook = create(:cookbook, library: @user.library, published_date: "2019-03-27", isbn: {"ISBN-13": Faker::Barcode.isbn})
       @chapter = create(:chapter, cookbook: @cookbook)
-      @recipes = create_list(:recipe, 20, :breakfast, :salad, :dairy, chapter: @chapter)
+      @recipes = create_list(:recipe, 20, :salad, :dairy, chapter: @chapter)
     end
     
     it "#recipe_count returns the number of recipes added to the cookbook by the user" do

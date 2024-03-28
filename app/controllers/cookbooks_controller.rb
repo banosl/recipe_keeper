@@ -1,4 +1,4 @@
-class CookbooksController <ApplicationController
+class CookbooksController < ApplicationController
   before_action :logged_in_user
 
   def show

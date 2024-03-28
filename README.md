@@ -20,7 +20,7 @@ While in the development thet website can be viewed live on [Render](https://rec
 * Rails 7.0.7
 
 ## Database Design
-<img src="./documents/db_design.png">
+<img src="./documents/db_design_2.png">
 
 ## Site Structure and Wireframes
 ### Structure

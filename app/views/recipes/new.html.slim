@@ -1,0 +1,62 @@
+doctype html
+html
+  head 
+    script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    = link_to("My Library", user_libraries_path(@user.id))
+    = button_to("Log Out", session_path(@user.id), method: :delete)
+  body
+    = javascript_include_tag 'new_chapter_field'
+    h1 Add a Recipe
+    section id="recipe_form"
+      = form_with model: @recipe, url: user_library_cookbook_recipes_path(@user.id, @user.library.id, @cookbook.id), method: :post do |form|
+        section id="text_questions"
+          p = "Recipe name:"
+          = form.text_field :name
+          p = "Page number:"
+          = form.text_field :page
+          p = "Amount of servings:"
+          = form.text_field :servings
+          p = "Prep time:"
+          = form.text_field :prep_hours
+          = form.label :prep_hours, " Hours "
+          = form.text_field :prep_minutes
+          = form.label :prep_minutes, " Minutes"
+          p = "Description:"
+          = form.text_area :description
+        section id="chapter"
+          p = "Select a chapter or add a new one:"
+          = form.collection_select :chapter_id, @cookbook.chapters + [OpenStruct.new(id: "new", name: "Add New Chapter")], :id, :name, {prompt: "Chapters"}
+          p = form.label :new_chapter_field, "New chapter name:", id: "recipe_new_chapter_label"
+          = form.text_field :new_chapter_field, disabled: true, id: "recipe_new_chapter_field"
+        section id="meal_times"  
+          p = "Select meal times(s):"
+          = form.collection_check_boxes :meal_time, ["breakfast", "brunch", "lunch", "dinner", "snack"], :itself, :capitalize
+        section id="food_group"
+          p = "Select a food group:"
+          = form.radio_button :food_group, :grain
+          = form.label :food_group_grain, "Grain"
+          = form.radio_button :food_group, :protein
+          = form.label :food_group_protein, "Protein"
+          = form.radio_button :food_group, :fruit_vegetables
+          = form.label :food_group_fruit_vegetables, "Fruits & Vegetables"
+          = form.radio_button :food_group, :dairy
+          = form.label :food_group_dairy, "Dairy"
+          = form.radio_button :food_group, :other
+          = form.label :food_group_other, "Other"
+        section id="meal_type"
+          p = "What type of dish is it?"
+          = form.radio_button :meal_type, :appetizer
+          = form.label :meal_type_appetizer, "Appetizer"
+          = form.radio_button :meal_type, :salad
+          = form.label :meal_type_salad, "Salad"
+          = form.radio_button :meal_type, :entree
+          = form.label :meal_type_entree, "Entr\u00E9e"
+          = form.radio_button :meal_type, :dessert
+          = form.label :meal_type_dessert, "Dessert"
+          = form.radio_button :meal_type, :drink
+          = form.label :meal_type_drink, "Drink"
+        section id="instructions"
+          p = "Enter cooking instructions."
+          = form.text_area :instructions
+        p = form.submit "Add Recipe"
+        p = button_to("Cancel", user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :get)

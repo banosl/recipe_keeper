@@ -6,7 +6,7 @@ RSpec.describe "Edit Cookbook Page" do
     @user.create_library
     @cookbook = create(:cookbook, library: @user.library, isbn: {"ISBN-13": Faker::Barcode.isbn})
     @chapter = create(:chapter, cookbook: @cookbook)
-    @recipes = create_list(:recipe, 20, :breakfast, :salad, :dairy, chapter: @chapter)
+    @recipes = create_list(:recipe, 20, :salad, :dairy, chapter: @chapter)
   end
 
   before :each do
