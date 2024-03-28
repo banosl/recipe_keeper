@@ -43,8 +43,8 @@ jobs:
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install ./google-chrome-stable_current_amd64.deb
           wget "https://storage.googleapis.com/chrome-for-testing-public/123.0.6312.86/linux64/chrome-linux64.zip"
-          unzip chromedriver-linux64.zip
-          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+          unzip chrome-linux64.zip
+          sudo mv chrome-linux64/chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
       - name: Run tests
         run: bundle exec rspec
