@@ -48,3 +48,4 @@ jobs:
           sudo chmod +x /usr/local/bin/chrome
       - name: Run tests
         run: bundle exec rspec
+        
