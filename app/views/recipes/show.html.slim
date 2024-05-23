@@ -9,5 +9,5 @@ html
       p = @recipe.description
       p = "Chapter: #{@recipe.chapter.name}"
       p = "Page #{@recipe.page}"
-      p = "#{@recipe.servings} servings"
-      p = "Time to prepare: #{@recipe.prep_hours} hours and #{@recipe.prep_minutes} minutes"
+      p = display_servings(@recipe)
+      p = display_prep_time(@recipe)
