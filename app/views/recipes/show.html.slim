@@ -11,3 +11,8 @@ html
       p = "Page #{@recipe.page}"
       p = display_servings(@recipe)
       p = display_prep_time(@recipe)
+    section id="meal_characteristics_#{@recipe.id}"
+      p Characteristics:
+      p = @recipe.meal_type
+      p = @recipe.meal_time.join(" ")
+      p = @recipe.food_group

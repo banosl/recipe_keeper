@@ -17,7 +17,7 @@ RSpec.describe "Recipe show page" do
 
   describe "Visiting the recipe show page with all fields entered" do
     it "displays recipe name, description, page, chapter, servings, prep time" do
-      recipe = @recipes[0]
+      recipe = create(:recipe, :salad, :protein, chapter: @chapter, prep_hours: 6, prep_minutes: 25)
       visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id)
 
       expect(page).to have_content(recipe.name)
@@ -59,7 +59,19 @@ RSpec.describe "Recipe show page" do
       end
     end
 
-    it "displays meal times, food groups, dish type"
+    it "displays meal times, food groups, meal type" do
+      recipe = @recipes[1]
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id)
+
+      within("#meal_characteristics_#{recipe.id}") do
+        expect(page).to have_content(
+          `Characteristics:\n
+          #{recipe.meal_type}\n
+          #{recipe.meal_time.join(" ")}\n
+          #{recipe.food_group}`
+          )
+      end
+    end
 
     it "displays instructions"
 
