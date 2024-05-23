@@ -1,16 +1,65 @@
 require 'rails_helper'
 
-Rspec.describe "Recipe show page" do
+RSpec.describe "Recipe show page" do
+  before :each do
+    @user = create(:user, :google)
+    @user.create_library
+    @cookbook = create(:cookbook, library: @user.library, isbn: {"ISBN-13": Faker::Barcode.isbn})
+    @chapter = create(:chapter, cookbook: @cookbook)
+    @recipes = create_list(:recipe, 5, :salad, :dairy, chapter: @chapter)
+    sign_in_as(@user)
+  end
+
+  before :each do
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.add_mock(:google_oauth2, uid: @user.google_id, info: {first_name: @user.first_name, last_name: @user.last_name, email: @user.email}, credentials: {token: @user.google_token})
+  end
+
   describe "Visiting the recipe show page with all fields entered" do
-    it "displays recipe name, description, page, chapter, servings, prep time"
+    it "displays recipe name, description, page, chapter, servings, prep time" do
+      recipe = @recipes[0]
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id)
+
+      expect(page).to have_content(recipe.name)
+
+      within("#basic_info_#{recipe.id}") do
+        expect(page).to have_content("#{recipe.description}")
+        expect(page).to have_content("Page #{recipe.page}")
+        expect(page).to have_content("Chapter: #{recipe.chapter.name}")
+        expect(page).to have_content("#{recipe.servings} servings")
+        expect(page).to have_content("Time to prepare: #{recipe.prep_hours} hours and #{recipe.prep_minutes} minutes")
+      end
+    end
+
+    it "if there is only 1 serving the the page will use the singular of 'serving'" do
+      recipe = create(:recipe, :salad, :protein, chapter: @chapter, servings: 1)
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id)
+
+      within("#basic_info_#{recipe.id}") do
+        expect(page).to have_content("#{recipe.servings} serving")
+        expect(page).to_not have_content("#{recipe.servings} servings")
+      end
+    end
+
+    it "if there is only 1 hour of prep the the page will use the singular of 'hour'"
+
+    it "if there is only 1 minute of prep the the page will use the singular of 'minute'"
 
     it "displays meal times, food groups, dish type"
 
     it "displays instructions"
+
+    it "displays a user submitted photo"
+
+    it "displays ingredients with measurements"
   end
 
   describe "Visiting the show page when fields are blank" do
-    it "If a description, servings, prep time, meal time, food group, dish type, and instructions are missing then those categories don't show"
+    it "If a description, servings, meal time, food group, dish type, and instructions are missing then those categories don't show"
+
+    it "if the recipe prep time only has minutes it doesn't show 'hours' on the page"
+    
+    it "if the recipe prep time only has hours it doesn't show 'minutes' on the page"
   end
 
   describe "Buttons" do
@@ -21,5 +70,7 @@ Rspec.describe "Recipe show page" do
     it "edit recipe button takes the user to the edit form"
 
     it "delete recipe button deletes it and redirects user to the cookbook show page and the user can see that it's gone"
+
+    it "has a log out button"
   end
 end

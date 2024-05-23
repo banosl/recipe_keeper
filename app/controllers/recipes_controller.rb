@@ -1,6 +1,11 @@
 class RecipesController < ApplicationController
   before_action :logged_in_user
 
+  def show
+    @user = User.find(session[:user_id])
+    @recipe = Recipe.find(params[:id])
+  end
+  
   def new
     @user = User.find(session[:user_id])
     @cookbook = Cookbook.find(params[:cookbook_id])

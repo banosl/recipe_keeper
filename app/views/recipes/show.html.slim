@@ -1,0 +1,13 @@
+doctype html
+html
+  head 
+    = link_to("My Library", user_libraries_path(@user.id))
+    = button_to("Log Out", session_path(@user.id), method: :delete)
+  body
+    h1 = @recipe.name
+    section id="basic_info_#{@recipe.id}"
+      p = @recipe.description
+      p = "Chapter: #{@recipe.chapter.name}"
+      p = "Page #{@recipe.page}"
+      p = "#{@recipe.servings} servings"
+      p = "Time to prepare: #{@recipe.prep_hours} hours and #{@recipe.prep_minutes} minutes"

@@ -36,8 +36,12 @@ FactoryBot.define do
 
   factory :recipe do
     name {Faker::Food.dish}
-    country_of_origin {Faker::Nation.nationality}
     page {Faker::Number.between(from: 10, to: 500)}
+    servings {Faker::Number.between(from: 1, to: 50)}
+    prep_hours {Faker::Number.between(from: 0, to: 24)}
+    prep_minutes {Faker::Number.between(from: 0, to: 60)}
+    description {Faker::TvShows::DrWho.quote}
+    instructions {Faker::TvShows::DrWho.quote}
     meal_time {["breakfast", "brunch"]}
 
     trait :appetizer do
