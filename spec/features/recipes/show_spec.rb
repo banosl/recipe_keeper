@@ -50,7 +50,14 @@ RSpec.describe "Recipe show page" do
       end
     end
 
-    it "if there is only 1 minute of prep the the page will use the singular of 'minute'"
+    it "if there is only 1 minute of prep the the page will use the singular of 'minute'" do
+      recipe = create(:recipe, :salad, :protein, chapter: @chapter, prep_hours: 5, prep_minutes: 1)
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id)
+
+      within("#basic_info_#{recipe.id}") do
+        expect(page).to have_content("Time to prepare: #{recipe.prep_hours} hours and #{recipe.prep_minutes} minute")
+      end
+    end
 
     it "displays meal times, food groups, dish type"
 
