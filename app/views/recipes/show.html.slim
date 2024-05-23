@@ -16,3 +16,6 @@ html
       p = @recipe.meal_type
       p = @recipe.meal_time.join(" ")
       p = @recipe.food_group
+    section id="instructions_#{@recipe.id}"
+      p Instructions:
+      p = @recipe.instructions

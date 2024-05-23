@@ -69,11 +69,21 @@ RSpec.describe "Recipe show page" do
           #{recipe.meal_type}\n
           #{recipe.meal_time.join(" ")}\n
           #{recipe.food_group}`
-          )
+        )
       end
     end
 
-    it "displays instructions"
+    it "displays instructions" do
+      recipe = @recipes[0]
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id)
+
+      within("#instructions_#{recipe.id}") do
+        expect(page).to have_content(
+          `Instructions:
+          #{recipe.instructions}`
+        )
+      end
+    end
 
     it "displays a user submitted photo"
 
@@ -81,7 +91,12 @@ RSpec.describe "Recipe show page" do
   end
 
   describe "Visiting the show page when fields are blank" do
-    it "If a description, servings, meal time, food group, dish type, and instructions are missing then those categories don't show"
+    it "If a description, servings, and instructions are missing then those categories don't show"
+
+    it "If a recipe doesn't have any of the meal time, food group, and dish type the characteristics section doesn't show"
+
+    it "If at least one of meal time, food group or dish type is present then characteristics section does show"
+      #do multiple site visits with different recipes
 
     it "if the recipe prep time only has minutes it doesn't show 'hours' on the page"
     
