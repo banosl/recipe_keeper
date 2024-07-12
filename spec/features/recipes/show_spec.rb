@@ -90,8 +90,18 @@ RSpec.describe "Recipe show page" do
     it "displays ingredients with measurements"
   end
 
-  describe "Visiting the show page when fields are blank" do
-    it "If a description, servings, and instructions are missing then those categories don't show"
+  describe "Visiting the show page when recipe fields are blank" do
+    it "If servings and instructions are missing then those categories don't show" do
+      recipe = create(:recipe, :salad, :protein, chapter: @chapter, servings: nil, description: nil, instructions: nil)
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id)
+      
+      within("#basic_info_#{recipe.id}") do
+        expect(page).to_not have_content("serving")
+      end
+      within("#instructions_#{recipe.id}") do
+        expect(page).to_not have_content("Instructions:")
+      end
+    end
 
     it "If a recipe doesn't have any of the meal time, food group, and dish type the characteristics section doesn't show"
 
@@ -101,6 +111,10 @@ RSpec.describe "Recipe show page" do
     it "if the recipe prep time only has minutes it doesn't show 'hours' on the page"
     
     it "if the recipe prep time only has hours it doesn't show 'minutes' on the page"
+
+    it "There is a default photo if a user doesn't upload one"
+
+    it "If a recipe doesn't have ingredients, the ingredients section doesn't show"
   end
 
   describe "Buttons" do

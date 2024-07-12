@@ -14,7 +14,7 @@ module RecipeHelper
   def display_servings(recipe)
     if @recipe.servings == 1
       return "#{@recipe.servings} serving"
-    else
+    elsif !@recipe.servings.nil?
       return "#{@recipe.servings} servings"
     end
   end
