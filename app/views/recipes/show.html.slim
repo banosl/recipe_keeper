@@ -12,10 +12,11 @@ html
       p = display_servings(@recipe)
       p = display_prep_time(@recipe)
     section id="meal_characteristics_#{@recipe.id}"
-      p Characteristics:
-      p = @recipe.meal_type
-      p = @recipe.meal_time.join(" ")
-      p = @recipe.food_group
+      - if @recipe.meal_type || @recipe.meal_time != [] || @recipe.food_group
+        p Characteristics:
+        p = @recipe.meal_type
+        p = @recipe.meal_time.join(" ")
+        p = @recipe.food_group
     section id="instructions_#{@recipe.id}"
       - if @recipe.instructions
         p Instructions:

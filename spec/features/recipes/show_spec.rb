@@ -103,10 +103,44 @@ RSpec.describe "Recipe show page" do
       end
     end
 
-    it "If a recipe doesn't have any of the meal time, food group, and dish type the characteristics section doesn't show"
+    it "If a recipe doesn't have any of the meal time, food group, and dish type the characteristics section doesn't show" do
+      recipe = create(:recipe, chapter: @chapter, meal_time: [], food_group: nil, meal_type: nil)
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id)
 
-    it "If at least one of meal time, food group or dish type is present then characteristics section does show"
+      within("#meal_characteristics_#{recipe.id}") do
+        expect(page).to_not have_content("Characteristics:")
+      end
+    end
+
+    it "If at least one of meal time, food group or dish type is present then characteristics section does show" do
       #do multiple site visits with different recipes
+      recipe_1 = create(:recipe, chapter: @chapter, food_group: nil, meal_type: nil)
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe_1.id)
+      
+      within("#meal_characteristics_#{recipe_1.id}") do
+        expect(page).to have_content(
+          `Characteristics:
+           breakfast brunch`)
+      end
+
+      recipe_2 = create(:recipe, :protein, chapter: @chapter, meal_time: [], meal_type: nil)
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe_2.id)
+      
+      within("#meal_characteristics_#{recipe_2.id}") do
+        expect(page).to have_content(
+          `Characteristics:
+           #{recipe_2.food_group}`)
+      end
+
+      recipe_3 = create(:recipe, :dessert, chapter: @chapter, meal_time: [], food_group: nil)
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe_3.id)
+      
+      within("#meal_characteristics_#{recipe_3.id}") do
+        expect(page).to have_content(
+          `Characteristics:
+           #{recipe_3.meal_type}`)
+      end
+    end
 
     it "if the recipe prep time only has minutes it doesn't show 'hours' on the page"
     
