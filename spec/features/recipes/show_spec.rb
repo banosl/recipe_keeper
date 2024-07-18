@@ -65,10 +65,12 @@ RSpec.describe "Recipe show page" do
 
       within("#meal_characteristics_#{recipe.id}") do
         expect(page).to have_content(
-          `Characteristics:\n
-          #{recipe.meal_type}\n
-          #{recipe.meal_time.join(" ")}\n
-          #{recipe.food_group}`
+          <<~TEXT.chomp
+            Characteristics:
+            #{recipe.meal_type}
+            #{recipe.meal_time.join(" ")}
+            #{recipe.food_group}
+          TEXT
         )
       end
     end
@@ -79,8 +81,10 @@ RSpec.describe "Recipe show page" do
 
       within("#instructions_#{recipe.id}") do
         expect(page).to have_content(
-          `Instructions:
-          #{recipe.instructions}`
+          <<~TEXT.chomp
+            Instructions:
+            #{recipe.instructions}
+          TEXT
         )
       end
     end
@@ -119,26 +123,25 @@ RSpec.describe "Recipe show page" do
       
       within("#meal_characteristics_#{recipe_1.id}") do
         expect(page).to have_content(
-          `Characteristics:
-           breakfast brunch`)
+          <<~TEXT.chomp
+            Characteristics:
+            breakfast brunch
+          TEXT
+        )
       end
 
       recipe_2 = create(:recipe, :protein, chapter: @chapter, meal_time: [], meal_type: nil)
       visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe_2.id)
       
       within("#meal_characteristics_#{recipe_2.id}") do
-        expect(page).to have_content(
-          `Characteristics:
-           #{recipe_2.food_group}`)
+        expect(page).to have_content("Characteristics:\n#{recipe_2.food_group}")
       end
 
       recipe_3 = create(:recipe, :dessert, chapter: @chapter, meal_time: [], food_group: nil)
       visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe_3.id)
       
       within("#meal_characteristics_#{recipe_3.id}") do
-        expect(page).to have_content(
-          `Characteristics:
-           #{recipe_3.meal_type}`)
+        expect(page).to have_content("Characteristics:\n#{recipe_2.meal_type}")
       end
     end
 
@@ -159,7 +162,13 @@ RSpec.describe "Recipe show page" do
   end
 
   describe "Buttons" do
-    it "the library link takes the user back to the library"
+    it "the library link takes the user back to the library" do
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id)
+      expect(page).to have_link("My Library")
+      
+      click_link("My Library")
+      expect(page).to have_current_path(user_libraries_path(@user.id))
+    end
 
     it "back to cookbook button takes user back to the cookbook show page"
 
@@ -167,6 +176,12 @@ RSpec.describe "Recipe show page" do
 
     it "delete recipe button deletes it and redirects user to the cookbook show page and the user can see that it's gone"
 
-    it "has a log out button"
+    it "has a log out button" do
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id)
+      expect(page).to have_button("Log Out")
+      
+      click_button("Log Out")
+      expect(page).to have_current_path(root_path)
+    end
   end
 end

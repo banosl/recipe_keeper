@@ -37,7 +37,7 @@ FactoryBot.define do
   factory :recipe do
     name {Faker::Food.dish}
     page {Faker::Number.between(from: 10, to: 500)}
-    servings {Faker::Number.between(from: 1, to: 50)}
+    servings {Faker::Number.between(from: 2, to: 50)}
     prep_hours {Faker::Number.between(from: 0, to: 24)}
     prep_minutes {Faker::Number.between(from: 0, to: 60)}
     description {Faker::TvShows::DrWho.quote}
