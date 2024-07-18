@@ -170,7 +170,13 @@ RSpec.describe "Recipe show page" do
       expect(page).to have_current_path(user_libraries_path(@user.id))
     end
 
-    it "back to cookbook button takes user back to the cookbook show page"
+    it "back to cookbook button takes user back to the cookbook show page" do
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id)
+      expect(page).to have_button("Back to Cookbook")
+
+      click_button("Back to Cookbook")
+      expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+    end
 
     it "edit recipe button takes the user to the edit form"
 

@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
+    @cookbook = Cookbook.find(params[:cookbook_id])
     @recipe = Recipe.find(params[:id])
   end
   
