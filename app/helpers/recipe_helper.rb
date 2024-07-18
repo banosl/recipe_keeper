@@ -6,6 +6,8 @@ module RecipeHelper
       return "Time to prepare: #{recipe.prep_hours} hour and #{recipe.prep_minutes} minutes"
     elsif recipe.prep_minutes == 1
       return "Time to prepare: #{recipe.prep_hours} hours and #{recipe.prep_minutes} minute"
+    elsif recipe.prep_hours.zero? && recipe.prep_minutes.zero?
+      return nil
     else
       return "Time to prepare: #{recipe.prep_hours} hours and #{recipe.prep_minutes} minutes"
     end

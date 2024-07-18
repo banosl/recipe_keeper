@@ -142,9 +142,16 @@ RSpec.describe "Recipe show page" do
       end
     end
 
-    it "if the recipe prep time only has minutes it doesn't show 'hours' on the page"
-    
-    it "if the recipe prep time only has hours it doesn't show 'minutes' on the page"
+    it "If both prep hours and minutes where not filled out, defaulting to 0, the prep time section does't appear" do
+      recipe = create(:recipe, :salad, :protein, chapter: @chapter, prep_hours: 0, prep_minutes: 0)
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, recipe.id)
+
+      within("#basic_info_#{recipe.id}") do
+        expect(page).to_not have_content("hour")
+        expect(page).to_not have_content("minute")
+        expect(page).to_not have_content("Time to prepare")
+      end
+    end
 
     it "There is a default photo if a user doesn't upload one"
 

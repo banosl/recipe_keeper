@@ -21,7 +21,6 @@ class RecipesController < ApplicationController
     user = User.find(session[:user_id])
     cookbook = Cookbook.find(params[:cookbook_id])
     recipe = Recipe.new(recipe_params)
-
     create_chapter(recipe, cookbook)
     save_recipe(user, cookbook, recipe)
   end
@@ -74,6 +73,8 @@ class RecipesController < ApplicationController
   end
 
   def save_recipe(user, cookbook, recipe)
+    recipe.prep_hours = 0 if recipe.prep_hours.nil?
+    recipe.prep_minutes = 0 if recipe.prep_minutes.nil?
     if chapter_errors
       redirect_to new_user_library_cookbook_recipe_path(user.id, user.library.id, cookbook.id)
     elsif recipe.save
