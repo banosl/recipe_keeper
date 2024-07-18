@@ -6,6 +6,8 @@ html
     = button_to("Back to Cookbook", user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :get)
   body
     h1 = @recipe.name
+    section id="recipe_buttons"
+      = button_to("Edit Recipe", edit_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipe.id), method: :get)
     section id="basic_info_#{@recipe.id}"
       p = @recipe.description
       p = "Chapter: #{@recipe.chapter.name}"

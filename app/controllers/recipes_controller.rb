@@ -26,6 +26,11 @@ class RecipesController < ApplicationController
     save_recipe(user, cookbook, recipe)
   end
 
+  def edit
+    @user = User.find(session[:user_id])
+    @cookbook = Cookbook.find(params[:cookbook_id])
+  end
+
   private
 
   def recipe_params

@@ -178,7 +178,15 @@ RSpec.describe "Recipe show page" do
       expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
     end
 
-    it "edit recipe button takes the user to the edit form"
+    it "edit recipe button takes the user to the edit form" do
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id)
+      expect(page).to have_button("Edit Recipe")
+
+      within("#recipe_buttons") do
+        click_button("Edit Recipe")
+        expect(page).to have_current_path(edit_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id))
+      end
+    end
 
     it "delete recipe button deletes it and redirects user to the cookbook show page and the user can see that it's gone"
 
