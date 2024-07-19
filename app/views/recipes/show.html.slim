@@ -6,20 +6,26 @@ html
     = button_to("Back to Cookbook", user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id), method: :get)
   body
     h1 = @recipe.name
-    section id="recipe_buttons"
+    section id="recipe_options"
       = button_to("Edit Recipe", edit_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipe.id), method: :get)
+      div data-controller="recipe"
+        = form_with model: @recipe, url: user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipe.id), method: :delete do |form|
+          = form.submit("Delete Recipe", data: { action: "click->recipe#delete" })
+    
     section id="basic_info_#{@recipe.id}"
       p = @recipe.description
       p = "Chapter: #{@recipe.chapter.name}"
       p = "Page #{@recipe.page}"
       p = display_servings(@recipe)
       p = display_prep_time(@recipe)
+    
     section id="meal_characteristics_#{@recipe.id}"
       - if @recipe.meal_type || @recipe.meal_time != [] || @recipe.food_group
         p Characteristics:
         p = @recipe.meal_type
         p = @recipe.meal_time.join(" ")
         p = @recipe.food_group
+    
     section id="instructions_#{@recipe.id}"
       - if @recipe.instructions
         p Instructions:

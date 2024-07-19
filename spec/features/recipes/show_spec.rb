@@ -182,13 +182,28 @@ RSpec.describe "Recipe show page" do
       visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id)
       expect(page).to have_button("Edit Recipe")
 
-      within("#recipe_buttons") do
+      within("#recipe_options") do
         click_button("Edit Recipe")
-        expect(page).to have_current_path(edit_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id))
-      end
+        end
+      expect(page).to have_current_path(edit_user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id))
     end
 
-    it "delete recipe button deletes it and redirects user to the cookbook show page and the user can see that it's gone"
+    it "delete recipe button brings up a confirmation box after clicking ok it deletes it and redirects user to the cookbook show page
+        and the user can see that it's gone", js: true do
+      recipe_name = @recipes.first.name
+      visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id)
+      expect(page).to have_button("Delete Recipe")
+
+      within("#recipe_options") do
+        accept_confirm do
+          click_button("Delete Recipe")
+        end
+      end
+      expect(page).to have_current_path(user_library_cookbook_path(@user.id, @user.library.id, @cookbook.id))
+      expect(page).to_not have_content(recipe_name)
+    end
+
+    it "delete recipe button brings up a confirmation box, after denying it it just redirects the user back to the recipe page, unnaffected"
 
     it "has a log out button" do
       visit user_library_cookbook_recipe_path(@user.id, @user.library.id, @cookbook.id, @recipes.first.id)
