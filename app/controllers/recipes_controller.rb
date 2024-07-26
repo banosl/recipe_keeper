@@ -1,6 +1,12 @@
 class RecipesController < ApplicationController
   before_action :logged_in_user
 
+  def show
+    @user = User.find(session[:user_id])
+    @cookbook = Cookbook.find(params[:cookbook_id])
+    @recipe = Recipe.find(params[:id])
+  end
+  
   def new
     @user = User.find(session[:user_id])
     @cookbook = Cookbook.find(params[:cookbook_id])
@@ -16,9 +22,21 @@ class RecipesController < ApplicationController
     user = User.find(session[:user_id])
     cookbook = Cookbook.find(params[:cookbook_id])
     recipe = Recipe.new(recipe_params)
-
     create_chapter(recipe, cookbook)
     save_recipe(user, cookbook, recipe)
+  end
+
+  def edit
+    @user = User.find(session[:user_id])
+    @cookbook = Cookbook.find(params[:cookbook_id])
+  end
+
+  def destroy
+    user = User.find(session[:user_id])
+    cookbook = Cookbook.find(params[:cookbook_id])
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+    redirect_to user_library_cookbook_path(user.id, user.library.id, cookbook.id)
   end
 
   private
@@ -69,6 +87,8 @@ class RecipesController < ApplicationController
   end
 
   def save_recipe(user, cookbook, recipe)
+    recipe.prep_hours = 0 if recipe.prep_hours.nil?
+    recipe.prep_minutes = 0 if recipe.prep_minutes.nil?
     if chapter_errors
       redirect_to new_user_library_cookbook_recipe_path(user.id, user.library.id, cookbook.id)
     elsif recipe.save

@@ -1,0 +1,8 @@
+doctype html
+html
+  head 
+    script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    = link_to("My Library", user_libraries_path(@user.id))
+    = button_to("Log Out", session_path(@user.id), method: :delete)
+  body
+    = javascript_include_tag 'new_chapter_field'
